@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FestaPick 디자인 비교</title>
+    <style>
+      :root {
+        font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+        color: #182230;
+        background: #f5f7fb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      header {
+        padding: 28px 24px 20px;
+        background: white;
+        border-bottom: 1px solid #e3e9f0;
+      }
+      header .intro {
+        max-width: 1440px;
+        margin: auto;
+      }
+      h1 {
+        font-size: 26px;
+        letter-spacing: -0.04em;
+        margin: 0 0 10px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #526172;
+        margin: 0;
+      }
+      main {
+        max-width: 1500px;
+        margin: auto;
+        padding: 24px;
+      }
+      label {
+        font-size: 14px;
+        font-weight: 650;
+      }
+      select,
+      button {
+        font: inherit;
+        border: 1px solid #bdc9d5;
+        border-radius: 10px;
+        min-height: 44px;
+        padding: 8px 12px;
+        background: white;
+        color: #182230;
+      }
+      select {
+        max-width: 100%;
+      }
+      button {
+        cursor: pointer;
+      }
+      button[aria-pressed='true'] {
+        background: #fff0e6;
+        border-color: #fc9950;
+        color: #7d3702;
+      }
+      a {
+        color: #154ea2;
+        text-underline-offset: 3px;
+      }
+      :focus-visible {
+        outline: 3px solid #1b64cf;
+        outline-offset: 3px;
+      }
+      .controls {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .field {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .widths {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .board.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .panel {
+        min-width: 0;
+        border: 1px solid #e3e9f0;
+        border-radius: 18px;
+        background: white;
+        overflow: hidden;
+      }
+      .panel-head {
+        padding: 16px 18px;
+        border-bottom: 1px solid #e3e9f0;
+      }
+      .panel-head h2 {
+        font-size: 18px;
+        margin: 0 0 6px;
+      }
+      .panel-head p {
+        font-size: 12px;
+      }
+      .preview-links {
+        display: flex;
+        gap: 16px;
+        padding: 12px 18px;
+        font-size: 13px;
+        flex-wrap: wrap;
+      }
+      .view {
+        padding: 16px;
+        background: #eaf0f6;
+      }
+      .frame-wrap {
+        overflow: hidden;
+        margin: auto;
+        position: relative;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px #18223012;
+      }
+      iframe {
+        border: 0;
+        transform-origin: 0 0;
+        display: block;
+      }
+      .notes {
+        margin-top: 24px;
+        padding: 20px;
+        background: #edf3fd;
+        border: 1px solid #c0d6f7;
+        border-radius: 14px;
+      }
+      .notes strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background: #fff0e6;
+        color: #7d3702;
+        font-size: 12px;
+        margin-right: 6px;
+      }
+      .help {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      details {
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        accent-color: #e26304;
+      }
+      footer {
+        text-align: center;
+        font-size: 12px;
+        padding: 20px;
+        color: #526172;
+      }
+      @media (max-width: 800px) {
+        main {
+          padding: 16px;
+        }
+        .board,
+        .board.three {
+          grid-template-columns: 1fr;
+        }
+        header {
+          padding: 24px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="intro">
+        <h1><span class="tag">FestaPick</span>독립 디자인 비교</h1>
+        <p>
+          기존 개선안은 보존하고, <strong>develop의 원래 디자인에서 새로 개선한 안</strong>을 나란히
+          비교합니다.<br />동일한 샘플 데이터와 로그인 상태를 사용합니다. 실제 OAuth·업로드·STOMP
+          전송은 수행하지 않는 로컬 프리뷰입니다.
+        </p>
+      </div>
+    </header>
+    <main>
+      <div class="controls">
+        <div class="field">
+          <label for="screen">비교할 화면</label
+          ><select id="screen"></select>
+        </div>
+        <div class="field">
+          <span>뷰포트</span>
+          <div class="widths" id="widths"></div>
+        </div>
+        <label class="field"><input type="checkbox" id="original" />원본 develop도 표시</label>
+      </div>
+      <div class="board" id="board"></div>
+      <p class="help">
+        각 프레임 안에서 스크롤하거나 지역·카드·메뉴를 선택할 수 있습니다. 넓은 뷰포트는 화면에 맞게
+        축소 표시하며, ‘직접 열기’에서 실제 크기로 확인할 수 있습니다.
+      </p>
+      <section class="notes">
+        <strong>비교 포인트</strong>
+        <p>
+          기존 개선안: 아이보리·초록 역할 색상, 가로 목록 카드, 섹션 탐색 중심.<br />새 개선안:
+          흰색·블루그레이 표면, 포스터 중심 카드, 오렌지 핵심 행동과 블루 보조 안내, AI
+          PICK·계정·설정까지 이어지는 공통 규칙.
+        </p>
+        <details>
+          <summary>동일 조건과 남은 검증 범위</summary>
+          <ul>
+            <li>포스터·제목·일정·리뷰·공지·사용자는 세 안에 같은 값으로 제공됩니다.</li>
+            <li>
+              검색 결과 프리뷰의 q는 비교용 입력 초기화이며 실제 제품의 URL 검색 기능 추가가
+              아닙니다.
+            </li>
+            <li>지도 핀 위치와 지역 목적지, 기존 API·업무 훅은 새 안에서 보존했습니다.</li>
+            <li>
+              새 안은 원본 develop의 업무 동작을 유지하므로 이전 브랜치에서 추가했던 리뷰
+              페이징·검색 즉시 제출 등이 같다는 뜻은 아닙니다.
+            </li>
+            <li>
+              화면 캡처는 실제 Headless Chrome 렌더입니다. 접근성 자동 점수와 실기기·실제 백엔드
+              통합 검증은 구분합니다.
+            </li>
+            <li>
+              빈 결과/오류 메뉴는 샘플 API 상태를 바꾸며 실제 서비스에는 영향을 주지 않습니다.
+            </li>
+          </ul>
+        </details>
+      </section>
+    </main>
+    <footer>포크 로컬 비교 · 외부 배포 없음</footer>
+    <script type="module">
+      const pages = [
+        ['home', '홈', '/'],
+        ['list', '축제 목록', '/festivals/2?current=false'],
+        ['detail', '축제 상세', '/festival/1'],
+        ['search', '검색 결과', '/search?q=수국'],
+        ['search-initial', '검색 시작', '/search'],
+        ['pick', 'AI PICK · 스타일', '/pick/2?step=style'],
+        ['mbti', 'AI PICK · 여행 MBTI', '/pick/2?step=mbti'],
+        ['history', 'AI 추천 내역', '/pick/histories'],
+        ['my', '마이페이지', '/mypage'],
+        ['chat', '채팅', '/chat/1'],
+        ['login', '로그인', '/login'],
+        ['settings', '설정', '/settings'],
+        ['register', '축제 등록 폼', '/settings/festival-register'],
+        ['form', '관리자 승급 신청', '/settings/fm-permission-application'],
+        ['faq', '자주 묻는 질문', '/settings/faq'],
+        ['notices', '공지사항', '/festival/1/notices'],
+        ['empty', '목록 · 빈 결과', '/festivals/2?demo=empty'],
+        ['error', '목록 · 오류', '/festivals/2?demo=error'],
+      ];
+      const manifest = await fetch('./sources.json').then((response) => {
+        if (!response.ok) throw new Error('Run prepare.mjs to create sources.json');
+        return response.json();
+      });
+      const variants = [
+        ['original', '원본 develop'],
+        ['previous', '지금까지의 개선안'],
+        ['new', '새 독립 개선안'],
+      ].map(([name, title]) => {
+        const source = manifest.sources[name];
+        return [
+          name,
+          title,
+          source.ref +
+            ' · ' +
+            source.sha.slice(0, 12) +
+            (name === 'new' ? ' · 현재 작업 파일' : ''),
+          source.port,
+        ];
+      });
+      let width = 375;
+      const selector = document.querySelector('#screen'),
+        board = document.querySelector('#board');
+      for (const [id, title] of pages) {
+        const o = document.createElement('option');
+        o.value = id;
+        o.textContent = title;
+        selector.append(o);
+      }
+      for (const w of [320, 375, 480, 768, 1280]) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = w + 'px';
+        b.dataset.width = w;
+        b.setAttribute('aria-pressed', String(w === width));
+        b.onclick = () => {
+          width = w;
+          document
+            .querySelectorAll('[data-width]')
+            .forEach((el) => el.setAttribute('aria-pressed', String(+el.dataset.width === width)));
+          render();
+        };
+        document.querySelector('#widths').append(b);
+      }
+      const observers = [];
+      function render() {
+        observers.forEach((o) => o.disconnect());
+        observers.length = 0;
+        board.replaceChildren();
+        const page = pages.find((p) => p[0] === selector.value) || pages[0];
+        const showOriginal = document.querySelector('#original').checked;
+        board.classList.toggle('three', showOriginal);
+        for (const [id, title, source, port] of variants) {
+          if (id === 'original' && !showOriginal) continue;
+          const panel = document.createElement('article');
+          panel.className = 'panel';
+          const head = document.createElement('div');
+          head.className = 'panel-head';
+          head.innerHTML = '<h2></h2><p></p>';
+          head.querySelector('h2').textContent = title;
+          head.querySelector('p').textContent = source;
+          panel.append(head);
+          const links = document.createElement('div');
+          links.className = 'preview-links';
+          const link = document.createElement('a');
+          link.textContent = '직접 열기 ↗';
+          link.href = 'http://127.0.0.1:' + port + page[2];
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          links.append(link);
+          const shot = document.createElement('a');
+          shot.textContent = '화면 캡처 ↗';
+          shot.href = './screens/' + id + '-' + page[0] + '-' + width + '.png';
+          shot.target = '_blank';
+          shot.rel = 'noopener noreferrer';
+          fetch(shot.href, { method: 'HEAD' })
+            .then((r) => {
+              if (r.ok) links.append(shot);
+            })
+            .catch(() => {});
+          panel.append(links);
+          const view = document.createElement('div');
+          view.className = 'view';
+          const wrap = document.createElement('div');
+          wrap.className = 'frame-wrap';
+          const frame = document.createElement('iframe');
+          frame.title = title + ' · ' + page[1];
+          frame.src = link.href;
+          frame.width = String(width);
+          frame.height = '844';
+          wrap.append(frame);
+          view.append(wrap);
+          panel.append(view);
+          board.append(panel);
+          const fit = () => {
+            const scale = Math.min(
+              1,
+              view.clientWidth - 32 > 0 ? (view.clientWidth - 32) / width : 1,
+            );
+            wrap.style.width = width * scale + 'px';
+            wrap.style.height = 844 * scale + 'px';
+            frame.style.transform = 'scale(' + scale + ')';
+          };
+          const observer = new ResizeObserver(fit);
+          observer.observe(view);
+          observers.push(observer);
+          fit();
+        }
+      }
+      selector.onchange = render;
+      document.querySelector('#original').onchange = render;
+      render();
+    </script>
+  </body>
+</html>
