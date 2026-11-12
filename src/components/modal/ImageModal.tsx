@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+import { useDialogFocus } from './useDialogFocus';
 import { useSlider } from '@/hooks/useSlider';
 import LeftArrow from '@/components/icon/LeftArrowIcon';
 import RightArrow from '@/components/icon/RightArrowIcon';
@@ -45,20 +47,36 @@ const ImageModal = ({ mediaItems, selectedMediaIndex, onClose, title }: ImageMod
     swipeThreshold: SWIPE_THRESHOLD,
   });
 
+  const dialog = useRef<HTMLDivElement>(null);
+  const handleKeyDown = useDialogFocus(true, dialog, onClose);
+  useEffect(() => {
+    const focused = document.activeElement;
+    if (
+      !dialog.current?.contains(focused) ||
+      (focused instanceof HTMLElement && focused.closest('[inert]'))
+    )
+      dialog.current?.querySelector<HTMLElement>('[data-dialog-close]')?.focus();
+    dialog.current?.querySelectorAll('video').forEach((video) => {
+      if (video.closest('[inert]') && !video.paused) video.pause();
+    });
+  }, [currentIndex]);
   const arrowButtonClasses =
-    'absolute top-1/2 transform -translate-y-1/2 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 z-20 hidden sm:flex';
+    'absolute top-1/2 transform -translate-y-1/2 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 z-20';
 
   return (
     <div
       className="fixed inset-0 bg-black flex items-center justify-center z-[1000]"
       onClick={onClose}
+      ref={dialog}
+      onKeyDown={handleKeyDown}
       role="dialog"
+      aria-label={title ? `${title} 미디어 확대 보기` : '미디어 확대 보기'}
       aria-modal="true"
     >
-      <div className="relative w-full h-full max-w-[480px] p-2 flex items-center justify-center">
+      <div className="relative w-full h-full max-w-[var(--ui-max-width)] p-2 flex items-center justify-center">
         <div
           ref={containerRef}
-          className="relative w-full h-full max-w-[480px] overflow-hidden"
+          className="relative w-full h-full max-w-[var(--ui-max-width)] overflow-hidden"
           {...touchHandlers}
           onClick={(e) => e.stopPropagation()}
         >
@@ -71,6 +89,8 @@ const ImageModal = ({ mediaItems, selectedMediaIndex, onClose, title }: ImageMod
             {mediaItems.map((item, index) => (
               <div
                 key={index}
+                inert={index !== currentIndex}
+                aria-hidden={index !== currentIndex}
                 className="w-full h-full flex-shrink-0 flex items-center justify-center p-3"
               >
                 {item.type === 'video' ? (
@@ -78,7 +98,8 @@ const ImageModal = ({ mediaItems, selectedMediaIndex, onClose, title }: ImageMod
                     <video
                       src={item.url}
                       className="w-full h-full object-contain"
-                      controls
+                      controls={index === currentIndex}
+                      tabIndex={index === currentIndex ? 0 : -1}
                       playsInline
                       preload="metadata"
                       onClick={(e) => {
@@ -129,8 +150,9 @@ const ImageModal = ({ mediaItems, selectedMediaIndex, onClose, title }: ImageMod
 
           <div className="absolute top-0 left-0 flex items-center gap-3 z-20">
             <button
+              data-dialog-close
               onClick={onClose}
-              className="w-10 h-10 text-white rounded-full flex items-center justify-center transition-all text-xl cursor-pointer"
+              className="w-11 h-11 text-white rounded-full flex items-center justify-center transition-all text-xl cursor-pointer"
               aria-label="모달 닫기"
             >
               ×

@@ -18,28 +18,37 @@ const FestivalFormPeriodCard = ({
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label className="font-semibold">
-          축제 기간 <span className="text-red-500">*</span>
+          축제 기간 <span className="text-red-700">*</span>
         </label>
-        <div className="flex gap-2 items-center">
-          <input
-            id="startDate"
-            name="startDate"
-            type="date"
-            value={formData.startDate}
-            onChange={handleInputChange}
-            className="border border-gray-200 rounded-lg p-3 flex-1"
-            disabled={isSubmitting}
-          />
-          <span>~</span>
-          <input
-            id="endDate"
-            name="endDate"
-            type="date"
-            value={formData.endDate}
-            onChange={handleInputChange}
-            className="border border-gray-200 rounded-lg p-3 flex-1"
-            disabled={isSubmitting}
-          />
+        <div className="ui-period-grid">
+          <div className="ui-field">
+            <label htmlFor="startDate" className="ui-caption">
+              시작일
+            </label>
+            <input
+              id="startDate"
+              name="startDate"
+              type="date"
+              value={formData.startDate}
+              onChange={handleInputChange}
+              className="ui-control"
+              disabled={isSubmitting}
+            />
+          </div>
+          <div className="ui-field">
+            <label htmlFor="endDate" className="ui-caption">
+              종료일
+            </label>
+            <input
+              id="endDate"
+              name="endDate"
+              type="date"
+              value={formData.endDate}
+              onChange={handleInputChange}
+              className="ui-control"
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
       </div>
     </BorderCardComponent>

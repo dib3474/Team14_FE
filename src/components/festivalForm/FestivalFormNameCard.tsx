@@ -16,7 +16,7 @@ const FestivalFormNameCard = ({ formData, handleInputChange, isSubmitting }: Fes
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label htmlFor="title" className="font-semibold">
-          축제 제목 <span className="text-red-500">*</span>
+          축제 제목 <span className="text-red-700">*</span>
         </label>
         <TextInputWithCounter
           value={formData.title}

@@ -6,7 +6,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-docs
 
 #  Build / Cache
 dist/
@@ -29,3 +28,8 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Local plans and design comparison artifacts
+docs/plans/
+superpowers/
+.superpowers/

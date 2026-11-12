@@ -26,7 +26,7 @@ describe('Footer 컴포넌트', () => {
       );
 
       // 첫 번째 버튼만 스냅샷으로 확인 (구조 변경 감지용)
-      const firstButton = container.querySelector('button');
+      const firstButton = container.querySelector('a');
       expect(firstButton).toMatchSnapshot('footer-button-structure');
     });
 
@@ -38,8 +38,8 @@ describe('Footer 컴포넌트', () => {
       );
 
       // 선택된 버튼과 선택되지 않은 버튼의 차이를 스냅샷으로 확인
-      const homeButton = screen.getByText('홈').closest('button');
-      const searchButton = screen.getByText('검색').closest('button');
+      const homeButton = screen.getByText('홈').closest('a');
+      const searchButton = screen.getByText('검색').closest('a');
 
       expect(homeButton).toMatchSnapshot('selected-button');
       expect(searchButton).toMatchSnapshot('unselected-button');
@@ -56,13 +56,23 @@ describe('Footer 컴포넌트', () => {
       // Given: 특정 initialSelected가 주어졌을 때
       // When: 해당 initialSelected로 Footer 컴포넌트를 렌더링하면
       render(
-        <MemoryRouter>
+        <MemoryRouter
+          initialEntries={[
+            selected === 'home'
+              ? '/'
+              : selected === 'search'
+                ? '/search'
+                : selected === 'pick'
+                  ? '/pick/histories'
+                  : '/mypage',
+          ]}
+        >
           <Footer initialSelected={selected} />
         </MemoryRouter>,
       );
 
       // Then: 해당 버튼이 선택된 상태여야 한다
-      const button = screen.getByText(buttonText).closest('button');
+      const button = screen.getByText(buttonText).closest('a');
       expect(button).toBeInTheDocument();
 
       // 선택된 버튼의 텍스트가 볼드 처리되어야 한다
@@ -97,13 +107,13 @@ describe('Footer 컴포넌트', () => {
 
       // When: 홈 버튼을 클릭하면
       const homeButton = screen.getByText('홈');
-      fireEvent.click(homeButton.closest('button') as HTMLElement);
+      fireEvent.click(homeButton.closest('a') as HTMLElement);
 
       // Then: 홈 버튼의 텍스트가 볼드로 변경되어야 한다
       expect(homeButton).toHaveClass('font-bold');
 
       // 클릭 후 버튼 상태를 작은 스냅샷으로 확인
-      expect(homeButton.closest('button')).toMatchSnapshot('clicked-home-button');
+      expect(homeButton.closest('a')).toMatchSnapshot('clicked-home-button');
     });
 
     test('다른 버튼 클릭 시 이전 선택이 해제되고 새 버튼이 선택된다', () => {
@@ -117,7 +127,7 @@ describe('Footer 컴포넌트', () => {
       // When: 검색 버튼을 클릭하면
       const searchButton = screen.getByText('검색');
       const homeButton = screen.getByText('홈');
-      fireEvent.click(searchButton.closest('button') as HTMLElement);
+      fireEvent.click(searchButton.closest('a') as HTMLElement);
 
       // Then: 검색 버튼은 볼드가 되고 홈 버튼은 normal이 되어야 한다
       expect(searchButton).toHaveClass('font-bold');
@@ -137,7 +147,7 @@ describe('Footer 컴포넌트', () => {
 
       buttonLabels.forEach((label) => {
         const button = screen.getByText(label);
-        fireEvent.click(button.closest('button') as HTMLElement);
+        fireEvent.click(button.closest('a') as HTMLElement);
 
         // Then: 클릭된 버튼의 텍스트가 볼드로 변경되어야 한다
         expect(button).toHaveClass('font-bold');

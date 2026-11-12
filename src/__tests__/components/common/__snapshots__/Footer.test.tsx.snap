@@ -1,38 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Footer 컴포넌트 > 기본 렌더링 > 기본 상태 스냅샷 - 선택된 버튼 없음 > footer-button-structure 1`] = `
-<button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-fit cursor-pointer bg-transparent text-gray-900 text-md rounded-xl px-5 py-3 flex-col text-xs pt-2 pb-3 px-3 "
-  type="button"
->
-  <svg
-    class="size-6"
-    fill="none"
-    height="24"
-    stroke="currentColor"
-    stroke-width="2"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M3.99999 10L12 3L20 10L20 20H15V16C15 15.2044 14.6839 14.4413 14.1213 13.8787C13.5587 13.3161 12.7956 13 12 13C11.2043 13 10.4413 13.3161 9.87868 13.8787C9.31607 14.4413 9 15.2043 9 16V20H4L3.99999 10Z"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-  <p
-    class="font-normal"
-  >
-    홈
-  </p>
-</button>
-`;
-
-exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - home 선택 > selected-button 1`] = `
-<button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-fit cursor-pointer bg-transparent text-gray-900 text-md rounded-xl px-5 py-3 flex-col text-xs pt-2 pb-3 px-3 "
-  type="button"
+<a
+  aria-current="page"
+  class="ui-nav-link"
+  data-discover="true"
+  href="/"
 >
   <svg
     class="size-6"
@@ -50,18 +23,50 @@ exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - h
       stroke-linejoin="round"
     />
   </svg>
-  <p
+  <span
     class="font-bold"
   >
     홈
-  </p>
-</button>
+  </span>
+</a>
+`;
+
+exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - home 선택 > selected-button 1`] = `
+<a
+  aria-current="page"
+  class="ui-nav-link"
+  data-discover="true"
+  href="/"
+>
+  <svg
+    class="size-6"
+    fill="currentColor"
+    height="24"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3.99999 10L12 3L20 10L20 20H15V16C15 15.2044 14.6839 14.4413 14.1213 13.8787C13.5587 13.3161 12.7956 13 12 13C11.2043 13 10.4413 13.3161 9.87868 13.8787C9.31607 14.4413 9 15.2043 9 16V20H4L3.99999 10Z"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+  <span
+    class="font-bold"
+  >
+    홈
+  </span>
+</a>
 `;
 
 exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - home 선택 > unselected-button 1`] = `
-<button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-fit cursor-pointer bg-transparent text-gray-900 text-md rounded-xl px-5 py-3 flex-col text-xs pt-2 pb-3 px-3 "
-  type="button"
+<a
+  class="ui-nav-link"
+  data-discover="true"
+  href="/search"
 >
   <svg
     class="size-6"
@@ -79,18 +84,20 @@ exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - h
       stroke-linejoin="round"
     />
   </svg>
-  <p
+  <span
     class="font-normal"
   >
     검색
-  </p>
-</button>
+  </span>
+</a>
 `;
 
 exports[`Footer 컴포넌트 > 상호작용 테스트 > 버튼 클릭 시 폰트가 볼드로 변경된다 > clicked-home-button 1`] = `
-<button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-fit cursor-pointer bg-transparent text-gray-900 text-md rounded-xl px-5 py-3 flex-col text-xs pt-2 pb-3 px-3 "
-  type="button"
+<a
+  aria-current="page"
+  class="ui-nav-link"
+  data-discover="true"
+  href="/"
 >
   <svg
     class="size-6"
@@ -108,10 +115,10 @@ exports[`Footer 컴포넌트 > 상호작용 테스트 > 버튼 클릭 시 폰트
       stroke-linejoin="round"
     />
   </svg>
-  <p
+  <span
     class="font-bold"
   >
     홈
-  </p>
-</button>
+  </span>
+</a>
 `;

@@ -18,14 +18,14 @@ const FestivalFormAreaCard = ({ formData, handleInputChange, isSubmitting }: Fes
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label htmlFor="areaCode" className="font-semibold">
-          지역 <span className="text-red-500">*</span>
+          지역 <span className="text-red-700">*</span>
         </label>
         <select
           id="areaCode"
           name="areaCode"
           value={formData.areaCode}
           onChange={handleInputChange}
-          className="border border-gray-200 rounded-lg p-3 "
+          className="ui-control"
           disabled={isSubmitting}
         >
           {filteredAreaOptions.map((option) => (
