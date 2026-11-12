@@ -15,8 +15,8 @@ const SettingsFAQContent = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="space-y-2">
+    <div className="ui-page">
+      <div className="space-y-3">
         {faqs.map((faq) => (
           <FAQItem
             key={faq.id}

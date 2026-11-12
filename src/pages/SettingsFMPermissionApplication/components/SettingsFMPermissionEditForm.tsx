@@ -17,7 +17,7 @@ const SettingsFMPermissionEditForm = () => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
+      <div className="ui-feedback min-h-48">
         <LoadingSpinner size="lg" message="신청서를 불러오는 중..." />
       </div>
     );

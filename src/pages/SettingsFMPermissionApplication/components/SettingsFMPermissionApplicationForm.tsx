@@ -134,31 +134,33 @@ const SettingsFMPermissionApplicationForm = ({
     });
   };
   return (
-    <div className="bg-white rounded-lg p-4 m-4 shadow-sm">
-      <ApplicationDepartmentCard
-        department={department}
-        setDepartment={setDepartment}
-        disabled={isEdit}
-      />
+    <div className="ui-page">
+      <div className="ui-panel">
+        <ApplicationDepartmentCard
+          department={department}
+          setDepartment={setDepartment}
+          disabled={isEdit}
+        />
 
-      <ApplicationDocumentCard
-        documents={documents}
-        setDocuments={setDocuments}
-        handleFileUpload={handleFileUpload}
-        isUploading={isUploading}
-      />
+        <ApplicationDocumentCard
+          documents={documents}
+          setDocuments={setDocuments}
+          handleFileUpload={handleFileUpload}
+          isUploading={isUploading}
+        />
 
-      <ApplicaitonInfoCard />
+        <ApplicaitonInfoCard />
 
-      <FormSubmitButtons
-        onPatch={handlePatch}
-        isEdit={isEdit}
-        onCancel={goBack}
-        onSubmit={handleSubmit}
-        isDisabled={isPending || isUploading || documents.length === 0 || !department.trim()}
-        isLoading={isPending || isUploading || isUpdating}
-        submitLabel={isEdit ? '수정하기' : '신청하기'}
-      />
+        <FormSubmitButtons
+          onPatch={handlePatch}
+          isEdit={isEdit}
+          onCancel={goBack}
+          onSubmit={handleSubmit}
+          isDisabled={isPending || isUploading || documents.length === 0 || !department.trim()}
+          isLoading={isPending || isUploading || isUpdating}
+          submitLabel={isEdit ? '수정하기' : '신청하기'}
+        />
+      </div>
     </div>
   );
 };

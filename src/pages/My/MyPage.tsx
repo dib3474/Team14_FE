@@ -19,12 +19,17 @@ import MyPageChatSection from '@/pages/My/components/MyPageChatSection';
 const MyPage = () => {
   const [selectedTab, setSelectedTab] = useState<'wishlist' | 'reviewed'>('wishlist');
 
-  const chooseStyle = 'border-b-2 border-primary-300 font-bold text-primary-300';
-  const notChooseStyle = 'border-b-2 border-transparent text-gray-500';
+  const chooseStyle = 'bg-white text-ui-ink shadow-sm font-bold';
+  const notChooseStyle = 'text-ui-muted';
   return (
     <Container>
       <Header variant="mypage" />
-      <div className="p-4">
+      <div className="ui-page">
+        <div>
+          <p className="ui-eyebrow">MY FESTAPICK</p>
+          <h1 className="ui-title mt-2">나의 축제 모음</h1>
+          <p className="ui-body mt-2 text-ui-muted">좋아하는 축제와 함께한 순간을 모아보세요.</p>
+        </div>
         <ErrorBoundary
           FallbackComponent={() => (
             <ErrorComponent
@@ -42,22 +47,24 @@ const MyPage = () => {
               <LoadingSpinner
                 size="lg"
                 message="채팅 목록을 불러오는 중..."
-                className="h-[156px] w-full flex items-center justify-center"
+                className="ui-feedback min-h-32"
               />
             }
           >
             <MyPageChatSection />
           </Suspense>
         </ErrorBoundary>
-        <div className="flex border-b border-gray-200 w-full mb-4">
+        <div className="ui-tabs" role="group" aria-label="나의 축제 목록 선택">
           <button
-            className={`px-4 py-2 text-gray-500 font-medium ${selectedTab === 'wishlist' ? chooseStyle : notChooseStyle} w-full`}
+            className={`min-h-12 rounded-xl px-4 py-3 text-sm transition-colors ${selectedTab === 'wishlist' ? chooseStyle : notChooseStyle} w-full`}
+            aria-pressed={selectedTab === 'wishlist'}
             onClick={() => setSelectedTab('wishlist')}
           >
             좋아요
           </button>
           <button
-            className={`px-4 py-2 text-gray-500 font-medium ${selectedTab === 'reviewed' ? chooseStyle : notChooseStyle} w-full`}
+            className={`min-h-12 rounded-xl px-4 py-3 text-sm transition-colors ${selectedTab === 'reviewed' ? chooseStyle : notChooseStyle} w-full`}
+            aria-pressed={selectedTab === 'reviewed'}
             onClick={() => setSelectedTab('reviewed')}
           >
             리뷰
@@ -79,7 +86,7 @@ const MyPage = () => {
             fallback={
               <LoadingSpinner
                 size="lg"
-                className="min-h-[400px]"
+                className="ui-feedback min-h-40"
                 message="좋아요한 축제를 불러오는 중..."
               />
             }

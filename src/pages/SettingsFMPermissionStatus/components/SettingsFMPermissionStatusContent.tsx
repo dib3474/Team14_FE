@@ -45,13 +45,13 @@ const SettingsFMPermissionStatusContent = () => {
   };
 
   if (isLoading) {
-    return <LoadingSpinner size="lg" className="min-h-[400px]" message="신청서를 불러오는 중..." />;
+    return <LoadingSpinner size="lg" className="min-h-48" message="신청서를 불러오는 중..." />;
   }
 
   // 404 에러 (신청서가 없음)
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
     return (
-      <div className="p-4">
+      <div className="ui-page">
         <EmptyComponent
           title="신청서가 없습니다"
           description="아직 축제 관리자 신청을 하지 않으셨습니다."
@@ -87,7 +87,7 @@ const SettingsFMPermissionStatusContent = () => {
     }
   })();
   return (
-    <div className="p-4 space-y-4">
+    <div className="ui-page">
       <SettingsFMPermissionStatusCard permission={permission} />
 
       <SettingsFMPermissionInfoCard permission={permission} />

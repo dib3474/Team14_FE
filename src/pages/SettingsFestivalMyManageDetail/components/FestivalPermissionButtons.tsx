@@ -21,8 +21,8 @@ const FestivalPermissionButtons = ({
   isDeleting,
 }: FestivalPermissionButtonsProps) => {
   return (
-    <div className="flex gap-3 p-4 shadow-sm rounded-lg">
-      <Button variant="secondary" className="flex-1" onClick={goBack}>
+    <div className="ui-panel flex flex-wrap gap-3">
+      <Button variant="secondary" className="min-w-0 flex-1" onClick={goBack}>
         돌아가기
       </Button>
       {state === 'ACCEPTED' && (
@@ -37,7 +37,7 @@ const FestivalPermissionButtons = ({
       {/* PENDING 상태: 수정/삭제 가능 */}
       {state === 'PENDING' && (
         <>
-          <Button variant="secondary" className="flex-1" onClick={handleEdit}>
+          <Button variant="secondary" className="min-w-0 flex-1" onClick={handleEdit}>
             수정
           </Button>
           <Button
@@ -54,7 +54,7 @@ const FestivalPermissionButtons = ({
       {/* DENIED 상태: 삭제만 가능 */}
       {state === 'DENIED' && (
         <>
-          <Button variant="secondary" className="flex-1" onClick={handleEdit}>
+          <Button variant="secondary" className="min-w-0 flex-1" onClick={handleEdit}>
             수정
           </Button>
           <Button

@@ -34,7 +34,7 @@ const MyPageReviewFestivalsSection = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 px-2">
+    <div className="grid grid-cols-1 gap-4">
       {myReviewFestivals.map((festival) => (
         <MyPageFestivalCard key={festival.id} data={festival} />
       ))}

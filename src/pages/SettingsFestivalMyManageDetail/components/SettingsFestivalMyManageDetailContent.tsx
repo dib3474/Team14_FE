@@ -58,13 +58,13 @@ const SettingsFestivalMyManageDetailContent = () => {
 
   // 로딩 중
   if (isLoading) {
-    return <LoadingSpinner size="lg" className="min-h-[400px]" message="신청서를 불러오는 중..." />;
+    return <LoadingSpinner size="lg" className="min-h-48" message="신청서를 불러오는 중..." />;
   }
 
   // 404 에러 (신청서가 없음)
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
     return (
-      <div className="p-4">
+      <div className="ui-page">
         <EmptyComponent
           title="신청서를 찾을 수 없습니다"
           description="삭제되었거나 존재하지 않는 신청서입니다."
@@ -97,7 +97,7 @@ const SettingsFestivalMyManageDetailContent = () => {
   })();
 
   return (
-    <div className="p-4 space-y-4 pb-20">
+    <div className="ui-page">
       <FestivalPermissionStatusCard state={permission.state} />
       <FestivalPermissionInfoCard permission={permission} />
 

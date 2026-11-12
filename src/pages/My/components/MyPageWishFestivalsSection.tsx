@@ -32,7 +32,7 @@ const MyPageWishFestivalsSection = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 px-2">
+    <div className="grid grid-cols-1 gap-4">
       {myWishes.map((festival) => (
         <MyPageFestivalCard key={festival.id} data={festival} />
       ))}
