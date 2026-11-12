@@ -4,79 +4,75 @@ import type { Festival } from '@/types/FestivalType';
 import useSearch from '@/hooks/useSearch';
 import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import ErrorComponent from '@/components/error/ErrorComponent';
+import OutlineInputField from '@/components/form/OutlineInputField';
+import '../search.css';
 
-/**
- * 검색 컨텐츠 컴포넌트
- * @returns 검색 컨텐츠 컴포넌트
- */
 const SearchContent = () => {
   const { searchQuery, setSearchQuery, searchResults, isLoading, error, canShowResults, refetch } =
     useSearch();
-
-  // 에러가 있으면 에러 컴포넌트 표시
-  if (error) {
-    return (
-      <div className="p-4">
-        <div className="relative mb-6">
-          <input
-            type="text"
+  return (
+    <div className="ui-page search-page">
+      <section className="search-intro" aria-labelledby="search-title">
+        <p className="ui-eyebrow">지금 떠오른 그 축제</p>
+        <h1 id="search-title" className="ui-title">
+          어떤 축제를 찾으세요?
+        </h1>
+        <p className="ui-body text-ui-muted">축제 이름이나 관심 있는 키워드를 입력해보세요.</p>
+        <div className="search-input-frame">
+          <OutlineInputField
+            type="search"
+            name="festival-search"
+            aria-label="축제 검색어"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="찾으시는 축제가 있으신가요?"
-            className="w-full p-3 pr-20 border border-gray-300 rounded-md focus:outline-none focus:ring-0 focus:border-gray-300"
+            rounded="xl"
           />
-          <button
-            disabled={isLoading || !searchQuery.trim()}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 text-primary-500 rounded-md hover:text-primary-600 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-          >
+          <span className="search-adornment" aria-hidden="true">
             <SearchIcon />
-          </button>
+          </span>
         </div>
-        <ErrorComponent
-          title="검색에 실패했습니다"
-          message="다시 시도해주세요."
-          onRetry={() => refetch()}
-          showBackButton={false}
-          className="h-full"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="p-4">
-      <div className="relative mb-6">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="찾으시는 축제가 있으신가요?"
-          className="w-full p-3 pr-20 border border-gray-300 rounded-md focus:outline-none focus:ring-0 focus:border-gray-300"
-        />
-        <button
-          disabled={isLoading || !searchQuery.trim()}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 text-primary-500 rounded-md hover:text-primary-600 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-        >
-          <SearchIcon />
-        </button>
-      </div>
-      {isLoading && <LoadingSpinner size="lg" className="min-h-[400px]" message="검색 중..." />}
-      {!isLoading && canShowResults && (
-        <div>
-          <h2 className="text-lg font-semibold mb-4">검색 결과 ({searchResults.length}개)</h2>
+      </section>
+      {error ? (
+        <div className="ui-panel">
+          <ErrorComponent
+            title="검색에 실패했습니다"
+            message="다시 시도해주세요."
+            onRetry={() => refetch()}
+            showBackButton={false}
+            className="h-full"
+          />
+        </div>
+      ) : isLoading ? (
+        <LoadingSpinner size="lg" className="min-h-[240px]" message="검색 중..." />
+      ) : canShowResults ? (
+        <section aria-labelledby="search-result-title">
+          <h2 id="search-result-title" className="ui-section-title mb-4">
+            검색 결과 ({searchResults.length}개)
+          </h2>
           {searchResults.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">검색 결과가 없습니다.</div>
+            <div className="ui-panel search-empty">
+              <p className="ui-section-title">검색 결과가 없습니다.</p>
+              <p className="ui-body text-ui-muted">
+                입력한 단어를 확인하거나 다른 키워드로 찾아보세요.
+              </p>
+            </div>
           ) : (
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid festival-grid">
               {searchResults.map((result: Festival) => (
                 <FestivalCard key={result.id} data={result} />
               ))}
             </div>
           )}
+        </section>
+      ) : (
+        <div className="ui-panel search-empty">
+          <img src="/lost404.svg" alt="" />
+          <p className="ui-section-title">새로운 즐거움을 찾아보세요</p>
+          <p className="ui-body text-ui-muted">검색어를 입력하면 축제를 찾아드릴게요.</p>
         </div>
       )}
     </div>
   );
 };
-
 export default SearchContent;

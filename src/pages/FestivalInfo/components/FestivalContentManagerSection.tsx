@@ -118,9 +118,9 @@ const FestivalContentManagerSection = ({
 
   return (
     <>
-      <div className="space-y-2">
-        <h3 className="text-sm text-gray-900 font-bold">이 축제의 관리자라면?</h3>
-        <div className="flex items-center justify-between mr-2">
+      <div className="ui-panel festival-detail-section">
+        <h3 className="ui-section-title">이 축제의 관리자라면?</h3>
+        <div className="festival-detail-manager-actions">
           <p className="text-sm text-gray-900">축제 관리자가 되어 축제를 관리해보세요!</p>
           <Button variant="link" onClick={handleApplyClick}>
             축제 관리 신청하기

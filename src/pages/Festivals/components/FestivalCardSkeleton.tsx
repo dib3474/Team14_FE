@@ -1,9 +1,10 @@
+import '../festivals.css';
 import LoadingSkeleton from '@/components/loading/LoadingSkeleton';
 
 /** 축제 카드 스켈레톤 */
 export const FestivalCardSkeleton = () => (
-  <div className="bg-white rounded-xl overflow-hidden shadow-lg">
-    <div className="aspect-[3/2] w-full">
+  <div className="festival-skeleton">
+    <div className="aspect-[4/3] w-full">
       <LoadingSkeleton className="w-full h-full" variant="rectangular" />
     </div>
 
@@ -28,7 +29,7 @@ export const FestivalsSectionSkeleton = ({ count = 6 }: { count?: number }) => (
       <LoadingSkeleton className="h-8 w-32" variant="rectangular" />
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid festival-grid">
       {Array.from({ length: count }).map((_, index) => (
         <FestivalCardSkeleton key={index} />
       ))}

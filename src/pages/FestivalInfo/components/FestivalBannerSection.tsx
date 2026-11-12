@@ -11,7 +11,7 @@ const FestivalBannerSection = ({
   wishCount: number;
 }) => {
   return (
-    <div className="w-full h-full flex justify-between">
+    <div className="ui-panel festival-detail-actions">
       <FestivalHostInfo url={url} />
       <FestivalWish isMyWish={isMyWish} wishCount={wishCount} />
     </div>

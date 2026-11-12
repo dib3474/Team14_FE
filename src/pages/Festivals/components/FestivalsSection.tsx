@@ -18,20 +18,20 @@ const FestivalsSection = ({
 }: FestivalsSectionProps) => {
   return (
     <section className="w-full">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-left text-gray-900">{title}</h2>
+      <div className="festival-section-heading">
+        <h2 className="ui-section-title">{title}</h2>
         {rightAction}
       </div>
       {data.length === 0 ? (
-        <div className="w-full h-full flex flex-col items-center justify-center">
-          <img src="/lost404.svg" alt="no festivals" className="w-64 h-64 mt-12 drop-shadow-lg" />
+        <div className="festival-empty">
+          <img src="/lost404.svg" alt="no festivals" className="object-contain" />
           <EmptyComponent
             title="진행 중인 축제가 없습니다."
             description="진행 중 체크를 해제하거나 다른 지역의 축제를 찾아보세요!"
           />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+        <div className="grid festival-grid">
           {data.map((festival) => (
             <FestivalCard key={festival.id} data={festival} highlight={highlight} />
           ))}

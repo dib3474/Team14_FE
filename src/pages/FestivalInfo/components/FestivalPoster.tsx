@@ -1,3 +1,4 @@
+import '../festival-info.css';
 import LeftArrow from '@/components/icon/LeftArrowIcon';
 import RightArrow from '@/components/icon/RightArrowIcon';
 import { useSlider } from '@/hooks/useSlider';
@@ -24,14 +25,15 @@ const FestivalPoster = ({
     getTransformStyle,
   } = useSlider({ itemCount: allImages.length });
 
-  const arrowButtonClasses =
-    'absolute top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hidden sm:flex';
+  const arrowButtonClasses = 'festival-gallery-arrow';
 
   return (
-    <div className="w-full relative">
+    <div className="festival-poster">
       <div
         ref={containerRef}
-        className="relative w-full h-[500px] overflow-hidden"
+        className="festival-poster-stage"
+        role="region"
+        aria-label="축제 이미지 갤러리"
         {...touchHandlers}
       >
         <div
@@ -45,7 +47,7 @@ const FestivalPoster = ({
               <img
                 src={imageUrl}
                 alt={`${title} - ${index + 1}`}
-                className="w-full h-full object-contain select-none bg-gray-50"
+                className="w-full h-full object-contain select-none bg-ui-canvas"
                 draggable={false}
               />
             </div>
@@ -79,12 +81,15 @@ const FestivalPoster = ({
       </div>
 
       {allImages.length > 1 && (
-        <div className="flex justify-center mt-2 gap-1">
+        <div className="festival-gallery-pagination" role="group" aria-label="축제 이미지 선택">
           {allImages.map((imageUrl, index) => (
             <button
               key={imageUrl}
+              type="button"
+              aria-label={`${index + 1}번 이미지 보기`}
+              aria-pressed={index === currentIndex}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
+              className={`festival-gallery-dot ${
                 index === currentIndex ? 'bg-primary-300' : 'bg-gray-300'
               }`}
             />

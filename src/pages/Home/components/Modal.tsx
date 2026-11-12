@@ -1,5 +1,5 @@
 import ModalLogo from '@/components/icon/ModalLogo';
-import { useEffect } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 import Button from '@/components/common/Button';
 import type { Pin } from '@/types/Pin';
@@ -13,66 +13,89 @@ interface Props {
   isOpen: boolean;
   pin: Pin | null;
 }
-
 const Modal = ({ close, isOpen, pin }: Props) => {
   const navigate = useNavigate();
-
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  const messageId = useId();
   useEffect(() => {
+    if (!isOpen) return;
+    const dialog = dialogRef.current;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const original = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    dialog?.showModal();
+    dialog?.querySelector<HTMLButtonElement>('button')?.focus();
     return () => {
+      dialog?.close();
       document.body.style.overflow = original;
+      trigger?.focus();
     };
   }, [isOpen]);
-
   if (!isOpen) return null;
-
   const message =
     (pin?.id && DIALECT_MESSAGES[pin.id]) ||
     '취향에 딱 맞게 찾아드립니다!\n나만을 위한 지역 축제 추천';
-
   return (
-    <div
-      className="fixed inset-0 z-[1001] flex items-center justify-center bg-black/40"
-      role="button"
-      aria-label="모달 닫기"
-      tabIndex={0}
+    <dialog
+      ref={dialogRef}
+      className="home-dialog"
+      aria-labelledby={titleId}
+      aria-describedby={messageId}
+      onCancel={(e) => {
+        e.preventDefault();
+        close();
+      }}
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+        if (e.key === 'Escape') {
           e.preventDefault();
           close();
         }
+        if (e.key !== 'Tab') return;
+        const buttons = Array.from(
+          e.currentTarget.querySelectorAll<HTMLButtonElement>('button:not([disabled])'),
+        );
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
       }}
     >
-      <div className="relative max-w-[720px] gap-2 bg-white shadow-lg m-3 max-w-md w-full flex flex-col items-center justify-center rounded-2xl">
-        <Button variant="icon" className="absolute top-2 right-2" onClick={close}>
-          <Close className="size-6" strokeWidth={3} />
+      <div className="home-dialog-content">
+        <Button
+          variant="icon"
+          className="home-dialog-close"
+          aria-label="지역 선택 닫기"
+          onClick={close}
+        >
+          <Close className="size-5" strokeWidth={2} />
         </Button>
-
-        <div className="flex items-center justify-center gap-2 text-5xl font-bold text-primary-400 pt-12">
-          <Map className="size-12" />
-          <p>{pin?.name}</p>
-        </div>
-        <p className="mt-2 text-sm text-center whitespace-pre-line">{message}</p>
-
+        <p className="ui-eyebrow">우리 동네부터 새로운 여행까지</p>
+        <h2 id={titleId} className="ui-title home-dialog-title">
+          <Map className="size-7 shrink-0" />
+          {pin?.name} 축제 여행
+        </h2>
+        <p id={messageId} className="ui-body text-center whitespace-pre-line">
+          {message}
+        </p>
         {pin?.icon ? (
-          <img src={pin.icon} alt={pin.name} className="w-50 h-50 object-contain mt-3" />
+          <img src={pin.icon} alt={pin.name} className="home-dialog-character" />
         ) : (
-          <div className="mt-3">
-            <ModalLogo className="size-12" />
-          </div>
+          <ModalLogo className="size-12" />
         )}
-        <div className="flex flex-col items-center justify-center gap-3 w-full px-15 pt-2 pb-10">
+        <div className="home-dialog-actions">
           <Button
-            className="flex-1"
             fullWidth
             onClick={() => {
-              if (pin?.areaId) {
-                navigate(generatePath(ROUTE_PATH.PICK, { areaId: pin.areaId }));
-              }
+              if (pin?.areaId) navigate(generatePath(ROUTE_PATH.PICK, { areaId: pin.areaId }));
               close();
             }}
           >
@@ -80,12 +103,9 @@ const Modal = ({ close, isOpen, pin }: Props) => {
           </Button>
           <Button
             variant="secondary"
-            className="flex-1"
             fullWidth
             onClick={() => {
-              if (pin?.areaId) {
-                navigate(generatePath(ROUTE_PATH.FESTIVALS, { areaId: pin.areaId }));
-              }
+              if (pin?.areaId) navigate(generatePath(ROUTE_PATH.FESTIVALS, { areaId: pin.areaId }));
               close();
             }}
           >
@@ -93,8 +113,7 @@ const Modal = ({ close, isOpen, pin }: Props) => {
           </Button>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };
-
 export default Modal;

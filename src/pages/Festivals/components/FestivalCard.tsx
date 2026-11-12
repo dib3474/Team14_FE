@@ -1,3 +1,4 @@
+import '../festivals.css';
 import Heart from '@/components/icon/HeartIcon';
 import StarIcon from '@/components/icon/StarIcon';
 import { ROUTE_PATH } from '@/constants/routes';
@@ -24,57 +25,37 @@ const FestivalCard = ({ data, highlight = false }: FestivalCardProps) => {
   const isInProgressFestival = isInProgress(data.endDate);
   return (
     <Link
-      className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 hover:scale-[1.02] cursor-pointer ${highlight ? 'ring-3 ring-primary-300' : ''}`}
+      className={`festival-card ${highlight ? 'festival-card-highlight' : ''}`}
       to={generatePath(ROUTE_PATH.FESTIVAL_INFO, { festivalId: data.id.toString() })}
     >
-      {/* 이미지 섹션 */}
-      <div
-        className={`aspect-[3/2] w-full relative ${!isInProgressFestival ? 'brightness-40' : ''}`}
-      >
-        <img
-          src={data.posterInfo}
-          alt={`${data.title} 축제 이미지`}
-          className="w-full h-full object-cover"
-        />
-        {isInProgressFestival && (
-          <div className="absolute top-0 right-0 p-2 bg-primary-400 rounded-bl-xl">
-            <span className="text-white text-sm font-bold">진행 중</span>
-          </div>
-        )}
+      <div className="festival-card-poster">
+        <img src={data.posterInfo} alt={`${data.title} 축제 이미지`} loading="lazy" />
+        <div className="festival-card-badges">
+          {highlight && <span className="festival-ai-label">AI PICK</span>}
+          {isInProgressFestival && <span className="festival-current-label">진행 중</span>}
+        </div>
       </div>
-
-      {/* 콘텐츠 섹션 */}
-      <div className="p-4">
-        <h3 className="text-lg font-bold text-gray-900 line-clamp-2 leading-tight min-h-[3rem] break-all">
-          {data.title}
-        </h3>
-
-        <div className="space-y-1">
-          <p className="text-sm sm:text-xs text-gray-600 font-medium whitespace-nowrap overflow-hidden">
-            {data.startDate} ~ {data.endDate}
-          </p>
-          <p className="text-sm sm:text-xs text-gray-500 break-all" title={data.addr1}>
-            {data.addr1.split(' ').slice(0, 2).join(' ')}
-          </p>
-          <div className="flex items-center gap-2 justify-end font-bold">
-            <div className="flex items-center gap-1">
-              <StarIcon
-                filled
-                className={`${data.averageScore !== null ? 'text-yellow-400' : 'text-gray-300'} size-4`}
-              />
-              <span className="text-sm sm:text-xs text-gray-700">
-                {data.averageScore?.toFixed(1) ?? '-'}
-              </span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Heart fill className="size-3" />
-              <span className="text-sm sm:text-xs text-gray-700">{data.wishCount}</span>
-            </div>
-          </div>
+      <div className="festival-card-content">
+        <h3>{data.title}</h3>
+        <p className="festival-card-date">
+          {data.startDate} ~ {data.endDate}
+        </p>
+        <p className="festival-card-address">{data.addr1}</p>
+        <div className="festival-card-meta">
+          <span>
+            <StarIcon
+              filled
+              className={`${data.averageScore !== null ? 'text-yellow-500' : 'text-gray-400'} size-4`}
+            />
+            <span>평점 {data.averageScore?.toFixed(1) ?? '-'}</span>
+          </span>
+          <span>
+            <Heart fill className="size-4" />
+            <span>관심 {data.wishCount}</span>
+          </span>
         </div>
       </div>
     </Link>
   );
 };
-
 export default FestivalCard;

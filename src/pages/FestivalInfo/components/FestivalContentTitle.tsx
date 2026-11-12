@@ -1,5 +1,5 @@
 const FestivalContentTitle = ({ title }: { title: string }) => {
-  return <h1 className="text-xl font-bold break-words">{title}</h1>;
+  return <h2 className="ui-title break-words">{title}</h2>;
 };
 
 export default FestivalContentTitle;

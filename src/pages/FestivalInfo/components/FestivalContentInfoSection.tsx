@@ -14,7 +14,7 @@ const FestivalContentInfoSection = ({
   reviewCount: number;
 }) => {
   return (
-    <div className="w-full h-full flex flex-col gap-2">
+    <div className="ui-panel festival-detail-section festival-detail-summary">
       <FestivalContentTitle title={content.title} />
       <FestivalContentStarAndReviewCount averageScore={averageScore} reviewCount={reviewCount} />
       <FestivalContentDuration startDate={content.startDate} endDate={content.endDate} />

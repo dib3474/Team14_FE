@@ -48,9 +48,9 @@ const FestivalContentOverviewSection = ({
     );
 
   return (
-    <div className="w-full h-full flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm text-gray-900 font-bold">상세정보</h3>
+    <div className="ui-panel festival-detail-section">
+      <div className="festival-detail-section-heading">
+        <h2 className="ui-section-title">상세정보</h2>
         {isManager && (
           <div className="flex items-center gap-2">
             <Button variant="text" className="!text-blue-500" size="sm" onClick={handleEditClick}>

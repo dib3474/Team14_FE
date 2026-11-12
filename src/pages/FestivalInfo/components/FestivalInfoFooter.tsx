@@ -1,14 +1,12 @@
 import getFestivalInfo from '@/apis/festivals/getFestivalInfo';
-import Button from '@/components/common/Button';
 import { generatePath, Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ROUTE_PATH } from '@/constants/routes';
 
 const FestivalInfoFooter = () => {
-  const containerClasses = 'w-full mx-auto flex flex-col items-center fixed bottom-0 left-0 z-999';
-  const baseClasses =
-    'w-full max-w-[480px] h-15 border-t border-gray-300 flex items-center bg-white p-2 gap-2';
-  const buttonClasses = 'flex-1 flex items-center justify-center h-full';
+  const containerClasses = 'festival-info-footer';
+  const baseClasses = 'festival-info-footer-inner';
+  const buttonClasses = 'festival-footer-action';
   const { festivalId } = useParams();
   const { data: festivalData } = useQuery({
     queryKey: ['festival', festivalId],
@@ -22,19 +20,15 @@ const FestivalInfoFooter = () => {
         <Link
           to={generatePath(ROUTE_PATH.REVIEW, { festivalId: festivalId || '' })}
           state={{ festivalInfo: festivalData?.content }}
-          className={buttonClasses}
+          className={`${buttonClasses} festival-footer-secondary`}
         >
-          <Button variant="secondary" size="sm" fullWidth className="h-full">
-            리뷰하기
-          </Button>
+          리뷰하기
         </Link>
         <Link
           to={generatePath(ROUTE_PATH.CHAT, { festivalId: festivalId || '' })}
-          className={buttonClasses}
+          className={`${buttonClasses} festival-footer-primary`}
         >
-          <Button variant="primary" size="sm" fullWidth className="h-full">
-            채팅 참여하기
-          </Button>
+          채팅 참여하기
         </Link>
       </div>
     </div>

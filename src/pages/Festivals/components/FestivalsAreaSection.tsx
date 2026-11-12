@@ -52,18 +52,17 @@ const FestivalsAreaSection = () => {
         title={`${areaName}의 축제`}
         data={festivals}
         rightAction={
-          <div className="flex items-center gap-2">
+          <div className="festival-filter">
             <span className="text-sm text-gray-800">진행 중</span>
             <button
               type="button"
               role="switch"
+              aria-label="진행 중인 축제만 보기"
               aria-checked={showCurrent}
               onClick={handleCurrentFilter}
-              className={`relative inline-flex h-7 w-11 items-center rounded-2xl transition-colors ${showCurrent ? 'bg-primary-300' : 'bg-gray-200'}`}
+              className="festival-filter-switch"
             >
-              <span
-                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform duration-200 ease-out ${showCurrent ? 'translate-x-5' : 'translate-x-1'}`}
-              />
+              <span className="festival-filter-thumb" />
             </button>
           </div>
         }

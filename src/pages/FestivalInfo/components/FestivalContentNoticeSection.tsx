@@ -76,8 +76,7 @@ const FestivalContentNoticeSection = ({
     getTransformStyle,
   } = useSlider({ itemCount: notices.length });
 
-  const arrowButtonClasses =
-    'absolute top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200';
+  const arrowButtonClasses = 'festival-gallery-arrow';
   // festivalId가 없으면 에러 표시
   if (!festivalId) {
     return (
@@ -101,11 +100,11 @@ const FestivalContentNoticeSection = ({
   // 공지사항이 없을 때
   if (notices.length === 0) {
     return (
-      <div className="w-full h-full flex flex-col gap-2">
-        <div className="flex items-center justify-between">
+      <div className="ui-panel festival-detail-section">
+        <div className="festival-detail-section-heading">
           <div className="flex items-center gap-1">
             <PickIcon name={PICK_ICONS.NOTICE} size={20} className="mr-1" />
-            <h3 className="text-sm text-gray-900 font-bold">공지사항</h3>
+            <h2 className="ui-section-title">공지사항</h2>
           </div>
           {isCurrentUserManager && (
             <Button
@@ -118,7 +117,7 @@ const FestivalContentNoticeSection = ({
           )}
         </div>
         <EmptyComponent
-          className="w-full h-full flex flex-col gap-2"
+          className="ui-panel festival-detail-section"
           title=""
           description="아직 공지사항이 없습니다."
         />
@@ -127,11 +126,11 @@ const FestivalContentNoticeSection = ({
   }
 
   return (
-    <div className="w-full h-full flex flex-col gap-2">
-      <div className="flex items-center justify-between">
+    <div className="ui-panel festival-detail-section">
+      <div className="festival-detail-section-heading">
         <div className="flex items-center gap-1">
           <PickIcon name={PICK_ICONS.NOTICE} size={20} className="mr-2" />
-          <h3 className="text-sm text-gray-900 font-bold">공지사항</h3>
+          <h2 className="ui-section-title">공지사항</h2>
         </div>
         {isCurrentUserManager && (
           <Button variant="text" className="text-sm text-primary-300" onClick={handleCreateNotice}>
@@ -144,18 +143,27 @@ const FestivalContentNoticeSection = ({
       <div className="w-full relative">
         <div
           ref={containerRef}
-          className="relative w-full h-[60px] overflow-hidden"
+          className="relative w-full min-h-[60px] overflow-hidden"
           {...touchHandlers}
         >
           <div
-            className="flex transition-transform duration-300 ease-out h-full"
+            className="flex items-stretch transition-transform duration-300 ease-out"
             style={{
               transform: getTransformStyle(),
             }}
           >
-            {notices.map((notice) => (
-              <div key={notice.id} className="w-full h-full flex-shrink-0 px-2">
-                <FestivalContentNoticeSectionCard notice={notice} onClick={handleNoticeClick} />
+            {notices.map((notice, index) => (
+              <div
+                key={notice.id}
+                className="w-full flex-shrink-0 px-1"
+                inert={index !== currentIndex}
+                aria-hidden={index !== currentIndex}
+              >
+                <FestivalContentNoticeSectionCard
+                  notice={notice}
+                  onClick={handleNoticeClick}
+                  tabIndex={index === currentIndex ? 0 : -1}
+                />
               </div>
             ))}
           </div>
@@ -188,12 +196,15 @@ const FestivalContentNoticeSection = ({
 
         {/* 인디케이터 (공지사항이 2개 이상일 때만) */}
         {notices.length > 1 && (
-          <div className="flex justify-center mt-2 gap-1">
+          <div className="festival-gallery-pagination">
             {notices.map((_, index) => (
               <button
                 key={index}
+                type="button"
+                aria-label={`${index + 1}번 공지사항 보기`}
+                aria-pressed={index === currentIndex}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
+                className={`festival-gallery-dot ${
                   index === currentIndex ? 'bg-primary-300' : 'bg-gray-300'
                 }`}
               />
