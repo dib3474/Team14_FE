@@ -2,323 +2,361 @@
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 4개 선택 후 상태 스냅샷 > mbti-bottom-section-completed 1`] = `
 <div
-  class="flex flex-col gap-4"
+  class="ui-panel flex flex-col gap-4"
 >
-  <h1
-    class="w-full text-left text-2xl"
+  <h2
+    class="ui-section-title"
   >
-    나를 
-    <span
-      class="font-bold"
-    >
-      더
-    </span>
-     알려주고 싶어요.
-  </h1>
+    나를 더 알려주고 싶어요.
+  </h2>
+  <label
+    class="ui-body font-bold"
+    for="pick-additional-info"
+  >
+    추가 정보 (선택)
+  </label>
   <div
-    class="w-full h-full gap-1"
+    class="ui-field"
   >
     <input
-      class="w-full h-[3rem] border border-gray-300 rounded-xl py-2 px-3 focus:outline-primary-300"
+      class="ui-control ui-rounded-xl "
+      id="pick-additional-info"
       placeholder="캠핑, 불멍, 서핑"
       value=""
     />
   </div>
-  <button
-    class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 text-lg "
-    type="button"
+  <p
+    class="ui-caption"
   >
-    추천 받기
-  </button>
+    관심 있는 활동이나 여행 취향을 자유롭게 적어주세요.
+  </p>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 4개 선택 후 상태 스냅샷 > mbti-question1-completed 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     이번에 나는
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="true"
+      class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full pick-mbti-option"
       type="button"
     >
       새로운 곳
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       익숙한 곳
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 4개 선택 후 상태 스냅샷 > mbti-question2-completed 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행갈 때
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="true"
+      class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full pick-mbti-option"
       type="button"
     >
       혼자
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       함께
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 4개 선택 후 상태 스냅샷 > mbti-question3-completed 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행에서
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="true"
+      class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full pick-mbti-option"
       type="button"
     >
       즐거움을
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       유익함을
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 4개 선택 후 상태 스냅샷 > mbti-question4-completed 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행을
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="true"
+      class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full pick-mbti-option"
       type="button"
     >
       즉흥적으로
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       계획적으로
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-bottom-section-initial 1`] = `
 <div
-  class="flex flex-col gap-4"
+  class="ui-panel flex flex-col gap-4"
 >
-  <h1
-    class="w-full text-left text-2xl"
+  <h2
+    class="ui-section-title"
   >
-    나를 
-    <span
-      class="font-bold"
-    >
-      더
-    </span>
-     알려주고 싶어요.
-  </h1>
+    나를 더 알려주고 싶어요.
+  </h2>
+  <label
+    class="ui-body font-bold"
+    for="pick-additional-info"
+  >
+    추가 정보 (선택)
+  </label>
   <div
-    class="w-full h-full gap-1"
+    class="ui-field"
   >
     <input
-      class="w-full h-[3rem] border border-gray-300 rounded-xl py-2 px-3 focus:outline-primary-300"
+      class="ui-control ui-rounded-xl "
+      id="pick-additional-info"
       placeholder="캠핑, 불멍, 서핑"
       value=""
     />
   </div>
-  <button
-    class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-not-allowed bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 text-lg opacity-50"
-    disabled=""
-    type="button"
+  <p
+    class="ui-caption"
   >
-    추천 받기
-  </button>
+    관심 있는 활동이나 여행 취향을 자유롭게 적어주세요.
+  </p>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-question1-initial 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     이번에 나는
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       새로운 곳
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       익숙한 곳
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-question2-initial 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행갈 때
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       혼자
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       함께
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-question3-initial 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행에서
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       즐거움을
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       유익함을
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-question4-initial 1`] = `
-<div
-  class="w-full h-full flex flex-col items-center justify-center gap-2"
+<fieldset
+  class="pick-mbti-question"
 >
-  <p
-    class="text-lg text-left w-full"
+  <legend
+    class="ui-body font-bold"
   >
     여행을
-  </p>
+  </legend>
   <div
-    class="flex items-center justify-center gap-4 w-full"
+    class="pick-mbti-options"
   >
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       즉흥적으로
     </button>
     <button
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-gray-100 text-gray-600 active:bg-gray-200 text-md rounded-xl px-5 py-3 flex-1 font-bold "
+      aria-pressed="false"
+      class="ui-button ui-button-md ui-button-tertiary bg-gray-100 text-gray-700 active:bg-gray-200 w-full pick-mbti-option"
       type="button"
     >
       계획적으로
     </button>
   </div>
-</div>
+</fieldset>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > MBTI 선택 화면 - 초기 상태 스냅샷 > mbti-title-section-initial 1`] = `
 <div
-  class="flex flex-col gap-1"
+  class="flex flex-col gap-3"
 >
-  <h2
-    class="w-full text-left text-xl text-gray-500"
+  <div
+    class="pick-progress"
   >
-    당신에 대해 알려주세요!
-  </h2>
+    <p
+      class="ui-eyebrow"
+    >
+      당신에 대해 알려주세요!
+    </p>
+    <div
+      aria-label="추천 준비 2단계 / 2단계"
+      class="pick-progress-track"
+    >
+      <span
+        aria-hidden="true"
+        class="pick-progress-dot is-current"
+      />
+      <span
+        aria-hidden="true"
+        class="pick-progress-dot is-current"
+      />
+      <span
+        class="ui-caption"
+      >
+        2 / 2
+      </span>
+    </div>
+  </div>
   <h1
-    class="w-full text-left text-2xl"
+    class="ui-title"
   >
     당신의 
-    <span
-      class="font-bold"
-    >
+    <span>
       여행 MBTI
     </span>
-    를
-    <br />
-    선택해 주세요.
+    를 선택해 주세요.
   </h1>
+  <p
+    class="ui-body text-ui-muted"
+  >
+    평소 여행하는 모습에 가까운 답을 골라주세요.
+  </p>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-button-section-completed 1`] = `
 <button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-pointer bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 text-lg "
+  class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full "
   type="button"
 >
   다음
@@ -327,160 +365,214 @@ exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3�
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-1-전통 문화-selected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    ✓
+  </span>
   <img
-    alt="전통 문화"
-    class="size-[100px] rounded-lg border-3 border-primary-300 object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/tradition.svg"
   />
-  <p
-    class="text-lg font-bold"
+  <span
+    class="pick-style-name"
   >
     전통 문화
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-2-예술/공연-selected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    ✓
+  </span>
   <img
-    alt="예술/공연"
-    class="size-[100px] rounded-lg border-3 border-primary-300 object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/art.svg"
   />
-  <p
-    class="text-lg font-bold"
+  <span
+    class="pick-style-name"
   >
     예술/공연
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-3-휴식-selected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    ✓
+  </span>
   <img
-    alt="휴식"
-    class="size-[100px] rounded-lg border-3 border-primary-300 object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/resting.svg"
   />
-  <p
-    class="text-lg font-bold"
+  <span
+    class="pick-style-name"
   >
     휴식
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-4-자연/경관-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="자연/경관"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/nature.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     자연/경관
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-5-체험/참여-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="체험/참여"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/activity.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     체험/참여
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-6-도시-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="도시"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/city.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     도시
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-7-사진촬영-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="사진촬영"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/photoshot.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     사진촬영
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-8-지역특색-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="지역특색"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/local.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     지역특색
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 3개 선택 후 상태 스냅샷 > style-card-9-짜릿한 경험-unselected 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="짜릿한 경험"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/funexperience.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     짜릿한 경험
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-button-section-initial 1`] = `
 <button
-  class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-full cursor-not-allowed bg-primary-300 text-gray-50 active:bg-primary-400 text-md rounded-xl px-5 py-3 text-lg opacity-50"
+  class="ui-button ui-button-md ui-button-primary bg-primary-300 text-primary-900 active:bg-primary-400 w-full "
   disabled=""
   type="button"
 >
@@ -490,183 +582,255 @@ exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - �
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-1-전통 문화-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="전통 문화"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/tradition.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     전통 문화
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-2-예술/공연-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="예술/공연"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/art.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     예술/공연
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-3-휴식-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="휴식"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/resting.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     휴식
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-4-자연/경관-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="자연/경관"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/nature.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     자연/경관
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-5-체험/참여-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="체험/참여"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/activity.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     체험/참여
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-6-도시-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="도시"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/city.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     도시
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-7-사진촬영-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="사진촬영"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/photoshot.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     사진촬영
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-8-지역특색-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="지역특색"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/local.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     지역특색
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-card-9-짜릿한 경험-initial 1`] = `
 <div
-  class="w-full h-full flex flex-col items-center justify-center gap-3"
+  class="pick-style-content"
 >
+  <span
+    aria-hidden="true"
+    class="pick-style-check"
+  >
+    +
+  </span>
   <img
-    alt="짜릿한 경험"
-    class="size-[100px] rounded-lg  object-cover bg-transparent border-2 border-gray-900"
+    alt=""
+    class="pick-style-art"
     src="/pickStyle/funexperience.svg"
   />
-  <p
-    class="text-lg "
+  <span
+    class="pick-style-name"
   >
     짜릿한 경험
-  </p>
+  </span>
 </div>
 `;
 
 exports[`PickPage 테스트 > 스냅샷 테스트 > 스타일 선택 화면 - 초기 상태 스냅샷 > style-title-section-initial 1`] = `
 <div
-  class="flex flex-col items-center gap-1"
+  class="flex flex-col gap-3"
 >
-  <h2
-    class="w-full text-left text-xl text-gray-500"
+  <div
+    class="pick-progress"
   >
-    당신에 대해 알려주세요!
-  </h2>
+    <p
+      class="ui-eyebrow"
+    >
+      당신에 대해 알려주세요!
+    </p>
+    <div
+      aria-label="추천 준비 1단계 / 2단계"
+      class="pick-progress-track"
+    >
+      <span
+        aria-hidden="true"
+        class="pick-progress-dot is-current"
+      />
+      <span
+        aria-hidden="true"
+        class="pick-progress-dot "
+      />
+      <span
+        class="ui-caption"
+      >
+        1 / 2
+      </span>
+    </div>
+  </div>
   <h1
-    class="w-full text-left text-2xl"
+    class="ui-title"
   >
     즐기고 싶은 
-    <span
-      class="font-bold"
-    >
+    <span>
       축제의 스타일
     </span>
-    을
-    <br />
-    선택해 주세요. 
-    <span
-      class="text-gray-500 text-sm"
-    >
-      (최대 3개)
-    </span>
+    을 선택해 주세요.
   </h1>
+  <p
+    class="ui-body text-ui-muted"
+  >
+    마음이 가는 스타일을 최대 3개 골라주세요.
+  </p>
 </div>
 `;

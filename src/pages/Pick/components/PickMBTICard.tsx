@@ -11,27 +11,29 @@ interface PickMBTICardProps {
 const PickMBTICard = ({ id, title, option1, option2 }: PickMBTICardProps) => {
   const { mbtiAnswers, handleMbtiAnswer } = usePick();
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-      <p className="text-lg text-left w-full">{title}</p>
-      <div className="flex items-center justify-center gap-4 w-full">
+    <fieldset className="pick-mbti-question">
+      <legend className="ui-body font-bold">{title}</legend>
+      <div className="pick-mbti-options">
         <Button
           variant={mbtiAnswers[id] === true ? 'primary' : 'tertiary'}
-          className="flex-1 font-bold"
+          className="pick-mbti-option"
           fullWidth
+          aria-pressed={mbtiAnswers[id] === true}
           onClick={() => handleMbtiAnswer(id, true)}
         >
           {option1}
         </Button>
         <Button
           variant={mbtiAnswers[id] === false ? 'primary' : 'tertiary'}
-          className="flex-1 font-bold"
+          className="pick-mbti-option"
           fullWidth
+          aria-pressed={mbtiAnswers[id] === false}
           onClick={() => handleMbtiAnswer(id, false)}
         >
           {option2}
         </Button>
       </div>
-    </div>
+    </fieldset>
   );
 };
 
