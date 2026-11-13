@@ -70,6 +70,7 @@ const ImageModal = ({ mediaItems, selectedMediaIndex, onClose, title }: ImageMod
       ref={dialog}
       onKeyDown={handleKeyDown}
       role="dialog"
+      tabIndex={-1}
       aria-label={title ? `${title} 미디어 확대 보기` : '미디어 확대 보기'}
       aria-modal="true"
     >

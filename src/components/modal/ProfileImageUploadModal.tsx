@@ -141,6 +141,7 @@ const ProfileImageUploadModal = ({ isOpen, onClose }: ProfileImageUploadModalPro
       className="ui-overlay"
       ref={dialog}
       role="dialog"
+      tabIndex={-1}
       aria-modal="true"
       aria-labelledby={titleId}
       onKeyDown={handleDialogKeyDown}

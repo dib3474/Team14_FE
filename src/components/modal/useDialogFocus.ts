@@ -1,21 +1,65 @@
 import { useEffect, type RefObject, type KeyboardEvent } from 'react';
+const focusable = (container: HTMLElement) =>
+  [
+    ...container.querySelectorAll<HTMLElement>(
+      'button,a[href],input:not([type="hidden"]),textarea,select,video[controls],[tabindex="0"]',
+    ),
+  ].filter((node) => {
+    if (
+      node.matches(':disabled') ||
+      node.tabIndex < 0 ||
+      node.closest('[inert],[hidden],[aria-hidden="true"]')
+    )
+      return false;
+    for (
+      let current: HTMLElement | null = node;
+      current && container.contains(current);
+      current = current.parentElement
+    ) {
+      const style = window.getComputedStyle(current);
+      if (
+        style.display === 'none' ||
+        style.visibility === 'hidden' ||
+        style.visibility === 'collapse'
+      )
+        return false;
+    }
+    return true;
+  });
 export const useDialogFocus = (
   open: boolean,
   dialog: RefObject<HTMLElement | null>,
   onClose: () => void,
 ) => {
   useEffect(() => {
-    if (!open) return;
+    const container = dialog.current;
+    if (!open || !container) return;
     const trigger = document.activeElement,
       overflow = document.body.style.overflow;
+    let active = true;
     document.body.style.overflow = 'hidden';
-    const first =
-      dialog.current?.querySelector<HTMLElement>('[data-dialog-close]') ||
-      dialog.current?.querySelector<HTMLElement>(
-        'button:not([disabled]),a[href],input:not([type="hidden"]),textarea,[tabindex="0"]',
-      );
-    first?.focus();
+    const repair = () => {
+      if (!active) return;
+      const targets = focusable(container),
+        focused = document.activeElement;
+      if (focused instanceof HTMLElement && targets.includes(focused)) return;
+      const preferred =
+        targets.find((node) => node.hasAttribute('data-dialog-close')) || targets[0];
+      (preferred || container).focus();
+    };
+    repair();
+    const observer = new MutationObserver(repair);
+    observer.observe(container, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ['disabled', 'hidden', 'class', 'style', 'inert', 'aria-hidden', 'tabindex'],
+    });
+    document.addEventListener('focusin', repair);
     return () => {
+      active = false;
+      observer.disconnect();
+      document.removeEventListener('focusin', repair);
       document.body.style.overflow = overflow;
       if (trigger instanceof HTMLElement && trigger.isConnected) trigger.focus();
     };
@@ -27,18 +71,21 @@ export const useDialogFocus = (
       onClose();
       return;
     }
-    if (event.key !== 'Tab') return;
-    const targets = [
-      ...(dialog.current?.querySelectorAll<HTMLElement>(
-        'button:not([disabled]),a[href],input:not([disabled]):not([type="hidden"]),textarea:not([disabled]),video[controls],[tabindex="0"]',
-      ) || []),
-    ].filter((node) => !node.closest('[inert]'));
-    const first = targets[0],
-      last = targets.at(-1);
-    if (event.shiftKey && document.activeElement === first) {
+    if (event.key !== 'Tab' || !dialog.current) return;
+    const targets = focusable(dialog.current),
+      first = targets[0],
+      last = targets.at(-1),
+      focused = document.activeElement;
+    if (!targets.length) {
+      event.preventDefault();
+      dialog.current.focus();
+    } else if (!(focused instanceof HTMLElement) || !targets.includes(focused)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first)?.focus();
+    } else if (event.shiftKey && focused === first) {
       event.preventDefault();
       last?.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
+    } else if (!event.shiftKey && focused === last) {
       event.preventDefault();
       first?.focus();
     }

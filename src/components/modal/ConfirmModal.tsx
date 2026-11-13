@@ -33,6 +33,7 @@ const ConfirmModal = ({
       className="ui-overlay"
       ref={dialog}
       role="dialog"
+      tabIndex={-1}
       aria-modal="true"
       aria-labelledby={titleId}
       onKeyDown={handleKeyDown}
