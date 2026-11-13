@@ -1,3 +1,5 @@
+import Button from '@/components/common/Button';
+import '@/pages/Settings/settings.css';
 import type { UserInfoResponse } from '@/types/UserType';
 /**
  * 사용자 프로필 카드
@@ -5,10 +7,16 @@ import type { UserInfoResponse } from '@/types/UserType';
  * @returns 사용자 프로필 카드 컴포넌트
  * 사용자 프로필 이미지와 이름, 이메일을 표시합니다.
  */
-const SettingsProfileCard = ({ userInfo }: { userInfo: UserInfoResponse['content'] }) => {
+const SettingsProfileCard = ({
+  userInfo,
+  onEditImage,
+}: {
+  userInfo: UserInfoResponse['content'];
+  onEditImage: () => void;
+}) => {
   return (
-    <div style={{ borderTop: '4px solid var(--color-secondary-300)' }} className="ui-panel">
-      <div className="flex items-center gap-4">
+    <section aria-label="내 프로필" className="ui-panel ui-settings-profile">
+      <div className="ui-settings-profile-main">
         {userInfo?.profileImageUrl ? (
           <img
             src={userInfo.profileImageUrl}
@@ -29,7 +37,10 @@ const SettingsProfileCard = ({ userInfo }: { userInfo: UserInfoResponse['content
           </p>
         </div>
       </div>
-    </div>
+      <Button variant="secondary" onClick={onEditImage} className="ui-settings-profile-edit">
+        프로필 이미지 수정
+      </Button>
+    </section>
   );
 };
 

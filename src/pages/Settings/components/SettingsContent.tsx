@@ -1,4 +1,5 @@
 import Button from '@/components/common/Button';
+import SettingsProfileCard from '@/pages/Settings/components/SettingsProfileCard';
 import SettingsSection from '@/pages/Settings/components/SettingsSection';
 import { ROUTE_PATH } from '@/constants/routes';
 import useNav from '@/hooks/useNav';
@@ -25,7 +26,7 @@ import ConfirmModal from '@/components/modal/ConfirmModal';
  */
 const SettingsContent = () => {
   const { goTo } = useNav();
-  const { clearAuth } = useAuth();
+  const { clearAuth, userInfo } = useAuth();
   const [checkingPermission, setCheckingPermission] = useState(false);
   const [checkingRole, setCheckingRole] = useState(false);
   const [isProfileImageModalOpen, setIsProfileImageModalOpen] = useState(false);
@@ -138,6 +139,12 @@ const SettingsContent = () => {
 
   return (
     <>
+      {userInfo && (
+        <SettingsProfileCard
+          userInfo={userInfo}
+          onEditImage={() => setIsProfileImageModalOpen(true)}
+        />
+      )}
       <SettingsSection title="등업하기">
         <div className="flex flex-col gap-2">
           <Button variant="text" onClick={handleFestivalManagerClick} disabled={checkingPermission}>
@@ -193,9 +200,6 @@ const SettingsContent = () => {
             }}
           >
             내가 작성한 리뷰 보기
-          </Button>
-          <Button variant="text" onClick={() => setIsProfileImageModalOpen(true)}>
-            프로필 이미지 수정
           </Button>
           <Button variant="text" onClick={handleLogoutClick}>
             로그아웃

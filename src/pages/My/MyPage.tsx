@@ -1,13 +1,15 @@
 import Container from '@/components/common/Container';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import MyPageWishFestivalsSection from '@/pages/My/components/MyPageWishFestivalsSection';
 import MyPageReviewFestivalsSection from '@/pages/My/components/MyPageReviewFestivalsSection';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorComponent from '@/components/error/ErrorComponent';
 import { showToastAxiosError } from '@/utils/showToastMessage';
 import LoadingSpinner from '@/components/loading/LoadingSpinner';
+import MyPageOwnReviewPreviews from '@/pages/My/components/MyPageOwnReviewPreviews';
 import MyPageChatSection from '@/pages/My/components/MyPageChatSection';
 
 /**
@@ -17,7 +19,19 @@ import MyPageChatSection from '@/pages/My/components/MyPageChatSection';
  * @returns 마이페이지
  */
 const MyPage = () => {
-  const [selectedTab, setSelectedTab] = useState<'wishlist' | 'reviewed'>('wishlist');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedTab = searchParams.get('tab') === 'reviewed' ? 'reviewed' : 'wishlist';
+  const setSelectedTab = (tab: 'wishlist' | 'reviewed') => {
+    setSearchParams(
+      (current) => {
+        const next = new URLSearchParams(current);
+        if (tab === 'reviewed') next.set('tab', 'reviewed');
+        else next.delete('tab');
+        return next;
+      },
+      { replace: true },
+    );
+  };
 
   const chooseStyle = 'bg-white text-ui-ink shadow-sm font-bold';
   const notChooseStyle = 'text-ui-muted';
@@ -70,34 +84,41 @@ const MyPage = () => {
             리뷰
           </button>
         </div>
-        <ErrorBoundary
-          FallbackComponent={() => (
-            <ErrorComponent
-              title="오류가 발생했습니다."
-              message="잠시 후 다시 시도해주세요."
-              showBackButton={true}
-            />
-          )}
-          onError={(error) => {
-            showToastAxiosError(error);
-          }}
+        {selectedTab === 'reviewed' && <MyPageOwnReviewPreviews />}
+        <section
+          aria-label={selectedTab === 'reviewed' ? '리뷰를 남긴 축제' : undefined}
+          className="flex min-w-0 flex-col gap-4"
         >
-          <Suspense
-            fallback={
-              <LoadingSpinner
-                size="lg"
-                className="ui-feedback min-h-40"
-                message="좋아요한 축제를 불러오는 중..."
+          {selectedTab === 'reviewed' && <h2 className="ui-section-title">리뷰를 남긴 축제</h2>}
+          <ErrorBoundary
+            FallbackComponent={() => (
+              <ErrorComponent
+                title="오류가 발생했습니다."
+                message="잠시 후 다시 시도해주세요."
+                showBackButton={true}
               />
-            }
-          >
-            {selectedTab === 'wishlist' ? (
-              <MyPageWishFestivalsSection />
-            ) : (
-              <MyPageReviewFestivalsSection />
             )}
-          </Suspense>
-        </ErrorBoundary>
+            onError={(error) => {
+              showToastAxiosError(error);
+            }}
+          >
+            <Suspense
+              fallback={
+                <LoadingSpinner
+                  size="lg"
+                  className="ui-feedback min-h-40"
+                  message="좋아요한 축제를 불러오는 중..."
+                />
+              }
+            >
+              {selectedTab === 'wishlist' ? (
+                <MyPageWishFestivalsSection />
+              ) : (
+                <MyPageReviewFestivalsSection />
+              )}
+            </Suspense>
+          </ErrorBoundary>
+        </section>
       </div>
       <Footer initialSelected="my" />
     </Container>

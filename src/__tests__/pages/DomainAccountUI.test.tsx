@@ -1,3 +1,6 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { http, HttpResponse } from 'msw';
+import { server } from '@/mocks/server';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import useChatViewport from '@/pages/Chat/useChatViewport';
 import MyPage from '@/pages/My/MyPage';
@@ -26,7 +29,20 @@ describe('계정과 대화 화면 접근성', () => {
   beforeEach(() => vi.clearAllMocks());
 
   test('마이페이지의 선택 상태와 실제 축제 목록이 함께 전환된다', () => {
-    render(<MyPage />);
+    server.use(
+      http.get('*/api/reviews/my', () =>
+        HttpResponse.json({ content: [], last: true, totalElements: 0 }),
+      ),
+    );
+    render(
+      <MemoryRouter>
+        <QueryClientProvider
+          client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+        >
+          <MyPage />
+        </QueryClientProvider>
+      </MemoryRouter>,
+    );
     const wishButton = screen.getByRole('button', { name: '좋아요' });
     const reviewButton = screen.getByRole('button', { name: '리뷰' });
     expect(wishButton).toHaveAttribute('aria-pressed', 'true');
