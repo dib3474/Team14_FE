@@ -44,6 +44,16 @@ export function collectComparisonGeometry(fixture) {
   } else if (/^\/festival\/\d+$/.test(path)) {
     expected = 'festival detail with reviews';
     ready = has(fixture.festivals[0].title) && fixture.reviews.every((r) => has(r.reviewerName));
+  } else if (path === '/search') {
+    expected = 'search input and requested results';
+    const input = d.querySelector('input');
+    const keyword = url.searchParams.get('q');
+    ready =
+      !!input &&
+      (!keyword ||
+        (input.value === keyword &&
+          has('검색 결과') &&
+          fixture.festivals.some((f) => f.title.includes(keyword) && has(f.title))));
   } else if (path === '/pick/histories') {
     expected = 'history + actual style enum labels';
     ready =
