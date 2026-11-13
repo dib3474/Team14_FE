@@ -29,6 +29,11 @@ const variants = [
   { name: 'original', ref: process.env.ORIGINAL_REF || 'develop', port: 5180 },
   { name: 'previous', ref: process.env.PREVIOUS_REF || 'feature/mobile-design', port: 5181 },
   { name: 'new', ref: 'HEAD', port: 5182 },
+  {
+    name: 'independent',
+    ref: process.env.INDEPENDENT_REF || 'feature/brand-ui-comparison',
+    port: 5183,
+  },
 ];
 
 const assertFreePort = (port) =>
@@ -101,7 +106,7 @@ import {fixtureResponse} from ${JSON.stringify(join(runtime, 'fixture-api.mjs'))
 const root=${JSON.stringify(variant.root)};
 const shared=${JSON.stringify(runtime)};
 const port=${variant.port};
-export default defineConfig({root,plugins:[react(),tailwind(),{
+export default defineConfig(({command})=>{if(command!=='serve')throw new Error('Comparison configs are development-only');return {root,plugins:[react(),tailwind(),{
   name:'local-comparison-only',
   transformIndexHtml(html,context){if(context.path.startsWith('/superpowers/'))return html;return html.replace('/src/main.tsx','/superpowers/comparison/bootstrap.tsx');},
   configureServer(server){server.middlewares.use((req,res,next)=>{
@@ -121,7 +126,7 @@ export default defineConfig({root,plugins:[react(),tailwind(),{
   {find:'@/context/WebSocketContext',replacement:root+'/superpowers/comparison/socket.tsx'},
   {find:'@/hooks/useSearch',replacement:root+'/superpowers/comparison/search.ts'},
   {find:'@',replacement:root+'/src'}
-]},define:{global:'window','import.meta.env.VITE_API_BASE_URL':JSON.stringify('http://127.0.0.1:'+port),'import.meta.env.VITE_ENABLE_MSW':JSON.stringify('false'),'import.meta.env.VITE_ENABLE_RQ_DEVTOOLS':JSON.stringify('false')},server:{host:'127.0.0.1',port,strictPort:true,fs:{allow:[root,shared,${JSON.stringify(variant.modules)}]}}});
+]},define:{global:'window','import.meta.env.VITE_API_BASE_URL':JSON.stringify('http://127.0.0.1:'+port),'import.meta.env.VITE_ENABLE_MSW':JSON.stringify('false'),'import.meta.env.VITE_ENABLE_RQ_DEVTOOLS':JSON.stringify('false')},server:{host:'127.0.0.1',port,strictPort:true,fs:{allow:[root,shared,${JSON.stringify(variant.modules)}]}}};});
 `;
 }
 
@@ -133,6 +138,7 @@ function assertOwnedRuntime() {
     sources,
     join(sources, 'original'),
     join(sources, 'previous'),
+    join(sources, 'independent'),
   ]) {
     let stat;
     try {
@@ -144,7 +150,7 @@ function assertOwnedRuntime() {
     if (stat.isSymbolicLink()) throw new Error(`Refusing linked comparison output: ${path}`);
     if (!stat.isDirectory()) throw new Error(`Comparison output must be a directory: ${path}`);
   }
-  for (const name of ['original', 'previous']) {
+  for (const name of ['original', 'previous', 'independent']) {
     if (existsSync(join(sources, name, '.git')))
       throw new Error(
         `Refusing to overwrite an actual Git checkout in sources/${name}. Move it before preparing snapshots.`,

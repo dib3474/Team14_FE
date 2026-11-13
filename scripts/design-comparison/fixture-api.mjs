@@ -51,7 +51,18 @@ export function fixtureResponse(method, url, referer) {
   if (mode === 'error' && method === 'GET')
     return { status: 500, headers: {}, body: { message: '비교용 오류 상태' } };
   const festivals = mode === 'empty' ? [] : data.festivals;
-  if (/^\/api\/festivals\/area\//.test(p)) return ok(page(festivals, url));
+  if (/^\/api\/festivals\/area\//.test(p)) {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    return ok(
+      page(
+        url.searchParams.get('current') === 'true'
+          ? festivals.filter((f) => f.startDate <= today && today <= f.endDate)
+          : festivals,
+        url,
+      ),
+    );
+  }
   if (p === '/api/festivals' && method === 'GET')
     return ok(
       page(
@@ -59,6 +70,18 @@ export function fixtureResponse(method, url, referer) {
           (f) =>
             !url.searchParams.get('keyword') || f.title.includes(url.searchParams.get('keyword')),
         ),
+        url,
+      ),
+    );
+  if (p === '/api/festivals/my/custom')
+    return ok(
+      page(
+        festivals.map((f) => ({
+          id: f.id,
+          title: f.title,
+          updatedDate: '2026-11-12',
+          state: 'PENDING',
+        })),
         url,
       ),
     );
@@ -77,8 +100,7 @@ export function fixtureResponse(method, url, referer) {
     return ok(page(mode === 'empty' ? [] : data.notices, url));
   if (/^\/api\/festivals\/\d+\/chatRooms$/.test(p))
     return ok(item({ roomId: 1, roomName: '가평 양떼목장 수국축제 채팅방', festivalId: 1 }));
-  if (/^\/api\/festivals\/\d+\/check-manager$/.test(p))
-    return ok(item({ exists: true, exist: true }));
+  if (/^\/api\/festivals\/\d+\/check-manager$/.test(p)) return ok(item(true));
   if (/^\/api\/festivals\/\d+$/.test(p)) {
     const f = data.festivals.find((f) => f.id === Number(p.split('/').at(-1))) || data.festivals[0];
     return ok(item({ ...f, ...data.detail }));
@@ -171,7 +193,36 @@ export function fixtureResponse(method, url, referer) {
       }),
     );
   if (p === '/api/reviews/my') return ok(page(data.reviews, url));
-  if (p === '/api/festival-permissions/my') return ok(page([], url));
+  const reviewId = p.match(/^\/api\/reviews\/(\d+)$/);
+  if (reviewId) {
+    const review = data.reviews.find((r) => r.reviewId === Number(reviewId[1]));
+    return review
+      ? ok(item({ ...review, userId: user.userId }))
+      : { status: 404, headers: {}, body: { message: '샘플 리뷰 없음' } };
+  }
+  const noticeId = p.match(/^\/api\/festivals\/notices\/(\d+)$/);
+  if (noticeId)
+    return ok(item(data.notices.find((n) => n.id === Number(noticeId[1])) || data.notices[0]));
+  const permissionId = p.match(/^\/api\/festival-permissions\/(\d+)$/);
+  if (permissionId)
+    return ok(
+      item({
+        id: Number(permissionId[1]),
+        title: data.festivals[0].title,
+        appliedDate: '2026-11-12',
+        state: 'PENDING',
+        posterImg: data.festivals[0].posterInfo,
+        docs: [],
+      }),
+    );
+
+  if (p === '/api/festival-permissions/my')
+    return ok(
+      page(
+        [{ id: 1, title: data.festivals[0].title, appliedDate: '2026-11-12', state: 'PENDING' }],
+        url,
+      ),
+    );
   return {
     status: 501,
     headers: {},

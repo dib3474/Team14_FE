@@ -23,10 +23,10 @@ async function capture() {
     width = Number(values.width);
   if (
     url.hostname !== '127.0.0.1' ||
-    ![5180, 5181, 5182].includes(Number(url.port)) ||
+    ![5180, 5181, 5182, 5183, 5184].includes(Number(url.port)) ||
     url.protocol !== 'http:'
   )
-    throw new Error('Only the three local comparison servers are supported');
+    throw new Error('Only the local comparison and mock servers are supported');
   if (!Number.isInteger(width) || width < 320 || width > 1920)
     throw new Error('Viewport width must be320–1920');
   const cli = [

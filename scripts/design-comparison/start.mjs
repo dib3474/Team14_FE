@@ -42,7 +42,7 @@ async function start() {
     throw new Error(
       'Comparison manifest is outdated. Stop active comparison servers, then run prepare.mjs.',
     );
-  const variants = ['original', 'previous', 'new'].map((name, index) => {
+  const variants = ['original', 'previous', 'new', 'independent'].map((name, index) => {
     const source = manifest.sources?.[name];
     const expectedRoot = name === 'new' ? root : join(runtime, 'sources', name);
     if (source?.root !== expectedRoot || source.port !== 5180 + index)
@@ -89,9 +89,9 @@ async function start() {
       }
     });
   }
-  console.log('Starting comparison servers on 127.0.0.1:5180 / 5181 / 5182.');
+  console.log('Starting comparison servers on 127.0.0.1:5180 / 5181 / 5182 / 5183.');
   console.log('Hub: http://127.0.0.1:5182/superpowers/comparison/index.html');
-  console.log('Press Ctrl+C to stop only the three child servers started by this command.');
+  console.log('Press Ctrl+C to stop only the comparison child servers started by this command.');
 }
 
 start().catch((error) => {

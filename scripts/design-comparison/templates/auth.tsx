@@ -42,5 +42,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuth = () => {
   const context = useContext(Context);
   if (!context) throw new Error('Comparison AuthProvider is missing');
-  return context;
+  const anonymous = window.location.pathname === '/login';
+  return {
+    ...context,
+    isInitialized: true,
+    isLoggedIn: !anonymous,
+    accessToken: anonymous ? null : context.accessToken || 'local-design-preview-only',
+    userInfo: anonymous ? null : context.userInfo || fixture.user,
+  };
 };

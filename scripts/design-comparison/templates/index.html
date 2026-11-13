@@ -100,6 +100,9 @@
       .board.three {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+      .board.four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .panel {
         min-width: 0;
         border: 1px solid #e3e9f0;
@@ -190,7 +193,8 @@
           padding: 16px;
         }
         .board,
-        .board.three {
+        .board.three,
+        .board.four {
           grid-template-columns: 1fr;
         }
         header {
@@ -221,6 +225,7 @@
           <div class="widths" id="widths"></div>
         </div>
         <label class="field"><input type="checkbox" id="original" />원본 develop도 표시</label>
+        <label class="field"><input type="checkbox" id="independent" />독립 개선안도 표시</label>
       </div>
       <div class="board" id="board"></div>
       <p class="help">
@@ -230,9 +235,9 @@
       <section class="notes">
         <strong>비교 포인트</strong>
         <p>
-          기존 개선안: 아이보리·초록 역할 색상, 가로 목록 카드, 섹션 탐색 중심.<br />새 개선안:
-          흰색·블루그레이 표면, 포스터 중심 카드, 오렌지 핵심 행동과 블루 보조 안내, AI
-          PICK·계정·설정까지 이어지는 공통 규칙.
+          기존 개선안: 지도·얇은 활성 표시 푸터·가로 목록 카드.<br />새 개선안: 흰색·블루그레이
+          표면, 포스터 중심 카드, 오렌지 핵심 행동과 블루 보조 안내, AI PICK·계정·설정까지 이어지는
+          공통 규칙.
         </p>
         <details>
           <summary>동일 조건과 남은 검증 범위</summary>
@@ -270,6 +275,7 @@
         ['mbti', 'AI PICK · 여행 MBTI', '/pick/2?step=mbti'],
         ['history', 'AI 추천 내역', '/pick/histories'],
         ['my', '마이페이지', '/mypage'],
+        ['my-reviews', '마이페이지 · 내 리뷰', '/mypage?tab=reviewed'],
         ['chat', '채팅', '/chat/1'],
         ['login', '로그인', '/login'],
         ['settings', '설정', '/settings'],
@@ -287,7 +293,8 @@
       const variants = [
         ['original', '원본 develop'],
         ['previous', '지금까지의 개선안'],
-        ['new', '새 독립 개선안'],
+        ['new', '선택한 최종 조합안'],
+        ['independent', '새 독립 개선안'],
       ].map(([name, title]) => {
         const source = manifest.sources[name];
         return [
@@ -332,9 +339,12 @@
         board.replaceChildren();
         const page = pages.find((p) => p[0] === selector.value) || pages[0];
         const showOriginal = document.querySelector('#original').checked;
-        board.classList.toggle('three', showOriginal);
+        const showIndependent = document.querySelector('#independent').checked;
+        board.classList.toggle('three', Number(showOriginal) + Number(showIndependent) === 1);
+        board.classList.toggle('four', showOriginal && showIndependent);
         for (const [id, title, source, port] of variants) {
           if (id === 'original' && !showOriginal) continue;
+          if (id === 'independent' && !showIndependent) continue;
           const panel = document.createElement('article');
           panel.className = 'panel';
           const head = document.createElement('div');
@@ -353,7 +363,14 @@
           links.append(link);
           const shot = document.createElement('a');
           shot.textContent = '화면 캡처 ↗';
-          shot.href = './screens/' + id + '-' + page[0] + '-' + width + '.png';
+          shot.href =
+            './screens/' +
+            (id === 'new' ? 'hybrid-compare' : id === 'independent' ? 'new' : id) +
+            '-' +
+            page[0] +
+            '-' +
+            width +
+            '.png';
           shot.target = '_blank';
           shot.rel = 'noopener noreferrer';
           fetch(shot.href, { method: 'HEAD' })
@@ -393,6 +410,7 @@
       }
       selector.onchange = render;
       document.querySelector('#original').onchange = render;
+      document.querySelector('#independent').onchange = render;
       render();
     </script>
   </body>

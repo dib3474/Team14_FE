@@ -90,6 +90,31 @@ export function collectComparisonGeometry(fixture) {
     expected = 'FAQ';
     ready = has('자주 묻는 질문');
   }
+
+  if (root.dataset.mockMode === 'true') {
+    const settled = !d.querySelector('.animate-spin,[aria-busy="true"]');
+    if (path === '/search') {
+      const q = url.searchParams.get('q'),
+        input = d.querySelector('input');
+      ready =
+        settled &&
+        !!input &&
+        (!q ||
+          (input.value === q && has('검색 결과') && (has('샘플') || has('검색 결과가 없습니다'))));
+    }
+    if (path.startsWith('/festivals/'))
+      ready =
+        settled &&
+        ((has('샘플') && d.querySelectorAll('a[href^="/festival/"]').length > 0) ||
+          has('축제가 없습니다'));
+    if (/^\/festival\/\d+$/.test(path)) ready = settled && has('샘플') && has('상세정보');
+    if (path.startsWith('/chat/')) ready = settled && has('샘플') && !!d.querySelector('textarea');
+    if (path === '/pick/histories') ready = settled && has('당신의 선택') && has('샘플');
+    if (path === '/mypage' && url.searchParams.get('tab') === 'reviewed')
+      ready = settled && has('내가 작성한 리뷰') && !!d.querySelector('a[href^="/review/"]');
+    if (/^\/review\/\d+\/edit$/.test(path))
+      ready = settled && !!d.querySelector('textarea') && has('리뷰');
+  }
   return {
     path,
     width: root.clientWidth,
@@ -103,7 +128,7 @@ export function collectComparisonGeometry(fixture) {
     nestedControls: d.querySelectorAll('a button,button a').length,
     appRect: rect(d.querySelector('main,.min-h-screen')),
     map: rect(d.querySelector('img[src="/koreamap.svg"]')),
-    footer: rect(d.querySelector('.ui-footer-surface,.app-nav-surface')),
+    footer: rect(d.querySelector('.ui-footer-surface,.app-nav-surface,.hybrid-footer-surface')),
     composer: rect(d.querySelector('textarea')),
     textSample: text.slice(0, 1000),
   };
