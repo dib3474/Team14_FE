@@ -1,3 +1,4 @@
+import './footer.css';
 import Home from '@/components/icon/HomeIcon';
 import Profile from '@/components/icon/ProfileIcon';
 import Search from '@/components/icon/SearchIcon';
@@ -24,19 +25,21 @@ const Footer = ({ initialSelected = 'none' }: { initialSelected?: FooterSelected
             ? 'my'
             : initialSelected;
   return (
-    <nav className="ui-footer" aria-label="주요 메뉴">
-      <div className="ui-width ui-footer-surface">
-        {items.map(({ id, icon: Icon, label, path }) => (
-          <Link
-            key={id}
-            to={path}
-            className="ui-nav-link"
-            aria-current={selected === id ? 'page' : undefined}
-          >
-            <Icon className="size-6" variant={selected === id ? 'solid' : 'outline'} />
-            <span className={selected === id ? 'font-bold' : 'font-normal'}>{label}</span>
-          </Link>
-        ))}
+    <nav className="hybrid-footer" aria-label="주요 메뉴">
+      <div className="ui-width hybrid-footer-surface">
+        <div className="hybrid-footer-nav">
+          {items.map(({ id, icon: Icon, label, path }) => (
+            <Link
+              key={id}
+              to={path}
+              className="hybrid-footer-link"
+              aria-current={selected === id ? 'page' : undefined}
+            >
+              <Icon className="size-6" variant={selected === id ? 'solid' : 'outline'} />
+              <span className={selected === id ? 'font-bold' : 'font-normal'}>{label}</span>
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );

@@ -3,7 +3,7 @@
 exports[`Footer 컴포넌트 > 기본 렌더링 > 기본 상태 스냅샷 - 선택된 버튼 없음 > footer-button-structure 1`] = `
 <a
   aria-current="page"
-  class="ui-nav-link"
+  class="hybrid-footer-link"
   data-discover="true"
   href="/"
 >
@@ -34,7 +34,7 @@ exports[`Footer 컴포넌트 > 기본 렌더링 > 기본 상태 스냅샷 - 선�
 exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - home 선택 > selected-button 1`] = `
 <a
   aria-current="page"
-  class="ui-nav-link"
+  class="hybrid-footer-link"
   data-discover="true"
   href="/"
 >
@@ -64,7 +64,7 @@ exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - h
 
 exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - home 선택 > unselected-button 1`] = `
 <a
-  class="ui-nav-link"
+  class="hybrid-footer-link"
   data-discover="true"
   href="/search"
 >
@@ -95,7 +95,7 @@ exports[`Footer 컴포넌트 > 기본 렌더링 > 선택된 상태 스냅샷 - h
 exports[`Footer 컴포넌트 > 상호작용 테스트 > 버튼 클릭 시 폰트가 볼드로 변경된다 > clicked-home-button 1`] = `
 <a
   aria-current="page"
-  class="ui-nav-link"
+  class="hybrid-footer-link"
   data-discover="true"
   href="/"
 >

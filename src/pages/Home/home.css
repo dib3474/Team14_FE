@@ -6,59 +6,68 @@
   line-height: 1.4;
 }
 .home-map-panel {
-  background: #eaf4ff;
-  border: 1px solid #d8e9fa;
-  border-radius: 24px;
+  position: relative;
+  padding: 0.75rem;
+  margin-inline: calc(var(--ui-gutter) * -0.5);
+  border: 1px solid #dce6e8;
+  border-radius: 20px;
+  background: #eaf1f3;
   overflow: hidden;
 }
-.home-map-stage {
-  position: relative;
-  width: 100%;
-}
-.home-map-pin,
-.home-ocean-pin {
+.home-map-caption {
   position: absolute;
-  transform: translate(-50%, -50%);
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  font-size: 0.75rem;
+  color: #4d6268;
+}
+.home-map-stage {
+  --map-pin-size: 40px;
+  position: relative;
+  width: min(100%, 22rem);
+  aspect-ratio: 397.68 / 728.91;
+  margin-inline: auto;
+}
+.home-map-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .home-map-pin {
+  position: absolute;
+  width: var(--map-pin-size);
+  height: var(--map-pin-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
   z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.15s;
 }
 .home-map-pin img {
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   object-fit: contain;
-  transition: transform 0.15s;
+  transition: transform 120ms;
+  filter: drop-shadow(0 2px 2px #25332d20);
 }
-.home-map-pin:hover {
-  background: #ffffff88;
+.home-map-pin:hover,
+.home-map-pin:focus-visible {
+  z-index: 3;
+  background: #ffffffc9;
 }
 .home-map-pin:hover img {
   transform: translateY(-2px);
 }
-.home-map-pin:focus-visible {
-  outline: 3px solid var(--color-secondary-600);
-  outline-offset: 2px;
-  background: white;
-}
 .home-ocean-pin {
+  position: absolute;
+  width: 22px;
   pointer-events: none;
-}
-.home-ocean-pin img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-}
-.home-map-caption {
-  text-align: center;
-  padding: 0 16px 20px;
-  color: #475569;
+  transform: translate(-50%, -50%);
 }
 .home-region-section {
   display: grid;
@@ -128,12 +137,8 @@
   width: 100%;
 }
 @media (max-width: 359px) {
-  .home-map-pin {
-    width: 32px;
-    height: 32px;
-  }
-  .home-map-pin img {
-    pointer-events: none;
+  .home-map-stage {
+    --map-pin-size: 32px;
   }
   .home-dialog-content {
     padding-left: 20px;
