@@ -1,4 +1,3 @@
 import { setupWorker } from 'msw/browser';
-import { handlers } from '@/mocks/handlers/handlers';
-
-export const client = setupWorker(...handlers);
+import { hybridHandlers } from './handlers/hybrid.mock';
+export const client = setupWorker(...hybridHandlers);

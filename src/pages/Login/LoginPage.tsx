@@ -1,3 +1,4 @@
+import { isMockMode } from '@/mocks/isMockMode';
 import { useEffect } from 'react';
 import { generatePath, useLocation, useNavigate } from 'react-router-dom';
 import Container from '@/components/common/Container';
@@ -23,7 +24,7 @@ const LoginPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (isInitialized && isLoggedIn) {
+    if (!isMockMode && isInitialized && isLoggedIn) {
       const params = new URLSearchParams(location.search);
       const cont = safePath(params.get('continue'));
 

@@ -1,3 +1,4 @@
+import { isMockMode } from '@/mocks/isMockMode';
 import Logo from '@/components/icon/LogoIcon';
 import Button from '@/components/common/Button';
 import API_ENDPOINTS from '@/constants/apiEndpoints';
@@ -46,6 +47,7 @@ const LoginContent = () => {
             variant="socialLogin"
             size="lg"
             fullWidth
+            disabled={isMockMode}
             onClick={handleGoogleLogin}
             className="min-h-12 border-ui-line bg-white text-ui-ink hover:bg-secondary-50 hover:border-secondary-300"
           >
@@ -57,6 +59,7 @@ const LoginContent = () => {
             variant="socialLogin"
             size="lg"
             fullWidth
+            disabled={isMockMode}
             onClick={handleKakaoLogin}
             className="min-h-12 border-yellow-400 bg-yellow-400 text-gray-900 hover:bg-yellow-500 hover:border-yellow-500"
           >
