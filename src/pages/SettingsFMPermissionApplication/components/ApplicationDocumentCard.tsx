@@ -46,9 +46,9 @@ const ApplicationDocumentCard = ({
     <>
       {/* 증빙 서류 업로드 */}
       <div className="mb-4">
-        <h3 className="text-base font-bold mb-3 text-ui-ink">
+        <h2 className="text-base font-bold mb-3 text-ui-ink">
           증빙 서류 업로드 <span className="text-red-500">*</span>
-        </h3>
+        </h2>
         <p className="ui-body text-ui-muted mb-3">
           축제 관리자로 활동할 수 있는 자격을 증명할 수 있는 서류를 업로드해주세요.
           <br />

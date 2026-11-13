@@ -52,7 +52,7 @@ const AiRecommendationHistoriesContent = () => {
       ) : (
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <h1 className="ui-title">맞춤 추천 축제</h1>
+            <h2 className="ui-title">맞춤 추천 축제</h2>
             <span className="ui-tag">{festivals.length}</span>
           </div>
 
