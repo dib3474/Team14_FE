@@ -117,6 +117,7 @@ export default defineConfig({root,plugins:[react(),tailwind(),{
     next();
   });}
 }],resolve:{alias:[
+  {find:'@/context/AuthContext',replacement:root+'/superpowers/comparison/templates/auth.tsx'},
   {find:'@/context/WebSocketContext',replacement:root+'/superpowers/comparison/socket.tsx'},
   {find:'@/hooks/useSearch',replacement:root+'/superpowers/comparison/search.ts'},
   {find:'@',replacement:root+'/src'}
@@ -164,6 +165,7 @@ async function prepare() {
     'fixture-api.mjs',
     'fixture.json',
     'templates/bootstrap.tsx',
+    'templates/auth.tsx',
     'templates/socket.tsx',
     'templates/search.ts',
     'templates/index.html',
@@ -198,6 +200,9 @@ async function prepare() {
       mkdirSync(local, { recursive: true });
       for (const name of ['bootstrap.tsx', 'socket.tsx', 'search.ts'])
         copyFileSync(join(tools, 'templates', name), join(local, name));
+      mkdirSync(join(local, 'templates'), { recursive: true });
+      copyFileSync(join(tools, 'templates/auth.tsx'), join(local, 'templates/auth.tsx'));
+      copyFileSync(join(tools, 'fixture.json'), join(local, 'fixture.json'));
       writeFileSync(join(local, 'vite.comparison.config.mjs'), configFor(variant));
     }
     const fixture = readFileSync(join(tools, 'fixture.json'));

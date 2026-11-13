@@ -20,7 +20,7 @@ ORIGINAL_REF=318f31c PREVIOUS_REF=36ff3e2 node scripts/design-comparison/prepare
 
 The tracked fixture data, fixture API, and templates are copied into the ignored runtime. `sources.json` records refs, resolved SHAs, dependency paths, fixture/API/asset SHA-256 hashes, and display variants. The current working tree's uncommitted product edits are included in the new preview. Generated absolute paths are local to that manifest/config and must be prepared again after moving the checkout.
 
-Only the generated comparison configs enable fixture API middleware, anonymous `/login`, a display-only user, search initialization, and the inert socket alias. Production config, authentication, router, and API code are untouched. Display fixtures cover default, `?demo=empty`, `?demo=error`, `?text=200`, and search `?q=수국`. OAuth, uploads, mutation requests, and actual STOMP messaging are intentionally unavailable in this preview. Existing screen captures are linked by the hub when present; these commands do not generate screenshots.
+Only the generated comparison configs enable fixture API middleware, a synchronous comparison-only AuthProvider (anonymous on `/login`, signed in on protected views), a display-only user, search initialization, and the inert socket alias. Production config, authentication, router, and API code are untouched. Display fixtures cover default, `?demo=empty`, `?demo=error`, `?text=200`, and search `?q=수국`. OAuth, uploads, mutation requests, and actual STOMP messaging are intentionally unavailable in this preview. Existing screen captures are linked by the hub when present; these commands do not generate screenshots.
 
 For syntax-only verification without preparing or restarting a live capture session:
 
@@ -29,3 +29,14 @@ node --check scripts/design-comparison/prepare.mjs
 node --check scripts/design-comparison/start.mjs
 node --check scripts/design-comparison/fixture-api.mjs
 ```
+
+The comparison validator must match the final pathname to the requested pathname before accepting a screenshot. A successful login-page render is not evidence that a protected page rendered. Recommendation style fixture IDs use the actual uppercase PICK_STYLES enum.
+
+Capture a screen using an already installed Lighthouse (no automatic dependency install):
+
+```sh
+node scripts/design-comparison/capture.mjs --url=http://127.0.0.1:5182/settings --name=new-settings-375 --width=375
+node --test scripts/design-comparison/validate.check.mjs
+```
+
+Set LIGHTHOUSE_CLI or pass --lighthouse when the existing installation is outside the comparison worktrees. The command validates the final origin/path/query, expected content and viewport before publishing PNG/summary files. Redirected login pages are rejected. Each capture has its own configuration directory for concurrent runs. An invalid replacement removes the old published PNG to prevent stale evidence.

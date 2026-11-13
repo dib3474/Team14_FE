@@ -31,5 +31,9 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "scripts/design-comparison/templates/auth.tsx",
+    "scripts/design-comparison/fixture.json"
+  ]
 }

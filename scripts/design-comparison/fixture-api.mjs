@@ -25,12 +25,8 @@ const page = (content, url) => {
     sort: { empty: true, sorted: false, unsorted: true },
   };
 };
-const user = {
-  userId: 7,
-  username: '축제 여행자',
-  email: 'traveler@example.test',
-  profileImageUrl: '/area/jeju.svg',
-};
+const user = data.user;
+
 export function fixtureResponse(method, url, referer) {
   const p = url.pathname,
     from = new URL(referer || 'http://localhost'),
@@ -94,7 +90,7 @@ export function fixtureResponse(method, url, referer) {
         recommendationFormResponse: {
           userId: 7,
           areaCode: 2,
-          styles: ['nature', 'food', 'art'],
+          styles: ['NATURE', 'ACTIVITY', 'ART_PERFORMANCE'],
           isNewPlace: true,
           isSolo: false,
           prefersEnjoyment: true,

@@ -163,5 +163,11 @@
       "updatedDate": "2026-11-12T10:30:00+09:00",
       "images": []
     }
-  ]
+  ],
+  "user": {
+    "userId": 7,
+    "username": "축제 여행자",
+    "email": "traveler@example.test",
+    "profileImageUrl": "/area/jeju.svg"
+  }
 }
