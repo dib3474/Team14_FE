@@ -4,38 +4,48 @@ import StarIcon from '@/components/icon/StarIcon';
 import { ROUTE_PATH } from '@/constants/routes';
 import type { Festival } from '@/types/FestivalType';
 import { generatePath, Link } from 'react-router-dom';
+import { getListFestivalStatus } from '@/pages/Festivals/festivalStatus';
 
 interface FestivalCardProps {
   data: Festival;
   highlight?: boolean;
+  variant?: 'poster' | 'row';
+  priority?: boolean;
 }
-/* 기존에는 서버에서 내려오는 축제의 종료일과 오늘 날짜를 비교하는 로직과의 차이에서
- * 서버에서 받은 날짜 문자열("YYYY-MM-DD")은 Date 객체 생성 시 KST 09:00:00으로 해석되는데 그대로 뺄셈을 진행해서 오류가 발생했었습니다.
- * 이를 해결하기 위해 종료일을 Date 객체로 생성 시 23:59:59로 초기화하여 하루 종일 "진행 중"으로 표시하도록 하였습니다.
- */
-const isInProgress = (endDateData: string): boolean => {
-  const [year, month, day] = endDateData.split('-').map(Number);
-  const endDate = new Date(year, month - 1, day, 23, 59, 59);
-  const today = new Date();
-  const diffTime = endDate.getTime() - today.getTime();
-  return diffTime >= 0;
-};
+const labels = { upcoming: '예정', ongoing: '진행 중', ended: '종료', unknown: '일정 확인' };
 
-const FestivalCard = ({ data, highlight = false }: FestivalCardProps) => {
-  const isInProgressFestival = isInProgress(data.endDate);
+const FestivalCard = ({
+  data,
+  highlight = false,
+  variant = 'poster',
+  priority = false,
+}: FestivalCardProps) => {
+  const status = getListFestivalStatus(data.startDate, data.endDate);
+  const badges = (
+    <>
+      {highlight && <span className="festival-ai-label">AI PICK</span>}
+      <span className={`festival-status ${status}`}>{labels[status]}</span>
+    </>
+  );
   return (
     <Link
-      className={`festival-card ${highlight ? 'festival-card-highlight' : ''}`}
+      className={`festival-card festival-card-${variant}-view ${highlight ? 'festival-card-highlight' : ''}`}
       to={generatePath(ROUTE_PATH.FESTIVAL_INFO, { festivalId: data.id.toString() })}
     >
-      <div className="festival-card-poster">
-        <img src={data.posterInfo} alt={`${data.title} 축제 이미지`} loading="lazy" />
-        <div className="festival-card-badges">
-          {highlight && <span className="festival-ai-label">AI PICK</span>}
-          {isInProgressFestival && <span className="festival-current-label">진행 중</span>}
-        </div>
+      <div className={`festival-card-poster ${status === 'ended' ? 'ended' : ''}`}>
+        {data.posterInfo ? (
+          <img
+            src={data.posterInfo}
+            alt={variant === 'row' ? '' : `${data.title} 축제 이미지`}
+            loading={priority ? 'eager' : 'lazy'}
+          />
+        ) : (
+          <span className="ui-caption p-2 text-center">이미지 준비 중</span>
+        )}
+        {variant === 'poster' && <div className="festival-card-badges">{badges}</div>}
       </div>
       <div className="festival-card-content">
+        {variant === 'row' && <div className="festival-row-badges">{badges}</div>}
         <h3>{data.title}</h3>
         <p className="festival-card-date">
           {data.startDate} ~ {data.endDate}

@@ -11,7 +11,7 @@ import EmptyComponent from '@/components/common/EmptyComponent';
 const FestivalsPage = () => {
   return (
     <Container>
-      <Header variant="page" title="지역 축제" />
+      <Header variant="page" title="축제 둘러보기" />
       <div className="ui-page">
         <ErrorBoundary
           FallbackComponent={() => (

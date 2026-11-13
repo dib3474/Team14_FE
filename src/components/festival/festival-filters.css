@@ -1,0 +1,95 @@
+.festival-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.festival-filters-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.festival-filter-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.festival-filter-dates label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-weight: 650;
+}
+.festival-filter-dates input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 8px;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  color: var(--color-ui-ink);
+  font-size: 14px;
+}
+.festival-filter-dates input:focus-visible {
+  outline: 3px solid var(--color-secondary-500);
+  outline-offset: 2px;
+}
+.festival-filter-dates input[aria-invalid='true'] {
+  border-color: #b42318;
+}
+.festival-filter-error {
+  color: #b42318;
+}
+.festival-filter-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.festival-filter-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 44px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.festival-filter-switch::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  height: 26px;
+  border-radius: 20px;
+  background: #cbd5e1;
+}
+.festival-filter-switch[aria-checked='true']::before {
+  background: var(--color-primary-300);
+}
+.festival-filter-thumb {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transform: translateX(5px);
+  transition: transform 0.15s;
+}
+.festival-filter-switch[aria-checked='true'] .festival-filter-thumb {
+  transform: translateX(23px);
+}
+.festival-filter-switch:focus-visible {
+  outline: 3px solid var(--color-secondary-500);
+  outline-offset: 2px;
+}
+@media (max-width: 359px) {
+  .festival-filter-dates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

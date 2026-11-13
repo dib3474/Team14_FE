@@ -169,3 +169,173 @@
 .festival-filter-switch[aria-checked='true'] .festival-filter-thumb {
   transform: translateX(23px);
 }
+/* Browse retains the earlier horizontal list composition. Search explicitly uses poster view. */
+.festival-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-inline: 16px;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 20px;
+  background: var(--color-ui-surface);
+}
+.festival-card-row-view {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  padding-block: 18px;
+  border: 0;
+  border-bottom: 1px solid var(--color-ui-line);
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+.festival-card-row-view:last-child {
+  border-bottom: 0;
+}
+.festival-card-row-view:hover h3 {
+  color: var(--color-secondary-700);
+}
+.festival-card-row-view:focus-visible {
+  border-radius: 12px;
+}
+.festival-card-row-view .festival-card-poster {
+  width: 100px;
+  height: 120px;
+  flex-shrink: 0;
+  aspect-ratio: auto;
+  border-radius: 14px;
+  background: var(--color-ui-canvas);
+}
+.festival-card-row-view .festival-card-poster img {
+  object-fit: cover;
+}
+.festival-card-row-view .festival-card-poster.ended img {
+  filter: brightness(0.65);
+}
+.festival-card-row-view .festival-card-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 7px;
+  padding: 0;
+}
+.festival-card-row-view h3 {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.festival-card-row-view .festival-card-date,
+.festival-card-row-view .festival-card-address {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.festival-card-row-view .festival-card-meta {
+  margin-top: auto;
+  padding-top: 0;
+  border: 0;
+  gap: 12px;
+  font-size: 12px;
+}
+.festival-row-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.festival-card-row-view .festival-ai-label {
+  padding: 3px 6px;
+  font-size: 11px;
+}
+.festival-status {
+  display: inline-flex;
+  align-self: flex-start;
+  border-radius: 7px;
+  padding: 3px 7px;
+  font-size: 11px;
+  line-height: 1.6;
+  font-weight: 750;
+}
+.festival-status.ongoing {
+  background: var(--color-secondary-50);
+  color: var(--color-secondary-800);
+}
+.festival-status.upcoming {
+  background: var(--color-primary-50);
+  color: var(--color-primary-800);
+}
+.festival-status.ended,
+.festival-status.unknown {
+  background: var(--color-ui-canvas);
+  color: var(--color-ui-muted);
+}
+.festival-area-section,
+.festival-page-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+@media (max-width: 359px) {
+  .festival-list {
+    padding-inline: 12px;
+  }
+  .festival-card-row-view {
+    gap: 12px;
+  }
+  .festival-card-row-view .festival-card-poster {
+    width: 78px;
+    height: 112px;
+  }
+}
+.festival-row-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--color-ui-line);
+}
+.festival-row-skeleton:last-child {
+  border-bottom: 0;
+}
+.festival-skeleton-thumbnail {
+  width: 100px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 14px;
+}
+@media (max-width: 359px) {
+  .festival-skeleton-thumbnail {
+    width: 78px;
+    height: 112px;
+  }
+  .festival-row-skeleton {
+    gap: 12px;
+  }
+}
+
+.festival-region-links {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+.festival-region-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 999px;
+  background: var(--color-ui-surface);
+  color: var(--color-ui-muted);
+  font-size: 14px;
+}
+.festival-region-links a[aria-current='page'] {
+  background: var(--color-ui-ink);
+  border-color: var(--color-ui-ink);
+  color: white;
+}

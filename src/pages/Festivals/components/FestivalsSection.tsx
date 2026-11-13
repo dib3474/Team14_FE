@@ -8,6 +8,9 @@ interface FestivalsSectionProps {
   data: Festival[];
   highlight?: boolean;
   rightAction?: ReactNode;
+  showEmpty?: boolean;
+  emptyTitle?: string;
+  emptyDescription?: string;
 }
 
 const FestivalsSection = ({
@@ -15,6 +18,9 @@ const FestivalsSection = ({
   data,
   highlight = false,
   rightAction,
+  showEmpty = true,
+  emptyTitle = '진행 중인 축제가 없습니다.',
+  emptyDescription = '진행 중 체크를 해제하거나 다른 지역의 축제를 찾아보세요!',
 }: FestivalsSectionProps) => {
   return (
     <section className="w-full">
@@ -23,17 +29,22 @@ const FestivalsSection = ({
         {rightAction}
       </div>
       {data.length === 0 ? (
-        <div className="festival-empty">
-          <img src="/lost404.svg" alt="no festivals" className="object-contain" />
-          <EmptyComponent
-            title="진행 중인 축제가 없습니다."
-            description="진행 중 체크를 해제하거나 다른 지역의 축제를 찾아보세요!"
-          />
-        </div>
+        showEmpty ? (
+          <div className="festival-empty">
+            <img src="/lost404.svg" alt="no festivals" className="object-contain" />
+            <EmptyComponent title={emptyTitle} description={emptyDescription} />
+          </div>
+        ) : null
       ) : (
-        <div className="grid festival-grid">
-          {data.map((festival) => (
-            <FestivalCard key={festival.id} data={festival} highlight={highlight} />
+        <div className="grid festival-list">
+          {data.map((festival, index) => (
+            <FestivalCard
+              key={festival.id}
+              data={festival}
+              highlight={highlight}
+              variant="row"
+              priority={index === 0}
+            />
           ))}
         </div>
       )}
