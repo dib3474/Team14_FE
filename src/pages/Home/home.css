@@ -1,6 +1,6 @@
 .home-intro {
   display: grid;
-  gap: 12px;
+  gap: 0;
 }
 .home-intro h1 {
   line-height: 1.4;
@@ -49,7 +49,7 @@
 }
 .home-map-pin:hover,
 .home-map-pin:focus-visible {
-  z-index: 3;
+  z-index: 6;
   background: #ffffffc9;
 }
 .home-map-pin:hover img {
@@ -164,17 +164,17 @@
 .home-view-switch {
   display: flex;
   gap: 4px;
-  padding: 4px;
-  border: 1px solid var(--color-ui-line);
-  border-radius: 14px;
-  background: var(--color-ui-surface);
 }
 .home-view-switch button {
-  min-width: 56px;
-  min-height: 44px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 0.875rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  font-size: 14px;
   font-weight: 650;
   color: var(--color-ui-muted);
 }
@@ -193,11 +193,34 @@
   background: var(--color-ui-surface);
   color: var(--color-ui-ink);
 }
+.home-region-label {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.home-map-pin:hover .home-region-label,
+.home-map-pin:focus-visible .home-region-label {
+  opacity: 1;
+  visibility: visible;
+}
+.home-map-content[data-motion='on'] .home-map-pin {
+  animation: home-region-layer var(--region-cycle) linear infinite;
+  animation-delay: var(--region-delay);
+}
+.home-map-content[data-motion='on'] .home-region-label {
+  animation: home-region-name var(--region-cycle) ease-in-out infinite;
+  animation-delay: var(--region-delay);
+}
 .home-map-content[data-motion='on'] .home-map-pin img {
   animation: home-region-invitation var(--region-cycle) ease-in-out infinite;
   animation-delay: var(--region-delay);
 }
-/* Korea's17 regions pulse in1.2-second slots. Only artwork scales; button coordinates and hit areas stay fixed. */
+/* Each region has a 1.2-second slot; only its artwork scales, keeping pin hit areas fixed. */
 @keyframes home-region-invitation {
   0%,
   4%,
@@ -208,6 +231,34 @@
     transform: scale(1.2);
   }
 }
+@keyframes home-region-name {
+  0%,
+  4%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  0.35%,
+  3.4% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes home-region-layer {
+  0%,
+  4%,
+  100% {
+    z-index: 2;
+  }
+  0.1%,
+  3.9% {
+    z-index: 4;
+  }
+}
+.home-map-stage:hover .home-map-pin,
+.home-map-stage:focus-within .home-map-pin,
+.home-map-stage:hover .home-region-label,
+.home-map-stage:focus-within .home-region-label,
 .home-map-stage:hover .home-map-pin img,
 .home-map-stage:focus-within .home-map-pin img {
   animation: none;
@@ -216,6 +267,10 @@
   transform: scale(1.12);
 }
 @media (prefers-reduced-motion: reduce) {
+  .home-map-content[data-motion] .home-map-pin,
+  .home-map-content[data-motion] .home-region-label {
+    animation: none;
+  }
   .home-map-content[data-motion] .home-map-pin img {
     animation: none;
     transition: none;

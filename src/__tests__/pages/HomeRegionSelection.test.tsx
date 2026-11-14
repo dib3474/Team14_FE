@@ -72,3 +72,27 @@ test('character cue can be stopped and the choice survives switching views', asy
     'false',
   );
 });
+
+test('motion control precedes the map and name controls in keyboard order', () => {
+  open();
+  const motion = screen.getByRole('button', { name: '캐릭터 모션' });
+  const map = screen.getByRole('button', { name: '지도' });
+  expect(motion.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+});
+test('each map character carries its region label without duplicating its accessible name', async () => {
+  const user = userEvent.setup();
+  open();
+  const map = within(screen.getByRole('region', { name: '전국 축제 지도' }));
+  for (const pin of MAP_PINS) {
+    const character = map.getByRole('button', { name: pin.name });
+    expect(within(character).getByText(pin.name)).toBeInTheDocument();
+    expect(character).toHaveAccessibleName(pin.name);
+  }
+  const seoul = map.getByRole('button', { name: '서울' });
+  await user.hover(seoul);
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  seoul.focus();
+  await user.keyboard('{Enter}');
+  expect(screen.getByRole('dialog', { name: '서울 축제 여행' })).toBeVisible();
+  await user.keyboard('{Escape}');
+});

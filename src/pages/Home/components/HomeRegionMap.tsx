@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import SpeechBubble from '@/components/common/SpeechBubble';
 import MAP_PINS from '@/constants/mapPins';
 import OCEAN_PINS from '@/constants/oceanPins';
 import type { Pin } from '@/types/Pin';
@@ -34,18 +35,22 @@ const HomeRegionMap = ({
           key={pin.id}
           type="button"
           className="home-map-pin"
-          style={{ top: `${pin.top}%`, left: `${pin.left}%` }}
+          style={
+            {
+              top: `${pin.top}%`,
+              left: `${pin.left}%`,
+              '--region-delay': `${(index * 1.2).toFixed(1)}s`,
+            } as CSSProperties
+          }
           onClick={() => onSelect(pin)}
           aria-label={pin.name}
         >
-          <img
-            src={pin.icon}
-            alt=""
-            width={28}
-            height={36}
-            draggable={false}
-            style={{ '--region-delay': `${(index * 1.2).toFixed(1)}s` } as CSSProperties}
-          />
+          <img src={pin.icon} alt="" width={28} height={36} draggable={false} />
+          <span className="home-region-label" aria-hidden="true">
+            <SpeechBubble as="span" compact tail>
+              {pin.name}
+            </SpeechBubble>
+          </span>
         </button>
       ))}
       {OCEAN_PINS.map((pin) => (

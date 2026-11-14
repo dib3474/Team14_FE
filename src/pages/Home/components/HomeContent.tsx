@@ -31,24 +31,6 @@ const HomeContent = () => {
         <div className="home-map-tools">
           <h2 className="home-region-heading">지역 선택</h2>
           <div className="home-map-actions">
-            <div className="home-view-switch" role="group" aria-label="지역 보기 방식">
-              <button
-                type="button"
-                aria-pressed={view === 'map'}
-                aria-controls="home-region-view"
-                onClick={() => setView('map')}
-              >
-                지도
-              </button>
-              <button
-                type="button"
-                aria-pressed={view === 'names'}
-                aria-controls="home-region-view"
-                onClick={() => setView('names')}
-              >
-                이름
-              </button>
-            </div>
             {view === 'map' && (
               <button
                 type="button"
@@ -73,6 +55,24 @@ const HomeContent = () => {
                 </svg>
               </button>
             )}
+            <div className="home-view-switch" role="group" aria-label="지역 보기 방식">
+              <button
+                type="button"
+                aria-pressed={view === 'map'}
+                aria-controls="home-region-view"
+                onClick={() => setView('map')}
+              >
+                지도
+              </button>
+              <button
+                type="button"
+                aria-pressed={view === 'names'}
+                aria-controls="home-region-view"
+                onClick={() => setView('names')}
+              >
+                이름
+              </button>
+            </div>
           </div>
         </div>
         <div id="home-region-view">
