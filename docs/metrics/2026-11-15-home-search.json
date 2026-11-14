@@ -1,0 +1,722 @@
+{
+  "date": "2026-11-15",
+  "base": "d51b5cf",
+  "verification": {
+    "tests": 181,
+    "testFiles": 25,
+    "typecheck": "passed",
+    "lintErrors": 0,
+    "lintWarnings": 2,
+    "build": "passed",
+    "independentSourceReview": "No Issues; code and tests only"
+  },
+  "spacingBefore": {
+    "searchOuter": "24px 20px",
+    "settingsOuter": "24px 20px",
+    "searchInputTopMargin": 8
+  },
+  "spacingAfter": {
+    "searchOuter": "24px 20px",
+    "searchInputTopMargin": 0
+  },
+  "notes": [
+    "Lighthouse provided/accessibility/layout diagnostics, not production performance or physical device certification.",
+    "Name layout uses actual component DOM exported after its tested toggle, with production CSS; it is a static layout fixture, not browser-click E2E.",
+    "Canonical comparison screenshots are rolling latest views; this task raw evidence is additionally date/hash-addressed."
+  ],
+  "runs": [
+    {
+      "case": "home-motion",
+      "kind": "live375",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-search/home-motion-e4d4e5e7e153.json",
+      "sha256": "e4d4e5e7e1531948a13963745bf0ba3f7451f6d19205adc0e78437324e398d63",
+      "fetchTime": "2026-11-14T16:52:37.126Z",
+      "accessibility": 100,
+      "geometry": {
+        "path": "/",
+        "width": 375,
+        "scrollWidth": 375,
+        "padding": "24px 20px",
+        "inputMargin": null,
+        "copy": "지도 속 지역 픽픽이를 누르고 취향에 맞는 축제를 만나보세요.",
+        "copySize": "16px",
+        "reduced": false,
+        "motionControlVisible": true,
+        "pins": [
+          {
+            "name": "서울",
+            "button": {
+              "x": 111.5625,
+              "y": 429.1875,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 111.5625,
+              "y": 429.1875,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "0s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "인천",
+            "button": {
+              "x": 75.375,
+              "y": 453.3125,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 75.375,
+              "y": 453.3125,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "1.2s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "경기",
+            "button": {
+              "x": 151.046875,
+              "y": 465.375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 151.046875,
+              "y": 465.375,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "2.4s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "강원",
+            "button": {
+              "x": 216.84375,
+              "y": 417.125,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 216.84375,
+              "y": 417.125,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "3.6s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "대전",
+            "button": {
+              "x": 134.59375,
+              "y": 573.90625,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 134.59375,
+              "y": 573.90625,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "4.8s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "충북",
+            "button": {
+              "x": 160.90625,
+              "y": 519.640625,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 160.90625,
+              "y": 519.640625,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "6s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "충남",
+            "button": {
+              "x": 95.109375,
+              "y": 579.9375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 95.109375,
+              "y": 579.9375,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "7.2s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "광주",
+            "button": {
+              "x": 95.109375,
+              "y": 718.640625,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 95.109375,
+              "y": 718.640625,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "8.4s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "전북",
+            "button": {
+              "x": 128.015625,
+              "y": 688.484375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 128.015625,
+              "y": 688.484375,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "9.6s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "전남",
+            "button": {
+              "x": 101.6875,
+              "y": 778.9375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 100.0123062133789,
+              "y": 777.2623291015625,
+              "width": 43.35039520263672,
+              "height": 43.350341796875
+            },
+            "animation": "home-region-invitation",
+            "delay": "10.8s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "경북",
+            "button": {
+              "x": 233.296875,
+              "y": 561.859375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 233.296875,
+              "y": 561.859375,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "12s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "대구",
+            "button": {
+              "x": 226.71875,
+              "y": 634.21875,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 226.71875,
+              "y": 634.21875,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "13.2s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "경남",
+            "button": {
+              "x": 193.8125,
+              "y": 682.453125,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 193.8125,
+              "y": 682.453125,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "14.4s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "울산",
+            "button": {
+              "x": 282.640625,
+              "y": 658.328125,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 282.640625,
+              "y": 658.328125,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "15.6s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "부산",
+            "button": {
+              "x": 266.1875,
+              "y": 712.609375,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 266.1875,
+              "y": 712.609375,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "16.8s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "제주",
+            "button": {
+              "x": 101.6875,
+              "y": 851.296875,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 101.6875,
+              "y": 851.296875,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "18s",
+            "duration": "20.4s"
+          },
+          {
+            "name": "전국",
+            "button": {
+              "x": 52.34375,
+              "y": 368.890625,
+              "width": 40,
+              "height": 40
+            },
+            "image": {
+              "x": 52.34375,
+              "y": 368.890625,
+              "width": 40,
+              "height": 40
+            },
+            "animation": "home-region-invitation",
+            "delay": "19.2s",
+            "duration": "20.4s"
+          }
+        ]
+      }
+    },
+    {
+      "case": "home-reduced",
+      "kind": "live320-reduced",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-search/home-reduced-66ff34597e84.json",
+      "sha256": "66ff34597e845ca1f847b590359e713213307baf29a65f180f1e04d6614feeb0",
+      "fetchTime": "2026-11-14T16:52:33.073Z",
+      "accessibility": 100,
+      "geometry": {
+        "path": "/",
+        "width": 320,
+        "scrollWidth": 320,
+        "padding": "24px 16px",
+        "inputMargin": null,
+        "copy": "지도 속 지역 픽픽이를 누르고 취향에 맞는 축제를 만나보세요.",
+        "copySize": "16px",
+        "reduced": true,
+        "motionControlVisible": false,
+        "pins": [
+          {
+            "name": "서울",
+            "button": {
+              "x": 96.734375,
+              "y": 414.5,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 96.734375,
+              "y": 414.5,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "인천",
+            "button": {
+              "x": 66.15625,
+              "y": 434.875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 66.15625,
+              "y": 434.875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "경기",
+            "button": {
+              "x": 130.09375,
+              "y": 445.0625,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 130.09375,
+              "y": 445.0625,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "강원",
+            "button": {
+              "x": 185.6875,
+              "y": 404.296875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 185.6875,
+              "y": 404.296875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "대전",
+            "button": {
+              "x": 116.1875,
+              "y": 536.78125,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 116.1875,
+              "y": 536.78125,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "충북",
+            "button": {
+              "x": 138.4375,
+              "y": 490.921875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 138.4375,
+              "y": 490.921875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "충남",
+            "button": {
+              "x": 82.828125,
+              "y": 541.875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 82.828125,
+              "y": 541.875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "광주",
+            "button": {
+              "x": 82.828125,
+              "y": 659.078125,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 82.828125,
+              "y": 659.078125,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "전북",
+            "button": {
+              "x": 110.625,
+              "y": 633.59375,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 110.625,
+              "y": 633.59375,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "전남",
+            "button": {
+              "x": 88.390625,
+              "y": 710.03125,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 88.390625,
+              "y": 710.03125,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "경북",
+            "button": {
+              "x": 199.59375,
+              "y": 526.59375,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 199.59375,
+              "y": 526.59375,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "대구",
+            "button": {
+              "x": 194.03125,
+              "y": 587.734375,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 194.03125,
+              "y": 587.734375,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "경남",
+            "button": {
+              "x": 166.234375,
+              "y": 628.5,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 166.234375,
+              "y": 628.5,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "울산",
+            "button": {
+              "x": 241.296875,
+              "y": 608.125,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 241.296875,
+              "y": 608.125,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "부산",
+            "button": {
+              "x": 227.390625,
+              "y": 653.984375,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 227.390625,
+              "y": 653.984375,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "제주",
+            "button": {
+              "x": 88.390625,
+              "y": 771.171875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 88.390625,
+              "y": 771.171875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          },
+          {
+            "name": "전국",
+            "button": {
+              "x": 46.6875,
+              "y": 363.546875,
+              "width": 32,
+              "height": 32
+            },
+            "image": {
+              "x": 46.6875,
+              "y": 363.546875,
+              "width": 32,
+              "height": 32
+            },
+            "animation": "none",
+            "delay": "0s",
+            "duration": "1e-05s"
+          }
+        ]
+      }
+    },
+    {
+      "case": "search-spacing",
+      "kind": "live375",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-search/search-spacing-1b9db06fafa0.json",
+      "sha256": "1b9db06fafa09141bc88dc520b4311cc29ad0ada2fa6f64db23d647ae175b90f",
+      "fetchTime": "2026-11-14T16:55:51.316Z",
+      "accessibility": 100,
+      "geometry": {
+        "path": "/search",
+        "width": 375,
+        "scrollWidth": 375,
+        "padding": "24px 20px",
+        "inputMargin": "0px",
+        "copySize": null,
+        "reduced": false,
+        "motionControlVisible": false,
+        "pins": []
+      }
+    },
+    {
+      "case": "name-layout",
+      "kind": "static actual-component DOM after toggle;320px layout only",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-search/name-layout-9e5b0f86360c.json",
+      "sha256": "9e5b0f86360c8951d8330d76dfb0aab09649890b6929c24a503a45f1c15e4729",
+      "fetchTime": "2026-11-14T17:00:14.358Z",
+      "accessibility": 100,
+      "geometry": {
+        "path": "/superpowers/home-names-visual/index.html",
+        "width": 320,
+        "scrollWidth": 320,
+        "padding": "24px 16px",
+        "inputMargin": null,
+        "copy": "지도 속 지역 픽픽이를 누르고 취향에 맞는 축제를 만나보세요.",
+        "copySize": "16px",
+        "reduced": false,
+        "motionControlVisible": false,
+        "pins": []
+      }
+    }
+  ]
+}
