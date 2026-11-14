@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-15",
+  "baseline": "5d3ad5d",
+  "method": "Live mock home rendered in Headless Chrome via Lighthouse read-only gatherer. Geometry and animation keyframes inspected; pointer/keyboard browser E2E not executed. JSDOM covers keyboard selection and modal behavior.",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed; existing 2 large-snapshot warnings",
+    "test": "183 passed / 25 files",
+    "build": "passed; existing >500kB chunk warning",
+    "independentSourceReview": "No important issues"
+  },
+  "cases": [
+    {
+      "case": "375",
+      "url": "http://127.0.0.1:5184/",
+      "fetchTime": "2026-11-14T17:22:33.928Z",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-bubbles/375-5e595a79b4ff.json",
+      "sha256": "5e595a79b4ff0adc5a711918c264a37512598aafd744ea72ad3be474c40ed451",
+      "accessibility": 100,
+      "width": 375,
+      "scrollWidth": 375,
+      "introGap": "0px",
+      "titleBottom": 157.59375,
+      "copyTop": 157.59375,
+      "reducedMotion": false,
+      "controls": [
+        {
+          "name": "캐릭터 모션",
+          "rect": {
+            "x": 204,
+            "y": 250.59375,
+            "width": 44,
+            "height": 44
+          },
+          "display": "grid"
+        },
+        {
+          "name": "지도",
+          "rect": {
+            "x": 256,
+            "y": 250.59375,
+            "width": 44,
+            "height": 44
+          },
+          "display": "grid"
+        },
+        {
+          "name": "이름",
+          "rect": {
+            "x": 304,
+            "y": 250.59375,
+            "width": 44,
+            "height": 44
+          },
+          "display": "grid"
+        }
+      ],
+      "pinCount": 17,
+      "pinSizes": [40],
+      "labelAboveEveryPin": true,
+      "labelWithinViewport": true,
+      "animationCount": 51,
+      "synchronizedDelays": true
+    },
+    {
+      "case": "320-reduced",
+      "url": "http://127.0.0.1:5184/",
+      "fetchTime": "2026-11-14T17:22:29.167Z",
+      "raw": "superpowers/comparison/verification/2026-11-15-home-bubbles/320-reduced-428f8af2c0f4.json",
+      "sha256": "428f8af2c0f453830619e25399ff97abf9e61e771c97e285566bee475ab96c28",
+      "accessibility": 100,
+      "width": 320,
+      "scrollWidth": 320,
+      "introGap": "0px",
+      "titleBottom": 157.59375,
+      "copyTop": 157.59375,
+      "reducedMotion": true,
+      "controls": [
+        {
+          "name": "캐릭터 모션",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "display": "none"
+        },
+        {
+          "name": "지도",
+          "rect": {
+            "x": 203,
+            "y": 250.59375,
+            "width": 44,
+            "height": 44
+          },
+          "display": "grid"
+        },
+        {
+          "name": "이름",
+          "rect": {
+            "x": 251,
+            "y": 250.59375,
+            "width": 44,
+            "height": 44
+          },
+          "display": "grid"
+        }
+      ],
+      "pinCount": 17,
+      "pinSizes": [32],
+      "labelAboveEveryPin": true,
+      "labelWithinViewport": true,
+      "animationCount": 0,
+      "synchronizedDelays": true
+    }
+  ]
+}
