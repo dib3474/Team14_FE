@@ -1,11 +1,26 @@
+import type { CSSProperties } from 'react';
 import MAP_PINS from '@/constants/mapPins';
 import OCEAN_PINS from '@/constants/oceanPins';
 import type { Pin } from '@/types/Pin';
 
-const HomeRegionMap = ({ onSelect }: { onSelect: (pin: Pin) => void }) => (
-  <section className="home-map-panel" aria-label="전국 축제 지도">
-    <p className="home-map-caption">지도에서 지역을 골라보세요</p>
-    <div className="home-map-stage">
+const HomeRegionMap = ({
+  onSelect,
+  motionEnabled = true,
+}: {
+  onSelect: (pin: Pin) => void;
+  motionEnabled?: boolean;
+}) => (
+  <div
+    className="home-map-content"
+    role="region"
+    aria-label="전국 축제 지도"
+    aria-describedby="home-region-instruction"
+    data-motion={motionEnabled ? 'on' : 'off'}
+  >
+    <div
+      className="home-map-stage"
+      style={{ '--region-cycle': `${MAP_PINS.length * 1.2}s` } as CSSProperties}
+    >
       <img
         src="/koreamap.svg"
         width={398}
@@ -14,7 +29,7 @@ const HomeRegionMap = ({ onSelect }: { onSelect: (pin: Pin) => void }) => (
         alt="대한민국 지역 지도"
         fetchPriority="high"
       />
-      {MAP_PINS.map((pin) => (
+      {MAP_PINS.map((pin, index) => (
         <button
           key={pin.id}
           type="button"
@@ -23,7 +38,14 @@ const HomeRegionMap = ({ onSelect }: { onSelect: (pin: Pin) => void }) => (
           onClick={() => onSelect(pin)}
           aria-label={pin.name}
         >
-          <img src={pin.icon} alt="" width={28} height={36} draggable={false} />
+          <img
+            src={pin.icon}
+            alt=""
+            width={28}
+            height={36}
+            draggable={false}
+            style={{ '--region-delay': `${(index * 1.2).toFixed(1)}s` } as CSSProperties}
+          />
         </button>
       ))}
       {OCEAN_PINS.map((pin) => (
@@ -37,6 +59,6 @@ const HomeRegionMap = ({ onSelect }: { onSelect: (pin: Pin) => void }) => (
         />
       ))}
     </div>
-  </section>
+  </div>
 );
 export default HomeRegionMap;

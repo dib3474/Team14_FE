@@ -32,8 +32,8 @@ test('지도는 실제 SVG의 세로 비율과 일치하는 이미지 크기를 
   expect(map).toHaveAttribute('src', '/koreamap.svg');
   expect(map).toHaveAttribute('width', '398');
   expect(map).toHaveAttribute('height', '729');
-  expect(screen.getByRole('heading', { name: '설레는 축제 여행, 나의 다음 픽은?' })).toBeVisible();
-  expect(screen.getByRole('heading', { name: '지역 이름으로 찾아보기' })).toBeVisible();
+  expect(screen.getByRole('heading', { name: '설레는 축제 여행' })).toBeVisible();
+  expect(screen.getByRole('button', { name: '이름' })).toHaveAttribute('aria-pressed', 'false');
 });
 
 test.each([

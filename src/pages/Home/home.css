@@ -14,14 +14,6 @@
   background: #eaf1f3;
   overflow: hidden;
 }
-.home-map-caption {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 1;
-  font-size: 0.75rem;
-  color: #4d6268;
-}
 .home-map-stage {
   --map-pin-size: 40px;
   position: relative;
@@ -61,17 +53,13 @@
   background: #ffffffc9;
 }
 .home-map-pin:hover img {
-  transform: translateY(-2px);
+  transform: scale(1.12);
 }
 .home-ocean-pin {
   position: absolute;
   width: 22px;
   pointer-events: none;
   transform: translate(-50%, -50%);
-}
-.home-region-section {
-  display: grid;
-  gap: 16px;
 }
 .home-region-list {
   display: grid;
@@ -81,7 +69,8 @@
 .home-region-list button {
   min-height: 44px;
   border-radius: 12px;
-  background: #f1f5f9;
+  background: var(--color-ui-surface);
+  border: 1px solid var(--color-ui-line);
   color: #334155;
   font-size: 14px;
   font-weight: 600;
@@ -146,5 +135,97 @@
   }
   .home-region-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-intro-copy {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ui-muted);
+}
+.home-map-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 4px 12px;
+}
+.home-region-heading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-ui-ink);
+}
+.home-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-view-switch {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 14px;
+  background: var(--color-ui-surface);
+}
+.home-view-switch button {
+  min-width: 56px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--color-ui-muted);
+}
+.home-view-switch button[aria-pressed='true'] {
+  background: var(--color-primary-50);
+  color: var(--color-ui-action);
+}
+.home-motion-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  color: var(--color-ui-ink);
+}
+.home-map-content[data-motion='on'] .home-map-pin img {
+  animation: home-region-invitation var(--region-cycle) ease-in-out infinite;
+  animation-delay: var(--region-delay);
+}
+/* Korea's17 regions pulse in1.2-second slots. Only artwork scales; button coordinates and hit areas stay fixed. */
+@keyframes home-region-invitation {
+  0%,
+  4%,
+  100% {
+    transform: scale(1);
+  }
+  1.8% {
+    transform: scale(1.2);
+  }
+}
+.home-map-stage:hover .home-map-pin img,
+.home-map-stage:focus-within .home-map-pin img {
+  animation: none;
+}
+.home-map-pin:focus-visible img {
+  transform: scale(1.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-map-content[data-motion] .home-map-pin img {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+  .home-map-pin:hover img,
+  .home-map-pin:focus-visible img {
+    transform: none;
+  }
+  .home-motion-control {
+    display: none;
   }
 }
