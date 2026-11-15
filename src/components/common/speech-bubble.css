@@ -1,21 +1,7 @@
 .speech-bubble-compact {
   padding: 6px 10px;
+  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
-}
-.speech-bubble-tail {
-  position: relative;
-}
-.speech-bubble-tail::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -5px;
-  width: 8px;
-  height: 8px;
-  transform: translateX(-50%) rotate(45deg);
-  background: inherit;
-  border-right: inherit;
-  border-bottom: inherit;
 }

@@ -47,7 +47,7 @@ const HomeRegionMap = ({
         >
           <img src={pin.icon} alt="" width={28} height={36} draggable={false} />
           <span className="home-region-label" aria-hidden="true">
-            <SpeechBubble as="span" compact tail>
+            <SpeechBubble as="span" compact>
               {pin.name}
             </SpeechBubble>
           </span>
