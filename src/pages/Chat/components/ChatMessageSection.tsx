@@ -126,7 +126,10 @@ const ChatMessageSection = ({
   }, [messages, isFetching]);
 
   return (
-    <div ref={chatRef} className="flex flex-col gap-3 overflow-y-auto pr-1 flex-1">
+    <div
+      ref={chatRef}
+      className="flex min-h-0 flex-col gap-4 overflow-y-auto overscroll-contain pr-1 flex-1"
+    >
       <div ref={observerRef} className="h-1" />
       {messages.map((message) => {
         const isSelf = userInfo?.userId === Number(message.userId);

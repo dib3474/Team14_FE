@@ -6,6 +6,7 @@ import PickMBTISection from '@/pages/Pick/components/PickMBTISection';
 import { PickProvider } from '@/context/PickContext';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import './Pick.css';
 
 const PickPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +25,7 @@ const PickPage = () => {
   return (
     <PickProvider>
       <Container>
-        <Header variant="page" />
+        <Header variant="page" title="취향으로 찾는 AI PICK" />
         {isStyleStep ? <PickStyleSection /> : <PickMBTISection />}
         <Footer initialSelected={'pick'} />
       </Container>

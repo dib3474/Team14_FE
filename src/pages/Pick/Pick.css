@@ -1,0 +1,131 @@
+/* PICK composition stays local; palette and shared surfaces come from ui-* tokens. */
+.pick-page {
+  color: var(--color-ui-ink);
+}
+.pick-progress,
+.pick-selection-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pick-progress-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pick-progress-track .ui-caption {
+  margin-left: 4px;
+}
+.pick-progress-dot {
+  width: 18px;
+  height: 5px;
+  border-radius: 8px;
+  background: var(--color-ui-line);
+}
+.pick-progress-dot.is-current {
+  background: var(--color-primary-400);
+}
+.pick-style-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.pick-style-card {
+  min-width: 0;
+  width: 100%;
+  padding: 10px 6px 12px;
+  border: 2px solid var(--color-ui-line);
+  border-radius: 18px;
+  background: var(--color-ui-surface);
+  color: var(--color-ui-ink);
+  cursor: pointer;
+  transition:
+    border-color 150ms,
+    background-color 150ms;
+}
+.pick-style-card[aria-pressed='true'] {
+  border-color: var(--color-primary-400);
+  background: var(--color-primary-50);
+}
+.pick-style-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+.pick-style-check {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-ui-canvas);
+  color: var(--color-ui-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.pick-style-card[aria-pressed='true'] .pick-style-check {
+  background: var(--color-primary-300);
+  color: var(--color-ui-ink);
+}
+.pick-style-art {
+  width: 100%;
+  max-width: 110px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.pick-style-name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.pick-style-card:focus-visible,
+.pick-mbti-option:focus-visible {
+  outline: 3px solid var(--color-secondary-500);
+  outline-offset: 3px;
+}
+.pick-mbti-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.pick-mbti-question {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.pick-mbti-question legend {
+  margin-bottom: 10px;
+}
+.pick-mbti-options {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+.pick-mbti-option {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+  font-weight: 700;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pick-mbti-option[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 2px var(--color-primary-500);
+}
+@media (max-width: 359px) {
+  .pick-style-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

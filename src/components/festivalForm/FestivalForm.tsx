@@ -62,7 +62,7 @@ const FestivalForm = ({
   };
 
   return (
-    <div className="p-4">
+    <div className="ui-page">
       <div className="flex flex-col gap-6">
         <FestivalFormNameCard
           formData={formData}

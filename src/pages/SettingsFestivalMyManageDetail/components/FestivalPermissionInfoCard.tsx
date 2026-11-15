@@ -11,31 +11,31 @@ interface FestivalPermissionInfoCardProps {
  */
 const FestivalPermissionInfoCard = ({ permission }: FestivalPermissionInfoCardProps) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm">
-      <h3 className="font-semibold mb-3">축제 정보</h3>
+    <div className="ui-panel">
+      <h3 className="ui-section-title mb-4">축제 정보</h3>
 
       <div className="space-y-3">
         <div>
           <img
             src={permission.posterImg}
             alt={permission.title}
-            className="w-full h-48 object-cover rounded-lg"
+            className="w-full max-h-80 object-contain rounded-xl bg-ui-canvas"
           />
         </div>
 
         <div>
-          <label className="text-sm text-gray-600">축제명</label>
-          <p className="font-medium text-lg break-all">{permission.title}</p>
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">축제명</p>
+          <p className="font-medium text-lg [overflow-wrap:anywhere]">{permission.title}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-600">신청 ID</label>
-          <p className="font-medium text-gray-500">#{permission.id}</p>
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">신청 ID</p>
+          <p className="ui-body text-ui-ink [overflow-wrap:anywhere]">#{permission.id}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-600">신청일</label>
-          <p className="font-medium text-gray-500">
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">신청일</p>
+          <p className="ui-body text-ui-ink [overflow-wrap:anywhere]">
             {new Date(permission.appliedDate).toLocaleDateString('ko-KR', {
               year: 'numeric',
               month: 'long',

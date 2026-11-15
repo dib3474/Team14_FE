@@ -38,14 +38,14 @@ const ErrorComponent = ({
   // 전역 에러는 전체 화면, 페이지 에러는 컨테이너 내부
   const containerClass = isGlobal
     ? 'flex flex-col items-center justify-center min-h-screen px-4'
-    : 'flex flex-col items-center justify-center h-[calc(100vh-110px)]';
+    : 'ui-feedback';
 
   return (
-    <div className={`${containerClass} ${className}`}>
-      <div className="text-center flex flex-col gap-10">
+    <div className={`${containerClass} ${className}`} role="alert">
+      <div className="text-center flex flex-col gap-6 w-full max-w-sm">
         <div className="flex flex-col gap-1">
-          <h2 className="text-xl font-semibold mb-2">{displayTitle}</h2>
-          <p className="mb-4">{displayMessage}</p>
+          <h2 className="ui-section-title mb-2">{displayTitle}</h2>
+          <p className="ui-body whitespace-pre-line mb-4">{displayMessage}</p>
         </div>
         <div className="flex flex-col gap-2">
           {onRetry && (

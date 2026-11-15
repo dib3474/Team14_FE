@@ -28,14 +28,14 @@ const ApplicationDepartmentCard = ({
         value={department}
         onChange={(e) => setDepartment(e.target.value)}
         placeholder="예: 부산대학교 축제기획위원회"
-        className="w-full p-3 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-300"
+        className="ui-control w-full p-3 text-base bg-ui-surface border border-ui-line focus:outline-none focus:ring-2 focus:ring-secondary-300"
         showMinLengthMessage={true}
         minLengthMessage="최소 2자 이상 입력해주세요"
         minLength={2}
         maxLength={50}
         disabled={disabled}
       />
-      <p className="text-xs text-gray-500 mt-1">
+      <p className="text-xs leading-relaxed text-ui-muted mt-1">
         소속된 단체, 기관, 부서명을 정확히 입력해주세요. (2-50자)
       </p>
     </div>

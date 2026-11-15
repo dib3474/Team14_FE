@@ -80,7 +80,7 @@ const SettingsFestivalMyManageEditContent = () => {
 
   if (isDetailLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
+      <div className="ui-feedback min-h-48">
         <LoadingSpinner size="lg" message="정보를 불러오는 중..." />
       </div>
     );
@@ -89,35 +89,36 @@ const SettingsFestivalMyManageEditContent = () => {
   const permission = detailData?.data.content;
 
   return (
-    <div className="bg-white rounded-lg p-4 m-4 shadow-sm">
+    <div className="ui-page">
       {permission && <FestivalPermissionInfoCard permission={permission} />}
+      <div className="ui-panel">
+        <div className="ui-inset mb-6 bg-secondary-50 border border-secondary-200">
+          <h4 className="font-semibold text-secondary-800 mb-2 flex items-center">
+            <PickIcon name={PICK_ICONS.PIN} size={20} className="mr-2" />
+            수정 안내
+          </h4>
+          <ul className="text-sm text-secondary-800 space-y-1">
+            <li>• 증빙 서류를 수정할 수 있습니다.</li>
+            <li>• 수정 후 다시 심사가 진행됩니다.</li>
+          </ul>
+        </div>
 
-      <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-        <h4 className="font-semibold text-blue-900 mb-2 flex items-center">
-          <PickIcon name={PICK_ICONS.PIN} size={20} className="mr-2" />
-          수정 안내
-        </h4>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>• 증빙 서류를 수정할 수 있습니다.</li>
-          <li>• 수정 후 다시 심사가 진행됩니다.</li>
-        </ul>
+        <ApplicationDocumentCard
+          documents={documents}
+          setDocuments={setDocuments}
+          handleFileUpload={handleFileUpload}
+          isUploading={isUploading}
+        />
+
+        <FormSubmitButtons
+          onCancel={goBack}
+          onPatch={handleSubmit}
+          isDisabled={isPending || isUploading || documents.length === 0}
+          isLoading={isPending || isUploading}
+          submitLabel="수정하기"
+          isEdit={true}
+        />
       </div>
-
-      <ApplicationDocumentCard
-        documents={documents}
-        setDocuments={setDocuments}
-        handleFileUpload={handleFileUpload}
-        isUploading={isUploading}
-      />
-
-      <FormSubmitButtons
-        onCancel={goBack}
-        onPatch={handleSubmit}
-        isDisabled={isPending || isUploading || documents.length === 0}
-        isLoading={isPending || isUploading}
-        submitLabel="수정하기"
-        isEdit={true}
-      />
     </div>
   );
 };

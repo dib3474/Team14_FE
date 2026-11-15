@@ -1,0 +1,43 @@
+.search-intro {
+  display: grid;
+  gap: 12px;
+}
+.search-input-frame {
+  position: relative;
+}
+.search-input-frame input {
+  padding-right: 48px;
+}
+.search-adornment {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  color: #64748b;
+  pointer-events: none;
+}
+.search-adornment svg {
+  width: 20px;
+  height: 20px;
+}
+.search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.search-empty img {
+  width: 144px;
+  height: 144px;
+  object-fit: contain;
+}
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.search-results .ui-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

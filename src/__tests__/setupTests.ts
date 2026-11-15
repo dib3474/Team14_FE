@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import { http, HttpResponse } from 'msw';
 import { server } from '@/mocks/server';
 import { vi } from 'vitest';
 
@@ -41,5 +42,14 @@ global.IntersectionObserver = class IntersectionObserver {
 } as unknown as typeof IntersectionObserver;
 
 beforeAll(() => server.listen());
+// Auth initialization is anonymous by default; keep tests off the real network.
+beforeEach(() =>
+  server.use(
+    http.post('*/api/jwt/exchange', () => HttpResponse.json({}, { status: 401 })),
+    http.get('*/api/festivals/:festivalId/notices', () =>
+      HttpResponse.json({ content: [], last: true, totalElements: 0, totalPages: 0 }),
+    ),
+  ),
+);
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());

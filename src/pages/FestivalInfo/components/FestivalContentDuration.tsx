@@ -6,8 +6,8 @@ const FestivalContentDuration = ({
   endDate: string;
 }) => {
   return (
-    <div className="w-full h-full flex items-center gap-2">
-      <img src="/time.svg" alt="time" className="size-4" />
+    <div className="w-full flex items-start gap-2">
+      <img src="/time.svg" alt="time" className="size-4 shrink-0 mt-0.5" />
       <p className="text-sm text-gray-900">
         {startDate} ~ {endDate}
       </p>

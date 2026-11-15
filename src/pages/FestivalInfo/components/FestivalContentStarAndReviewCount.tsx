@@ -8,7 +8,7 @@ const FestivalContentStarAndReviewCount = ({
   reviewCount: number;
 }) => {
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-700">
+    <div className="flex flex-wrap items-center gap-2 text-sm text-ui-muted">
       <StarRating rating={averageScore} showScore />
       <div className="w-px h-3 bg-gray-500" />
       <p>리뷰 {reviewCount}건</p>

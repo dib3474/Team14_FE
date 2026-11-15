@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useDialogFocus } from './useDialogFocus';
+import { useId, useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import Button from '@/components/common/Button';
 import { patchProfileImage } from '@/apis/user/patchProfileImage';
@@ -130,19 +131,25 @@ const ProfileImageUploadModal = ({ isOpen, onClose }: ProfileImageUploadModalPro
     onClose();
   };
 
+  const dialog = useRef<HTMLDivElement>(null),
+    titleId = useId();
+  const handleDialogKeyDown = useDialogFocus(isOpen, dialog, handleClose);
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[1001] flex items-center justify-center bg-black/40"
+      className="ui-overlay"
+      ref={dialog}
+      role="dialog"
+      tabIndex={-1}
+      aria-modal="true"
+      aria-labelledby={titleId}
+      onKeyDown={handleDialogKeyDown}
       onClick={handleClose}
     >
-      <div
-        className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="ui-dialog" onClick={(e) => e.stopPropagation()}>
         {/* 제목 */}
-        <h3 className="text-lg font-bold text-gray-900 mb-4">
+        <h3 id={titleId} className="ui-section-title mb-4">
           {isSuccess ? SYSTEM_MESSAGES.PROFILE_IMAGE.UPDATE_SUCCESS_TITLE : '프로필 이미지 변경'}
         </h3>
 

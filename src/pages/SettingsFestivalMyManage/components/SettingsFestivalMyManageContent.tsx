@@ -31,12 +31,14 @@ const SettingsFestivalMyManageContent = () => {
   });
 
   if (isLoading) {
-    return <LoadingSpinner size="md" className="h-64" message="축제를 불러오는 중..." />;
+    return (
+      <LoadingSpinner size="md" className="ui-feedback min-h-40" message="축제를 불러오는 중..." />
+    );
   }
 
   if (festivals.length === 0) {
     return (
-      <div className="p-4">
+      <div className="ui-page">
         <EmptyComponent
           title="관리하는 축제가 없습니다."
           description="축제 상세 페이지에서 관리 신청을 해보세요!"
@@ -46,14 +48,20 @@ const SettingsFestivalMyManageContent = () => {
   }
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 gap-6 pb-20">
+    <div className="ui-page">
+      <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-4">
         {festivals.map((festival) => (
           <FestivalCard key={festival.id} data={festival} />
         ))}
       </div>
 
-      {isFetching && <LoadingSpinner size="md" className="h-64" message="축제를 불러오는 중..." />}
+      {isFetching && (
+        <LoadingSpinner
+          size="md"
+          className="ui-feedback min-h-40"
+          message="축제를 불러오는 중..."
+        />
+      )}
       {hasNextPage && <div ref={observerRef} className="h-10" />}
     </div>
   );

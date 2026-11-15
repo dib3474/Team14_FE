@@ -1,3 +1,4 @@
+import useChatViewport from '@/pages/Chat/useChatViewport';
 import Container from '@/components/common/Container';
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
@@ -35,6 +36,7 @@ const ChatPage = () => {
     fetchNextPage,
   } = useChatRoom();
 
+  const viewportRef = useChatViewport();
   const { unsubscribe } = useWebSocket();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const { goBack } = useNav();
@@ -55,14 +57,11 @@ const ChatPage = () => {
 
   return (
     <Container>
-      <Header
-        variant="chat"
-        title={
-          chatRoom.roomName.length > 16 ? `${chatRoom.roomName.slice(0, 16)}...` : chatRoom.roomName
-        }
-        onClick={() => setIsConfirmOpen(true)}
-      />
-      <div className="flex flex-col px-4 py-2 gap-1 h-[calc(100dvh-110px)]">
+      <Header variant="chat" title={chatRoom.roomName} onClick={() => setIsConfirmOpen(true)} />
+      <div
+        ref={viewportRef}
+        className="flex min-h-0 flex-col gap-3 px-[var(--ui-gutter)] py-4 h-[calc(var(--chat-viewport-height,100dvh)-var(--ui-chrome-height))] overflow-hidden"
+      >
         <Suspense fallback={<LoadingSpinner />}>
           <ChatMessageSection
             messages={messages}

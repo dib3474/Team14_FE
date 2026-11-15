@@ -31,19 +31,25 @@ const FestivalContentReviewMediaSlider = ({
       <div className="relative w-full h-full">
         <div className="flex overflow-x-auto pb-2 gap-2 h-full sm:pb-0">
           {mediaItems.map((item, index) => (
-            <div key={index} className="relative flex-shrink-0 size-32 rounded-lg overflow-hidden">
+            <button
+              key={index}
+              type="button"
+              aria-label={
+                item.type === 'video'
+                  ? `리뷰 동영상 ${index + 1} 재생`
+                  : `리뷰 이미지 ${index + 1} 확대`
+              }
+              onClick={() => handleMediaClick(index)}
+              className="relative flex-shrink-0 size-32 rounded-lg overflow-hidden cursor-pointer"
+            >
               {item.type === 'video' ? (
-                <div className="relative w-full h-full">
-                  <video
-                    src={item.url}
-                    className="w-full h-full object-cover"
-                    onClick={() => handleMediaClick(index)}
-                  />
-                  <div
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 transition-all cursor-pointer"
-                    onClick={() => handleMediaClick(index)}
+                <span className="relative block w-full h-full">
+                  <video src={item.url} className="w-full h-full object-cover" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center justify-center bg-black/30"
                   >
-                    <div className="size-10 bg-black/60 rounded-full flex items-center justify-center">
+                    <span className="size-10 bg-black/60 rounded-full flex items-center justify-center">
                       <svg
                         width="16"
                         height="16"
@@ -53,18 +59,17 @@ const FestivalContentReviewMediaSlider = ({
                       >
                         <path d="M8 5v14l11-7z" fill="currentColor" />
                       </svg>
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               ) : (
                 <img
                   src={item.url}
                   alt="리뷰 이미지"
-                  className="w-full h-full object-cover cursor-pointer transition-transform"
-                  onClick={() => handleMediaClick(index)}
+                  className="w-full h-full object-cover transition-transform"
                 />
               )}
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -1,0 +1,288 @@
+.home-intro {
+  display: grid;
+  gap: 0;
+}
+.home-intro h1 {
+  line-height: 1.4;
+}
+.home-map-panel {
+  position: relative;
+  padding: 0.75rem;
+  margin-inline: calc(var(--ui-gutter) * -0.5);
+  border: 1px solid #dce6e8;
+  border-radius: 20px;
+  background: #eaf1f3;
+  overflow: hidden;
+}
+.home-map-stage {
+  --map-pin-size: 40px;
+  position: relative;
+  width: min(100%, 22rem);
+  aspect-ratio: 397.68 / 728.91;
+  margin-inline: auto;
+}
+.home-map-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.home-map-pin {
+  position: absolute;
+  width: var(--map-pin-size);
+  height: var(--map-pin-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 50%;
+}
+.home-map-pin img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-fit: contain;
+  transition: transform 120ms;
+  filter: drop-shadow(0 2px 2px #25332d20);
+}
+.home-map-pin:hover,
+.home-map-pin:focus-visible {
+  z-index: 6;
+  background: #ffffffc9;
+}
+.home-map-pin:hover img {
+  transform: scale(1.12);
+}
+.home-ocean-pin {
+  position: absolute;
+  width: 22px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.home-region-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.home-region-list button {
+  min-height: 44px;
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  border: 1px solid var(--color-ui-line);
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.home-region-list button:hover {
+  background: #e0edfc;
+}
+.home-dialog {
+  margin: auto;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  max-height: calc(100dvh - 48px);
+  overflow: auto;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  color: #172336;
+  background: white;
+}
+.home-dialog::backdrop {
+  background: #17233670;
+}
+.home-dialog-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 52px 24px 24px;
+}
+.home-dialog-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.home-dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.home-dialog-character {
+  width: 148px;
+  height: 148px;
+  object-fit: contain;
+}
+.home-dialog-actions {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+@media (max-width: 359px) {
+  .home-map-stage {
+    --map-pin-size: 32px;
+  }
+  .home-dialog-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .home-region-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-intro-copy {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ui-muted);
+}
+.home-map-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 4px 12px;
+}
+.home-region-heading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-ui-ink);
+}
+.home-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-view-switch {
+  display: flex;
+  gap: 4px;
+}
+.home-view-switch button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--color-ui-muted);
+}
+.home-view-switch button[aria-pressed='true'] {
+  background: var(--color-primary-50);
+  color: var(--color-ui-action);
+}
+.home-motion-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-ui-line);
+  border-radius: 12px;
+  background: var(--color-ui-surface);
+  color: var(--color-ui-ink);
+}
+.home-region-label {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.home-map-pin:hover .home-region-label,
+.home-map-pin:focus-visible .home-region-label {
+  opacity: 1;
+  visibility: visible;
+}
+.home-map-content[data-motion='on'] .home-map-pin {
+  animation: home-region-layer var(--region-cycle) linear infinite;
+  animation-delay: var(--region-delay);
+}
+.home-map-content[data-motion='on'] .home-region-label {
+  animation: home-region-name var(--region-cycle) ease-in-out infinite;
+  animation-delay: var(--region-delay);
+}
+.home-map-content[data-motion='on'] .home-map-pin img {
+  animation: home-region-invitation var(--region-cycle) ease-in-out infinite;
+  animation-delay: var(--region-delay);
+}
+/* Each 1.2s slot has a 0.1s entrance, a 1s hold, and a 0.1s exit.
+   Percentages use the 20.4s cycle (17 regions); only artwork scales. */
+@keyframes home-region-invitation {
+  0%,
+  5.88%,
+  100% {
+    transform: scale(1);
+  }
+  0.49%,
+  5.39% {
+    transform: scale(1.2);
+  }
+}
+@keyframes home-region-name {
+  0%,
+  5.88%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  0.49%,
+  5.39% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes home-region-layer {
+  0%,
+  5.88%,
+  100% {
+    z-index: 2;
+  }
+  0.1%,
+  5.8% {
+    z-index: 4;
+  }
+}
+.home-map-stage:hover .home-map-pin,
+.home-map-stage:focus-within .home-map-pin,
+.home-map-stage:hover .home-region-label,
+.home-map-stage:focus-within .home-region-label,
+.home-map-stage:hover .home-map-pin img,
+.home-map-stage:focus-within .home-map-pin img {
+  animation: none;
+}
+.home-map-pin:focus-visible img {
+  transform: scale(1.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-map-content[data-motion] .home-map-pin,
+  .home-map-content[data-motion] .home-region-label {
+    animation: none;
+  }
+  .home-map-content[data-motion] .home-map-pin img {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+  .home-map-pin:hover img,
+  .home-map-pin:focus-visible img {
+    transform: none;
+  }
+  .home-motion-control {
+    display: none;
+  }
+}

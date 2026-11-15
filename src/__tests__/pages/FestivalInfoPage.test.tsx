@@ -172,14 +172,14 @@ describe('FestivalPoster 컴포넌트', () => {
           'https://example.com/image4.jpg',
         ],
       };
-      const { container } = render(
+      render(
         <TestWrapper initialEntries={initialEntries}>
           <FestivalPoster {...manyImagesProps} />
         </TestWrapper>,
       );
 
       // 인디케이터 컨테이너 스냅샷
-      const indicatorContainer = container.querySelector('.flex.justify-center.mt-4');
+      const indicatorContainer = screen.getByRole('group', { name: '축제 이미지 선택' });
       expect(indicatorContainer).toMatchSnapshot('indicator-container');
     });
   });
@@ -197,9 +197,7 @@ describe('FestivalPoster 컴포넌트', () => {
       expect(screen.queryByLabelText('다음 이미지')).not.toBeInTheDocument();
 
       // 인디케이터 없음
-      const indicators = screen
-        .queryAllByRole('button')
-        .filter((button) => !button.getAttribute('aria-label'));
+      const indicators = screen.queryAllByRole('button', { name: /^\d+번 이미지 보기$/ });
       expect(indicators).toHaveLength(0);
     });
 
@@ -215,9 +213,7 @@ describe('FestivalPoster 컴포넌트', () => {
       expect(screen.getByLabelText('다음 이미지')).toBeInTheDocument();
 
       // 6개의 인디케이터 표시 (포스터 + 5개 추가 이미지)
-      const indicators = screen
-        .getAllByRole('button')
-        .filter((button) => !button.getAttribute('aria-label'));
+      const indicators = screen.getAllByRole('button', { name: /^\d+번 이미지 보기$/ });
       expect(indicators).toHaveLength(6);
     });
   });
@@ -318,9 +314,7 @@ describe('FestivalPoster 컴포넌트', () => {
         </TestWrapper>,
       );
 
-      const indicators = screen
-        .getAllByRole('button')
-        .filter((button) => !button.getAttribute('aria-label'));
+      const indicators = screen.getAllByRole('button', { name: /^\d+번 이미지 보기$/ });
 
       // 마지막 인디케이터 클릭 (마지막 이미지)
       fireEvent.click(indicators[5]);
@@ -337,27 +331,25 @@ describe('FestivalPoster 컴포넌트', () => {
         </TestWrapper>,
       );
 
-      const indicators = screen
-        .getAllByRole('button')
-        .filter((button) => !button.getAttribute('aria-label'));
+      const indicators = screen.getAllByRole('button', { name: /^\d+번 이미지 보기$/ });
 
       // 첫 번째 인디케이터가 활성 상태여야 함
-      expect(indicators[0]).toHaveClass('bg-primary-300');
+      expect(indicators[0]).toHaveAttribute('aria-pressed', 'true');
       // 나머지 인디케이터들은 비활성 상태
       for (let i = 1; i < indicators.length; i++) {
-        expect(indicators[i]).toHaveClass('bg-gray-300');
+        expect(indicators[i]).toHaveAttribute('aria-pressed', 'false');
       }
     });
   });
 
   describe('터치 스와이프 기능', () => {
     test('충분한 거리 스와이프 시 이미지가 변경된다', async () => {
-      const { container } = render(
+      render(
         <TestWrapper initialEntries={initialEntries}>
           <FestivalPoster {...mockProps} />
         </TestWrapper>,
       );
-      const posterContainer = container.querySelector('.h-\\[500px\\]');
+      const posterContainer = screen.getByRole('region', { name: '축제 이미지 갤러리' });
 
       // 왼쪽으로 스와이프 (다음 이미지로)
       fireEvent.touchStart(posterContainer!, {
@@ -375,12 +367,12 @@ describe('FestivalPoster 컴포넌트', () => {
     });
 
     test('임계값 미만 스와이프 시 이미지가 변경되지 않는다', () => {
-      const { container } = render(
+      render(
         <TestWrapper initialEntries={initialEntries}>
           <FestivalPoster {...mockProps} />
         </TestWrapper>,
       );
-      const posterContainer = container.querySelector('.h-\\[500px\\]');
+      const posterContainer = screen.getByRole('region', { name: '축제 이미지 갤러리' });
 
       // 작은 거리 스와이프
       fireEvent.touchStart(posterContainer!, {
@@ -416,7 +408,7 @@ describe('FestivalPoster 컴포넌트', () => {
       expect(screen.getByLabelText('다음 이미지')).toBeInTheDocument();
     });
 
-    test('화살표 버튼이 데스크톱에서만 표시되는 클래스를 가진다', () => {
+    test('화살표 버튼이 모바일과 데스크톱에서 사용할 수 있다', () => {
       render(
         <TestWrapper initialEntries={initialEntries}>
           <FestivalPoster {...mockProps} />
@@ -429,8 +421,8 @@ describe('FestivalPoster 컴포넌트', () => {
       const prevButton = screen.getByLabelText('이전 이미지');
       const nextButton = screen.getByLabelText('다음 이미지');
 
-      expect(prevButton).toHaveClass('hidden', 'sm:flex');
-      expect(nextButton).toHaveClass('hidden', 'sm:flex');
+      expect(prevButton).toBeVisible();
+      expect(nextButton).toBeVisible();
     });
   });
 });
@@ -449,10 +441,12 @@ describe('리뷰 섹션 컴포넌트', () => {
       await screen.findByText('가평 양떼목장 수국축제');
 
       // Then: 리뷰 섹션 스냅샷
-      await waitFor(() => {
-        const reviewSection = screen.queryByText(/리뷰 \(\d+\)/)?.closest('section');
-        expect(reviewSection).toMatchSnapshot('review-section');
-      });
+      const reviewHeading = await screen.findByText(/리뷰 \(\d+\)/);
+      const reviewSection = reviewHeading.closest('div');
+      expect(reviewSection).not.toBeNull();
+      for (const review of reviewMockData.content)
+        expect(screen.getByText(review.reviewerName)).toBeVisible();
+      expect(reviewHeading).toMatchSnapshot('review-section');
     });
 
     test('첫 번째 리뷰 카드 구성 요소별 스냅샷', async () => {
@@ -467,30 +461,20 @@ describe('리뷰 섹션 컴포넌트', () => {
       await screen.findByText('가평 양떼목장 수국축제');
 
       // Then: 첫 번째 리뷰 카드의 각 구성요소별 스냅샷
-      await waitFor(() => {
-        const firstReviewer = reviewMockData.content[0].reviewerName; // '홍길동'
-        const firstReviewCard = screen.queryByText(firstReviewer)?.closest('div')?.parentElement;
-
-        if (firstReviewCard) {
-          // 리뷰어 이름만 스냅샷
-          const reviewerName = screen.queryByText(firstReviewer);
-          expect(reviewerName).toMatchSnapshot('first-review-reviewer-name');
-
-          // 별점만 스냅샷 (StarRating 컴포넌트)
-          const starRating =
-            firstReviewCard.querySelector('[class*="star"], [role="img"]') ||
-            firstReviewCard.querySelector('svg');
-          expect(starRating).toMatchSnapshot('first-review-star-rating');
-
-          // 첫 번째 이미지만 스냅샷
-          const firstImage = firstReviewCard.querySelector('img');
-          expect(firstImage).toMatchSnapshot('first-review-first-image');
-
-          // 리뷰 내용 텍스트 스냅샷
-          const contentElement = screen.queryByText(reviewMockData.content[0].content); // '꽃이 예뻐요.'
-          expect(contentElement).toMatchSnapshot('first-review-content');
-        }
-      });
+      const firstReviewer = reviewMockData.content[0].reviewerName;
+      const reviewerName = await screen.findByText(firstReviewer);
+      const firstReviewCard = reviewerName.closest('div')?.parentElement;
+      expect(firstReviewCard).not.toBeNull();
+      expect(reviewerName).toMatchSnapshot('first-review-reviewer-name');
+      const starRating = firstReviewCard!.querySelector('svg');
+      expect(starRating).not.toBeNull();
+      expect(starRating).toMatchSnapshot('first-review-star-rating');
+      const firstImage = firstReviewCard!.querySelector('img');
+      expect(firstImage).not.toBeNull();
+      expect(firstImage).toMatchSnapshot('first-review-first-image');
+      expect(screen.getByText(reviewMockData.content[0].content)).toMatchSnapshot(
+        'first-review-content',
+      );
     });
   });
 
@@ -576,7 +560,7 @@ describe('리뷰 섹션 컴포넌트', () => {
 
     // Then: 모달이 열리고 화살표는 hidden sm:flex 클래스를 가진다
     const nextBtn = await screen.findByLabelText('다음 미디어');
-    expect(nextBtn).toHaveClass('hidden', 'sm:flex');
+    expect(nextBtn).toBeVisible();
     expect(screen.getByText(/\d+ \/ \d+/)).toBeInTheDocument();
 
     // And: 모달 닫기 가능

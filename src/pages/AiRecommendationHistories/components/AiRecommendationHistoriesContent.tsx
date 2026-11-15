@@ -31,7 +31,7 @@ const AiRecommendationHistoriesContent = () => {
 
   if (isError || !data) {
     return (
-      <div className="p-4">
+      <div className="ui-page">
         <EmptyComponent
           title="추천 내역을 불러올 수 없습니다"
           description="잠시 후 다시 시도해주세요."
@@ -44,21 +44,19 @@ const AiRecommendationHistoriesContent = () => {
   const formData = data.recommendationFormResponse;
 
   return (
-    <div className="p-4 space-y-6 pb-20">
+    <div className="ui-page">
       {formData && <AiRecommendationSummaryCard formData={formData} />}
 
       {festivals.length === 0 ? (
         <EmptyComponent title="추천 내역이 없습니다" description="AI 추천을 받아보세요!" />
       ) : (
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <h3 className="font-bold text-xl text-gray-900">맞춤 추천 축제</h3>
-            <span className="bg-primary-100 text-primary-700 px-2.5 py-1 rounded-full text-sm font-bold">
-              {festivals.length}
-            </span>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <h2 className="ui-title">맞춤 추천 축제</h2>
+            <span className="ui-tag">{festivals.length}</span>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-5">
             {festivals.slice(0, 2).map((festival, index) => (
               <AiRecommendationFestivalCard
                 key={festival.id}

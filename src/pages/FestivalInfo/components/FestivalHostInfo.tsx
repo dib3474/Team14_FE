@@ -12,6 +12,7 @@ const FestivalHostInfo = ({ url }: { url: string }) => {
       showToastErrorMessage(SYSTEM_MESSAGES.DEFAULT_ERROR_MESSAGES.URL_INVALID);
     }
   };
+  if (url === 'no_homepage') return <p className="ui-caption">공식 홈페이지 정보가 없습니다.</p>;
   return (
     <Button variant="link" onClick={goToPage} className="text-gray-900">
       {url === 'no_homepage' ? null : '축제 홈페이지 바로가기'}

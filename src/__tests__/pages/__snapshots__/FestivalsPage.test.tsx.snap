@@ -2,94 +2,95 @@
 
 exports[`FestivalsPage 테스트 > 스냅샷 테스트 > AI 추천 섹션과 일반 섹션 스냅샷 > ai-pick-first-card 1`] = `
 <a
-  class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 hover:scale-[1.02] cursor-pointer ring-3 ring-primary-300"
+  class="festival-card festival-card-row-view festival-card-highlight"
   data-discover="true"
   href="/festival/143"
 >
   <div
-    class="aspect-[3/2] w-full relative brightness-40"
+    class="festival-card-poster ended"
   >
     <img
-      alt="안동국제탈춤페스티벌 축제 이미지"
-      class="w-full h-full object-cover"
+      alt=""
+      loading="eager"
       src="http://tong.visitkorea.or.kr/cms/resource/24/3535224_image2_1.jpg"
     />
   </div>
   <div
-    class="p-4"
+    class="festival-card-content"
   >
-    <h3
-      class="text-lg font-bold text-gray-900 line-clamp-2 leading-tight min-h-[3rem] break-all"
+    <div
+      class="festival-row-badges"
     >
+      <span
+        class="festival-ai-label"
+      >
+        AI PICK
+      </span>
+      <span
+        class="festival-status ended"
+      >
+        종료
+      </span>
+    </div>
+    <h3>
       안동국제탈춤페스티벌
     </h3>
-    <div
-      class="space-y-1"
+    <p
+      class="festival-card-date"
     >
-      <p
-        class="text-sm sm:text-xs text-gray-600 font-medium whitespace-nowrap overflow-hidden"
-      >
-        2025-09-26
-         ~ 
-        2025-10-05
-      </p>
-      <p
-        class="text-sm sm:text-xs text-gray-500 break-all"
-        title="경상북도 안동시 육사로 239 (운흥동)"
-      >
-        경상북도 안동시
-      </p>
-      <div
-        class="flex items-center gap-2 justify-end font-bold"
-      >
-        <div
-          class="flex items-center gap-1"
+      2025-09-26
+       ~ 
+      2025-10-05
+    </p>
+    <p
+      class="festival-card-address"
+    >
+      경상북도 안동시 육사로 239 (운흥동)
+    </p>
+    <div
+      class="festival-card-meta"
+    >
+      <span>
+        <svg
+          class="text-gray-400 size-4"
+          fill="currentColor"
+          stroke="none"
+          stroke-width="0"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            class="text-gray-300 size-4"
-            fill="currentColor"
-            stroke="none"
-            stroke-width="0"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
-          >
-            -
-          </span>
-        </div>
-        <div
-          class="flex items-center gap-1"
+          <path
+            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+          />
+        </svg>
+        <span>
+          평점 
+          -
+        </span>
+      </span>
+      <span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-heart size-4"
+          fill="#fa342c"
+          height="20"
+          stroke="#fa342c"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-heart size-3"
-            fill="#fa342c"
-            height="20"
-            stroke="#fa342c"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
-          >
-            0
-          </span>
-        </div>
-      </div>
+          <path
+            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+          />
+        </svg>
+        <span>
+          관심 
+          0
+        </span>
+      </span>
     </div>
   </div>
 </a>
@@ -97,186 +98,92 @@ exports[`FestivalsPage 테스트 > 스냅샷 테스트 > AI 추천 섹션과 일
 
 exports[`FestivalsPage 테스트 > 스냅샷 테스트 > AI 추천 섹션과 일반 섹션 스냅샷 > festivals-first-card 1`] = `
 <a
-  class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 hover:scale-[1.02] cursor-pointer "
+  class="festival-card festival-card-row-view "
   data-discover="true"
   href="/festival/2583"
 >
   <div
-    class="aspect-[3/2] w-full relative brightness-40"
+    class="festival-card-poster ended"
   >
     <img
-      alt="한옥마을전통연희 퍼레이드-노상놀이야 축제 이미지"
-      class="w-full h-full object-cover"
+      alt=""
+      loading="eager"
       src="http://tong.visitkorea.or.kr/cms/resource/68/3485868_image2_1.jpg"
     />
   </div>
   <div
-    class="p-4"
+    class="festival-card-content"
   >
-    <h3
-      class="text-lg font-bold text-gray-900 line-clamp-2 leading-tight min-h-[3rem] break-all"
+    <div
+      class="festival-row-badges"
     >
+      <span
+        class="festival-status ended"
+      >
+        종료
+      </span>
+    </div>
+    <h3>
       한옥마을전통연희 퍼레이드-노상놀이야
     </h3>
-    <div
-      class="space-y-1"
+    <p
+      class="festival-card-date"
     >
-      <p
-        class="text-sm sm:text-xs text-gray-600 font-medium whitespace-nowrap overflow-hidden"
-      >
-        2025-04-12
-         ~ 
-        2025-10-25
-      </p>
-      <p
-        class="text-sm sm:text-xs text-gray-500 break-all"
-        title="전북특별자치도 전주시 완산구 태조로 44 (풍남동3가)"
-      >
-        전북특별자치도 전주시
-      </p>
-      <div
-        class="flex items-center gap-2 justify-end font-bold"
-      >
-        <div
-          class="flex items-center gap-1"
+      2025-04-12
+       ~ 
+      2025-10-25
+    </p>
+    <p
+      class="festival-card-address"
+    >
+      전북특별자치도 전주시 완산구 태조로 44 (풍남동3가)
+    </p>
+    <div
+      class="festival-card-meta"
+    >
+      <span>
+        <svg
+          class="text-yellow-500 size-4"
+          fill="currentColor"
+          stroke="none"
+          stroke-width="0"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            class="text-yellow-400 size-4"
-            fill="currentColor"
-            stroke="none"
-            stroke-width="0"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
-          >
-            -
-          </span>
-        </div>
-        <div
-          class="flex items-center gap-1"
-        >
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-heart size-3"
-            fill="#fa342c"
-            height="20"
-            stroke="#fa342c"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
+          <path
+            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
           />
-        </div>
-      </div>
+        </svg>
+        <span>
+          평점 
+          -
+        </span>
+      </span>
+      <span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-heart size-4"
+          fill="#fa342c"
+          height="20"
+          stroke="#fa342c"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+          />
+        </svg>
+        <span>
+          관심 
+        </span>
+      </span>
     </div>
   </div>
 </a>
 `;
 
-exports[`FestivalsPage 테스트 > 스냅샷 테스트 > AI 추천이 없을 때 일반 섹션만 스냅샷 > festivals-only-first-card 1`] = `
-<a
-  class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 hover:scale-[1.02] cursor-pointer "
-  data-discover="true"
-  href="/festival/2583"
->
-  <div
-    class="aspect-[3/2] w-full relative brightness-40"
-  >
-    <img
-      alt="한옥마을전통연희 퍼레이드-노상놀이야 축제 이미지"
-      class="w-full h-full object-cover"
-      src="http://tong.visitkorea.or.kr/cms/resource/68/3485868_image2_1.jpg"
-    />
-  </div>
-  <div
-    class="p-4"
-  >
-    <h3
-      class="text-lg font-bold text-gray-900 line-clamp-2 leading-tight min-h-[3rem] break-all"
-    >
-      한옥마을전통연희 퍼레이드-노상놀이야
-    </h3>
-    <div
-      class="space-y-1"
-    >
-      <p
-        class="text-sm sm:text-xs text-gray-600 font-medium whitespace-nowrap overflow-hidden"
-      >
-        2025-04-12
-         ~ 
-        2025-10-25
-      </p>
-      <p
-        class="text-sm sm:text-xs text-gray-500 break-all"
-        title="전북특별자치도 전주시 완산구 태조로 44 (풍남동3가)"
-      >
-        전북특별자치도 전주시
-      </p>
-      <div
-        class="flex items-center gap-2 justify-end font-bold"
-      >
-        <div
-          class="flex items-center gap-1"
-        >
-          <svg
-            class="text-yellow-400 size-4"
-            fill="currentColor"
-            stroke="none"
-            stroke-width="0"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
-          >
-            -
-          </span>
-        </div>
-        <div
-          class="flex items-center gap-1"
-        >
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-heart size-3"
-            fill="#fa342c"
-            height="20"
-            stroke="#fa342c"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-            />
-          </svg>
-          <span
-            class="text-sm sm:text-xs text-gray-700"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</a>
-`;
+exports[`FestivalsPage 테스트 > 스냅샷 테스트 > AI 추천이 없을 때 일반 섹션만 스냅샷 > festivals-only-first-card 1`] = `undefined`;

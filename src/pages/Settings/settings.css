@@ -1,0 +1,78 @@
+.ui-panel.ui-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+}
+
+.ui-settings-section .ui-settings-menu {
+  width: 100%;
+  min-width: 0;
+}
+
+.ui-settings-section .ui-settings-menu > div {
+  gap: 0;
+}
+
+.ui-settings-section .ui-button {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  justify-content: flex-start;
+  padding: 12px;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 550;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.ui-settings-section .ui-button:not(:last-child) {
+  border-bottom: 1px solid var(--color-ui-line);
+}
+
+.ui-settings-section .ui-button::after {
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: 2px;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--color-ui-muted);
+  border-right: 1.5px solid var(--color-ui-muted);
+  content: '';
+  transform: rotate(45deg);
+}
+
+.ui-settings-section .ui-button:hover:not(:disabled) {
+  background: var(--color-secondary-50);
+  box-shadow: none;
+}
+
+.ui-settings-profile-main {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.ui-settings-profile h2 {
+  overflow-wrap: anywhere;
+}
+
+.ui-settings-profile .ui-settings-profile-edit {
+  max-width: 100%;
+  min-height: 44px;
+  margin-top: 16px;
+  margin-left: auto;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+@media (max-width: 359px) {
+  .ui-settings-profile .ui-settings-profile-edit {
+    width: 100%;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-15",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed; existing 2 snapshot warnings",
+    "test": "186 passed / 26 files",
+    "build": "passed; existing >500kB chunk warning",
+    "nodeSafetyAndCaptureValidation": "5 passed",
+    "independentSourceReview": "No important issues"
+  },
+  "cases": [
+    {
+      "case": "home-375",
+      "kind": "live mock page; read-only browser geometry",
+      "url": "http://127.0.0.1:5184/",
+      "fetchTime": "2026-11-15T07:19:05.569Z",
+      "accessibility": 100,
+      "raw": "superpowers/comparison/verification/2026-11-15-mock-floating/home-375-5b74c46d2e02.json",
+      "sha256": "5b74c46d2e029f1576f65343cd4f5187d21c7bf49c52f581aae39f6d1605ca9b",
+      "geometry": {
+        "path": "/",
+        "width": 375,
+        "scrollWidth": 375,
+        "height": 844,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 57,
+          "bottom": 57,
+          "right": 375
+        },
+        "footer": {
+          "x": 0,
+          "y": 771,
+          "width": 375,
+          "height": 73,
+          "bottom": 844,
+          "right": 375
+        },
+        "launcher": {
+          "x": 303,
+          "y": 700,
+          "width": 56,
+          "height": 56,
+          "bottom": 756,
+          "right": 359
+        },
+        "radius": "50%",
+        "panel": null,
+        "nav": null,
+        "composer": null
+      }
+    },
+    {
+      "case": "chat-320",
+      "kind": "live mock page; read-only browser geometry",
+      "url": "http://127.0.0.1:5184/chat/1",
+      "fetchTime": "2026-11-15T07:19:05.569Z",
+      "accessibility": 100,
+      "raw": "superpowers/comparison/verification/2026-11-15-mock-floating/chat-320-71503ce4a672.json",
+      "sha256": "71503ce4a672c66895ce2b8a66f2dfb9bbf5395da55350b87f720ff4f930bcb7",
+      "geometry": {
+        "path": "/chat/1",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 844,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 57,
+          "bottom": 57,
+          "right": 320
+        },
+        "footer": {
+          "x": 0,
+          "y": 771,
+          "width": 320,
+          "height": 73,
+          "bottom": 844,
+          "right": 320
+        },
+        "launcher": {
+          "x": 248,
+          "y": 540,
+          "width": 56,
+          "height": 56,
+          "bottom": 596,
+          "right": 304
+        },
+        "radius": "50%",
+        "panel": null,
+        "nav": null,
+        "composer": {
+          "x": 16,
+          "y": 698,
+          "width": 288,
+          "height": 58,
+          "bottom": 756,
+          "right": 304
+        }
+      }
+    },
+    {
+      "case": "panel-320",
+      "kind": "actual component DOM after JSDOM menu open; static browser layout only",
+      "url": "http://127.0.0.1:5184/superpowers/mock-panel-visual/index.html",
+      "fetchTime": "2026-11-15T07:20:55.528Z",
+      "accessibility": 100,
+      "raw": "superpowers/comparison/verification/2026-11-15-mock-floating/panel-320-43d2c921fd1e.json",
+      "sha256": "43d2c921fd1ea59ddfbb18283f1cbc2a09879517fed1d6b5b4c226de3b4108e4",
+      "geometry": {
+        "path": "/superpowers/mock-panel-visual/index.html",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 844,
+        "header": null,
+        "footer": null,
+        "launcher": {
+          "x": 248,
+          "y": 700,
+          "width": 56,
+          "height": 56,
+          "bottom": 756,
+          "right": 304
+        },
+        "radius": "50%",
+        "panel": {
+          "x": 16,
+          "y": 139.40625,
+          "width": 288,
+          "height": 548.59375,
+          "bottom": 688,
+          "right": 304
+        },
+        "nav": {
+          "x": 17,
+          "y": 207.40625,
+          "width": 286,
+          "height": 479.59375,
+          "bottom": 687,
+          "right": 303,
+          "scrollHeight": 1346,
+          "overflow": "auto",
+          "links": 29
+        },
+        "composer": null
+      }
+    }
+  ]
+}

@@ -14,15 +14,15 @@ exports[`ChatPage > 스냅샷 - 상대 메시지 컴포넌트 > chat-message-ite
     />
   </div>
   <div
-    class="flex min-w-0 flex-col gap-1"
+    class="flex min-w-0 max-w-[82%] flex-col gap-1"
   >
     <div
-      class="text-sm font-semibold text-gray-900"
+      class="text-xs leading-relaxed font-semibold text-ui-muted [overflow-wrap:anywhere]"
     >
       Other
     </div>
     <div
-      class="inline-block max-w-[80vw] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap break-words bg-gray-100 text-gray-900"
+      class="inline-block max-w-full rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] bg-white border border-ui-line text-ui-ink rounded-tl-sm"
     >
       상대 메시지 내용
     </div>
@@ -35,10 +35,10 @@ exports[`ChatPage > 스냅샷 - 자신 메시지 컴포넌트 > chat-message-ite
   class="flex w-full items-start gap-2 justify-end"
 >
   <div
-    class="flex min-w-0 flex-col gap-1"
+    class="flex min-w-0 max-w-[82%] flex-col gap-1"
   >
     <div
-      class="inline-block max-w-[80vw] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap break-words bg-primary-100 text-gray-900"
+      class="inline-block max-w-full rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] bg-primary-100 text-ui-ink rounded-tr-sm"
     >
       내 메시지 내용
     </div>
@@ -48,21 +48,22 @@ exports[`ChatPage > 스냅샷 - 자신 메시지 컴포넌트 > chat-message-ite
 
 exports[`ChatPage > 스냅샷 - 전송 컴포넌트 > chat-send-section 1`] = `
 <div
-  class="pt-1 bg-white w-full"
+  class="shrink-0 w-full"
 >
   <div
-    class="flex w-full items-center justify-between rounded-2xl border border-gray-300 pl-4 pr-1 py-1"
+    class="flex w-full min-w-0 items-end gap-2 rounded-[20px] border border-ui-line bg-ui-surface pl-4 pr-1 py-1 shadow-sm focus-within:border-secondary-500 focus-within:ring-2 focus-within:ring-secondary-100"
   >
     <textarea
-      class="w-full py-2 bg-transparent text-sm outline-none placeholder:text-gray-400 resize-none overflow-hidden whitespace-pre-wrap leading-5"
+      aria-label="채팅 메시지"
+      class="w-full min-w-0 min-h-11 max-h-32 py-3 bg-transparent text-base text-ui-ink outline-none placeholder:text-ui-muted resize-none overflow-y-auto whitespace-pre-wrap [overflow-wrap:anywhere] leading-6"
       maxlength="255"
       placeholder="메시지 입력..."
       rows="1"
       style="height: 0px;"
     />
     <button
-      aria-label="image"
-      class="flex items-center justify-center hover:opacity-90 transition-opacity duration-100 w-fit cursor-pointer bg-transparent text-gray-900 text-sm rounded-lg px-4 py-2 shrink-0 rounded-full text-sm "
+      aria-label="사진 선택 (image)"
+      class="ui-button ui-button-sm ui-button-icon bg-transparent text-ui-ink w-fit shrink-0 min-h-11 min-w-11 rounded-full text-sm"
       type="button"
     >
       <img

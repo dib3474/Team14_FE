@@ -21,7 +21,7 @@ const FestivalFormAddressCard = ({
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label htmlFor="addr1" className="font-semibold">
-          주소 <span className="text-red-500">*</span>
+          주소 <span className="text-red-700">*</span>
         </label>
         <TextInputWithCounter
           value={formData.addr1}

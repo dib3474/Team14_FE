@@ -21,7 +21,7 @@ const FestivalFormOverviewCard = ({
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label htmlFor="overView" className="font-semibold">
-          축제 개요 <span className="text-red-500">*</span>
+          축제 개요 <span className="text-red-700">*</span>
         </label>
         <TextInputWithCounter
           name="overView"
@@ -35,7 +35,7 @@ const FestivalFormOverviewCard = ({
           rows={10}
           showMinLengthMessage={true}
           minLengthMessage="최소 30자 이상 입력해주세요"
-          errorClassName="text-red-500"
+          errorClassName="text-red-700"
         />
       </div>
     </BorderCardComponent>

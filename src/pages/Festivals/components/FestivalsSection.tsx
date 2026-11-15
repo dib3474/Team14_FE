@@ -8,6 +8,9 @@ interface FestivalsSectionProps {
   data: Festival[];
   highlight?: boolean;
   rightAction?: ReactNode;
+  showEmpty?: boolean;
+  emptyTitle?: string;
+  emptyDescription?: string;
 }
 
 const FestivalsSection = ({
@@ -15,25 +18,33 @@ const FestivalsSection = ({
   data,
   highlight = false,
   rightAction,
+  showEmpty = true,
+  emptyTitle = '진행 중인 축제가 없습니다.',
+  emptyDescription = '진행 중 체크를 해제하거나 다른 지역의 축제를 찾아보세요!',
 }: FestivalsSectionProps) => {
   return (
     <section className="w-full">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-left text-gray-900">{title}</h2>
+      <div className="festival-section-heading">
+        <h2 className="ui-section-title">{title}</h2>
         {rightAction}
       </div>
       {data.length === 0 ? (
-        <div className="w-full h-full flex flex-col items-center justify-center">
-          <img src="/lost404.svg" alt="no festivals" className="w-64 h-64 mt-12 drop-shadow-lg" />
-          <EmptyComponent
-            title="진행 중인 축제가 없습니다."
-            description="진행 중 체크를 해제하거나 다른 지역의 축제를 찾아보세요!"
-          />
-        </div>
+        showEmpty ? (
+          <div className="festival-empty">
+            <img src="/lost404.svg" alt="no festivals" className="object-contain" />
+            <EmptyComponent title={emptyTitle} description={emptyDescription} />
+          </div>
+        ) : null
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
-          {data.map((festival) => (
-            <FestivalCard key={festival.id} data={festival} highlight={highlight} />
+        <div className="grid festival-list">
+          {data.map((festival, index) => (
+            <FestivalCard
+              key={festival.id}
+              data={festival}
+              highlight={highlight}
+              variant="row"
+              priority={index === 0}
+            />
           ))}
         </div>
       )}

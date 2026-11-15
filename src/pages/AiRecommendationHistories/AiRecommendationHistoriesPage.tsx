@@ -2,6 +2,7 @@ import Container from '@/components/common/Container';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import AiRecommendationHistoriesContent from '@/pages/AiRecommendationHistories/components/AiRecommendationHistoriesContent';
+import './AiRecommendationHistories.css';
 /**
  * AI 추천 내역 페이지
  * 사용자가 받았던 최신 AI 추천 내역을 확인할 수 있습니다.
@@ -10,7 +11,7 @@ import AiRecommendationHistoriesContent from '@/pages/AiRecommendationHistories/
 const AiRecommendationHistoriesPage = () => {
   return (
     <Container>
-      <Header variant="page" title="AI PICK" />
+      <Header variant="page" title="AI PICK 추천 내역" />
       <AiRecommendationHistoriesContent />
       <Footer initialSelected="pick" />
     </Container>

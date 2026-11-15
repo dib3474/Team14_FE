@@ -6,16 +6,6 @@ interface AiRecommendationIconInfoCardProps {
   iconSize?: 'sm' | 'md' | 'lg';
 }
 
-/**
- * 아이콘과 정보를 표시하는 카드
- * 2x2 그리드 레이아웃에서 사용
- * @param label 라벨
- * @param icon 아이콘
- * @param iconAlt 아이콘 대체 텍스트
- * @param value 값
- * @param iconSize 아이콘 크기
- * @returns AI 추천 아이콘 정보 카드
- */
 const AiRecommendationIconInfoCard = ({
   label,
   icon,
@@ -30,16 +20,16 @@ const AiRecommendationIconInfoCard = ({
   };
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-      <span className="text-gray-600 font-semibold text-sm mb-2">{label}</span>
+    <div className="ui-inset ai-choice-card">
+      <span className="ui-caption">{label}</span>
       {icon && (
         <img
           src={icon}
           alt={iconAlt || label}
-          className={`${sizeClasses[iconSize]} object-contain mb-2`}
+          className={`${sizeClasses[iconSize]} object-contain`}
         />
       )}
-      <span className="font-bold text-gray-900 text-base">{value}</span>
+      <span className="ui-body font-bold">{value}</span>
     </div>
   );
 };

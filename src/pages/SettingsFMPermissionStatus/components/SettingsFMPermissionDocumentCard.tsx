@@ -15,22 +15,22 @@ const SettingsFMPermissionDocumentCard = ({
   permission,
 }: SettingsFMPermissionDocumentCardProps) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm">
-      <h3 className="font-semibold mb-3">제출한 증빙 서류</h3>
-      <div className="space-y-2">
+    <div className="ui-panel">
+      <h3 className="ui-section-title mb-4">제출한 증빙 서류</h3>
+      <div className="space-y-3">
         {permission.docsUrls.map((url, index) => (
           <a
             key={index}
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+            className="ui-inset flex items-center justify-between gap-3 border border-ui-line hover:bg-secondary-50 transition-colors"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex min-w-0 items-center gap-2">
               <PickIcon name={PICK_ICONS.CLIP} size={24} />
-              <span className="text-sm text-gray-700">서류 {index + 1}</span>
+              <span className="text-sm text-ui-ink">서류 {index + 1}</span>
             </div>
-            <span className="text-sm text-blue-600">보기 →</span>
+            <span className="text-sm text-secondary-700">보기 →</span>
           </a>
         ))}
       </div>

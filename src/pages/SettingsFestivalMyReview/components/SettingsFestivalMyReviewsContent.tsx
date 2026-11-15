@@ -78,7 +78,7 @@ const SettingsMyReviewsContent = () => {
   const reviews = data?.pages.flatMap((page) => page.data.content) || [];
 
   if (isLoading) {
-    return <LoadingSpinner size="lg" className="min-h-[400px]" message="리뷰를 불러오는 중..." />;
+    return <LoadingSpinner size="lg" className="min-h-48" message="리뷰를 불러오는 중..." />;
   }
 
   if (isError) {
@@ -113,7 +113,7 @@ const SettingsMyReviewsContent = () => {
         showToastAxiosError(error);
       }}
     >
-      <div className="p-4">
+      <div className="ui-page">
         <div className="space-y-4">
           {reviews.map((review) => (
             <SettingsMyReviewsCard

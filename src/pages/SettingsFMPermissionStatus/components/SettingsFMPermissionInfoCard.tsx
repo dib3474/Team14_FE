@@ -12,23 +12,25 @@ interface SettingsFMPermissionInfoCardProps {
  */
 const SettingsFMPermissionInfoCard = ({ permission }: SettingsFMPermissionInfoCardProps) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm">
-      <h3 className="font-semibold mb-3">신청 정보</h3>
+    <div className="ui-panel">
+      <h3 className="ui-section-title mb-4">신청 정보</h3>
 
       <div className="space-y-3">
         <div>
-          <label className="text-sm text-gray-600">소속</label>
-          <p className="font-medium">{permission.department}</p>
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">소속</p>
+          <p className="ui-body font-medium [overflow-wrap:anywhere]">{permission.department}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-600">신청 ID</label>
-          <p className="font-medium text-gray-500">#{permission.id}</p>
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">신청 ID</p>
+          <p className="ui-body text-ui-ink [overflow-wrap:anywhere]">#{permission.id}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-600">최종 수정일</label>
-          <p className="font-medium text-gray-500">
+          <p className="text-sm leading-relaxed text-ui-muted [overflow-wrap:anywhere]">
+            최종 수정일
+          </p>
+          <p className="ui-body text-ui-ink [overflow-wrap:anywhere]">
             {new Date(permission.updatedDate).toLocaleDateString('ko-KR', {
               year: 'numeric',
               month: 'long',

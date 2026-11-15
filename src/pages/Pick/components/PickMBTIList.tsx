@@ -3,7 +3,7 @@ import PICK_MBTI from '@/constants/pickMBTI';
 
 const PickMBTIList = () => {
   return (
-    <div className="w-full h-full flex flex-col gap-4">
+    <div className="ui-panel pick-mbti-list">
       {PICK_MBTI.map((mbti) => (
         <PickMBTICard
           key={mbti.id}

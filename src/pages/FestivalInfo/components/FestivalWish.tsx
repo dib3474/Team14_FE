@@ -34,13 +34,16 @@ const FestivalWish = ({ isMyWish, wishCount }: { isMyWish: boolean; wishCount: n
 
   return (
     <div className="flex items-center gap-2">
-      <div className="text-sm text-gray-900">{wishCount}</div>
-      <div
+      <div className="text-sm text-ui-muted">관심 {wishCount}</div>
+      <button
+        type="button"
+        aria-label={isWish ? '관심 축제 해제' : '관심 축제 추가'}
+        aria-pressed={isWish}
         onClick={() => (isWish ? deleteWishMutation() : postWishMutation())}
-        className="cursor-pointer"
+        className="festival-wish-button"
       >
         <Heart fill={isWish} />
-      </div>
+      </button>
     </div>
   );
 };

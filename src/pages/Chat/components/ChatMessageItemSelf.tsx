@@ -9,7 +9,7 @@ interface ChatMessageItemSelfProps {
 const ChatMessageItemSelf = ({ message }: ChatMessageItemSelfProps) => {
   return (
     <div className="flex w-full items-start gap-2 justify-end">
-      <div className="flex min-w-0 flex-col gap-1">
+      <div className="flex min-w-0 max-w-[82%] flex-col gap-1">
         {message.imageUrl ? (
           <ChatMessageItemImage imageUrl={message.imageUrl} />
         ) : (

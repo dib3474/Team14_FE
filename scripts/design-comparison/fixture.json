@@ -1,0 +1,173 @@
+{
+  "clock": "2026-11-10",
+  "festivals": [
+    {
+      "id": 1,
+      "contentId": "3503909",
+      "title": "가평 양떼목장 수국축제",
+      "areaCode": 31,
+      "addr1": "경기도 가평군 설악면 유명로 1209",
+      "addr2": "",
+      "posterInfo": "/__fixtures/flowers.png",
+      "startDate": "2026-10-01",
+      "endDate": "2027-01-31",
+      "overView": "가평의 아름다운 자연 속에서 펼쳐지는 본 축제는, 활짝 핀 가을 수국의 물결과 사랑스러운 알파카들을 한자리에서 만날 수 있다. 가을의 정취를 가득 담은 수국밭을 거닐며 싱그러움을 만끽하고, 순수하고 귀여운 알파카들에게 직접 먹이를 주거나 함께 사진을 찍으며 잊지 못할 추억을 만들 수 있다. 단순히 꽃과 동물을 감상하는 것을 넘어, 방문객들이 직접 참여하고 즐길 수 있는 다채로운 프로그램들이 마련되어 있다. 수국밭 속 양떼목장에서는 동물들에게 먹이를 주는 체험을 할 수 있으며, 흥미로운 앵무새 공연도 준비되어 있다. 이와 더불어, 사계절 썰매를 무료로 이용하거나 주말에 진행되는 OX 퀴즈에 참여하며 즐거운 시간을 보낼 수 있다. 뿐만 아니라, 프리마켓 등 다양한 소비자 참여형 이벤트가 축제의 활기를 더하고, 맛있는 빵과 음료를 즐길 수 있는 베이커리 & 카페도 운영되어 풍성한 경험을 제공된다. 자연의 아름다움과 순수한 동물과의 교감이 어우러진 가평 가을 수국 & 알파카 축제에서 특별하고 행복한 시간을 만들 수 있다.",
+      "homePage": "no_homepage",
+      "imageInfos": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ],
+      "managerId": 42,
+      "averageScore": 4.6,
+      "wishCount": 84
+    },
+    {
+      "id": 2583,
+      "title": "한옥마을전통연희 퍼레이드-노상놀이야",
+      "addr1": "전북특별자치도 전주시 완산구 태조로 44 (풍남동3가)",
+      "addr2": "",
+      "posterInfo": "/__fixtures/jeonju.jpg",
+      "startDate": "2026-10-01",
+      "endDate": "2027-01-31",
+      "managerId": 42,
+      "averageScore": 4.6,
+      "wishCount": 67,
+      "imageInfos": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ]
+    },
+    {
+      "id": 2590,
+      "title": "2025 경기전 왕과의 산책",
+      "addr1": "전북특별자치도 전주시 완산구 태조로 44 (풍남동3가)",
+      "addr2": "",
+      "posterInfo": "/__fixtures/palace.jpg",
+      "startDate": "2026-10-01",
+      "endDate": "2027-01-31",
+      "managerId": 42,
+      "averageScore": null,
+      "wishCount": 50,
+      "imageInfos": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ]
+    },
+    {
+      "id": 2614,
+      "title": "2025 신관사또부임행차",
+      "addr1": "전북특별자치도 남원시 요천로 1447 (천거동)",
+      "addr2": "",
+      "posterInfo": "/__fixtures/flowers.png",
+      "startDate": "2026-10-01",
+      "endDate": "2025-10-25",
+      "managerId": 42,
+      "averageScore": 4.6,
+      "wishCount": 33,
+      "imageInfos": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ]
+    }
+  ],
+  "detail": {
+    "overView": "가평의 아름다운 자연 속에서 펼쳐지는 본 축제는, 활짝 핀 가을 수국의 물결과 사랑스러운 알파카들을 한자리에서 만날 수 있다. 가을의 정취를 가득 담은 수국밭을 거닐며 싱그러움을 만끽하고, 순수하고 귀여운 알파카들에게 직접 먹이를 주거나 함께 사진을 찍으며 잊지 못할 추억을 만들 수 있다. 단순히 꽃과 동물을 감상하는 것을 넘어, 방문객들이 직접 참여하고 즐길 수 있는 다채로운 프로그램들이 마련되어 있다. 수국밭 속 양떼목장에서는 동물들에게 먹이를 주는 체험을 할 수 있으며, 흥미로운 앵무새 공연도 준비되어 있다. 이와 더불어, 사계절 썰매를 무료로 이용하거나 주말에 진행되는 OX 퀴즈에 참여하며 즐거운 시간을 보낼 수 있다. 뿐만 아니라, 프리마켓 등 다양한 소비자 참여형 이벤트가 축제의 활기를 더하고, 맛있는 빵과 음료를 즐길 수 있는 베이커리 & 카페도 운영되어 풍성한 경험을 제공된다. 자연의 아름다움과 순수한 동물과의 교감이 어우러진 가평 가을 수국 & 알파카 축제에서 특별하고 행복한 시간을 만들 수 있다.",
+    "homePage": "no_homepage",
+    "imageInfos": [
+      "/__fixtures/flowers.png",
+      "/__fixtures/jeonju.jpg",
+      "/__fixtures/palace.jpg",
+      "/__fixtures/flowers.png",
+      "/__fixtures/jeonju.jpg"
+    ],
+    "isMyWish": false
+  },
+  "reviews": [
+    {
+      "reviewId": 900,
+      "reviewerName": "홍길동",
+      "festivalTitle": "가평 양떼목장 수국축제",
+      "content": "꽃이 예뻐요.",
+      "score": 5,
+      "imageUrls": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ],
+      "videoUrl": "",
+      "userId": 700
+    },
+    {
+      "reviewId": 901,
+      "reviewerName": "이영희",
+      "festivalTitle": "가평 양떼목장 수국축제",
+      "content": "행사가 재밌었어요.",
+      "score": 4,
+      "imageUrls": [
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg",
+        "/__fixtures/palace.jpg",
+        "/__fixtures/flowers.png",
+        "/__fixtures/jeonju.jpg"
+      ],
+      "videoUrl": "",
+      "userId": 701
+    },
+    {
+      "reviewId": 902,
+      "reviewerName": "박철수",
+      "festivalTitle": "가평 양떼목장 수국축제",
+      "content": "볼거리가 많았고 식사도 맛있었어요.",
+      "score": 4,
+      "imageUrls": [],
+      "videoUrl": "",
+      "userId": 702
+    }
+  ],
+  "notices": [
+    {
+      "id": 1,
+      "userId": 42,
+      "title": "축제 운영 시간 안내",
+      "content": "방문 전 운영 시간과 현장 안내를 확인해 주세요. 이 내용은 화면 비교를 위한 샘플 공지입니다.",
+      "updatedDate": "2026-11-12T10:30:00+09:00",
+      "images": []
+    },
+    {
+      "id": 2,
+      "userId": 42,
+      "title": "주차 및 대중교통 이용 안내",
+      "content": "방문 전 운영 시간과 현장 안내를 확인해 주세요. 이 내용은 화면 비교를 위한 샘플 공지입니다.",
+      "updatedDate": "2026-11-12T10:30:00+09:00",
+      "images": []
+    },
+    {
+      "id": 3,
+      "userId": 42,
+      "title": "우천 시 프로그램 안내",
+      "content": "방문 전 운영 시간과 현장 안내를 확인해 주세요. 이 내용은 화면 비교를 위한 샘플 공지입니다.",
+      "updatedDate": "2026-11-12T10:30:00+09:00",
+      "images": []
+    }
+  ],
+  "user": {
+    "userId": 7,
+    "username": "축제 여행자",
+    "email": "traveler@example.test",
+    "profileImageUrl": "/area/jeju.svg"
+  }
+}

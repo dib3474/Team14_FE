@@ -2,15 +2,14 @@ import { useState } from 'react';
 import Modal from '@/pages/Home/components/Modal';
 import type { Pin } from '@/types/Pin';
 import MAP_PINS from '@/constants/mapPins';
-import OCEAN_PINS from '@/constants/oceanPins';
-
-const STAGE_W = 480;
-const STAGE_H = 467;
+import HomeRegionMap from '@/pages/Home/components/HomeRegionMap';
+import '../home.css';
 
 const HomeContent = () => {
+  const [view, setView] = useState<'map' | 'names'>('map');
+  const [motionEnabled, setMotionEnabled] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [selectedPin, setSelectedPin] = useState<Pin | null>(null);
-
   const openFor = (pin: Pin) => {
     setSelectedPin(pin);
     setOpenModal(true);
@@ -21,59 +20,77 @@ const HomeContent = () => {
   };
 
   return (
-    <div className="absolute w-full h-[calc(100vh-6.75rem)] bg-gradient-to-br from-[var(--color-secondary-300)] via-[var(--color-secondary-400)] to-[var(--color-secondary-300)] flex items-center justify-center">
-      <div className="relative w-full h-full flex items-center justify-center">
-        <div
-          className="relative w-full h-full max-w-full max-h-full"
-          style={{ aspectRatio: `${STAGE_W}/${STAGE_H}` }}
-        >
-          <img
-            src="/koreamap.svg"
-            width={STAGE_W}
-            height={STAGE_H}
-            className="absolute inset-0 w-full h-full object-contain select-none"
-            alt="koreamap"
-          />
-          <div className="absolute inset-0">
-            {MAP_PINS.map((p) => (
+    <div className="ui-page home-page">
+      <div className="home-intro">
+        <h1 className="ui-title">설레는 축제 여행</h1>
+        <p id="home-region-instruction" className="ui-body home-intro-copy">
+          지도 속 지역 픽픽이를 누르고 취향에 맞는 축제를 만나보세요.
+        </p>
+      </div>
+      <section className="home-map-panel" aria-label="지역 선택">
+        <div className="home-map-tools">
+          <h2 className="home-region-heading">지역 선택</h2>
+          <div className="home-map-actions">
+            {view === 'map' && (
               <button
-                key={p.id}
                 type="button"
-                className="absolute -translate-x-1/2 -translate-y-1/2 z-10 group"
-                style={{ top: `${p.top}%`, left: `${p.left}%` }}
-                onClick={() => openFor(p)}
-                aria-label={p.name}
+                className="home-motion-control"
+                aria-label="캐릭터 모션"
+                aria-pressed={motionEnabled}
+                title={motionEnabled ? '캐릭터 모션 끄기' : '캐릭터 모션 켜기'}
+                onClick={() => setMotionEnabled((enabled) => !enabled)}
               >
-                <span className="absolute -inset-3" />
-                <img
-                  src={p.icon}
-                  alt={p.name}
-                  className="w-10 sm:w-10 md:w-12 transition-transform group-hover:scale-110 active:scale-95 drop-shadow-[0_4px_8px_rgba(0,0,0,0.2)]"
-                  draggable={false}
-                />
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  {motionEnabled ? (
+                    <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                  ) : (
+                    <path d="m7 4 14 8-14 8z" />
+                  )}
+                </svg>
               </button>
-            ))}
-            {OCEAN_PINS.map((p) => (
-              <div
-                key={p.id}
-                className="absolute -translate-x-1/2 -translate-y-1/2 z-10 group pointer-events-none"
-                style={{ top: `${p.top}%`, left: `${p.left}%` }}
+            )}
+            <div className="home-view-switch" role="group" aria-label="지역 보기 방식">
+              <button
+                type="button"
+                aria-pressed={view === 'map'}
+                aria-controls="home-region-view"
+                onClick={() => setView('map')}
               >
-                <img
-                  src={p.icon}
-                  alt={p.name}
-                  className="w-12 sm:w-14 md:w-16 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]"
-                  draggable={false}
-                />
-              </div>
-            ))}
+                지도
+              </button>
+              <button
+                type="button"
+                aria-pressed={view === 'names'}
+                aria-controls="home-region-view"
+                onClick={() => setView('names')}
+              >
+                이름
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-
+        <div id="home-region-view">
+          {view === 'map' ? (
+            <HomeRegionMap onSelect={openFor} motionEnabled={motionEnabled && !openModal} />
+          ) : (
+            <div className="home-region-list" role="region" aria-label="지역 이름 선택">
+              {MAP_PINS.map((pin) => (
+                <button type="button" key={pin.id} onClick={() => openFor(pin)}>
+                  {pin.name}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
       {openModal && <Modal isOpen={openModal} close={closeModal} pin={selectedPin} />}
     </div>
   );
 };
-
 export default HomeContent;

@@ -78,7 +78,7 @@ const FestivalFormPosterCard = ({
     <BorderCardComponent>
       <div className="flex flex-col gap-2">
         <label className="font-semibold">
-          포스터 이미지 <span className="text-red-500">*</span>
+          포스터 이미지 <span className="text-red-700">*</span>
         </label>
         {posterPreview && (
           <div className="relative w-full aspect-[3/4] max-w-xs mx-auto">

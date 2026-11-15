@@ -42,11 +42,12 @@ const ChatSendSection = ({
   };
 
   return (
-    <div className="pt-1 bg-white w-full">
-      <div className="flex w-full items-center justify-between rounded-2xl border border-gray-300 pl-4 pr-1 py-1">
+    <div className="shrink-0 w-full">
+      <div className="flex w-full min-w-0 items-end gap-2 rounded-[20px] border border-ui-line bg-ui-surface pl-4 pr-1 py-1 shadow-sm focus-within:border-secondary-500 focus-within:ring-2 focus-within:ring-secondary-100">
         {imageInfos.length === 0 ? (
           <textarea
             ref={textareaRef}
+            aria-label="채팅 메시지"
             value={message}
             onChange={handleMessageChange}
             onKeyDown={(e) => {
@@ -58,7 +59,7 @@ const ChatSendSection = ({
             placeholder="메시지 입력..."
             rows={1}
             maxLength={255}
-            className="w-full py-2 bg-transparent text-sm outline-none placeholder:text-gray-400 resize-none overflow-hidden whitespace-pre-wrap leading-5"
+            className="w-full min-w-0 min-h-11 max-h-32 py-3 bg-transparent text-base text-ui-ink outline-none placeholder:text-ui-muted resize-none overflow-y-auto whitespace-pre-wrap [overflow-wrap:anywhere] leading-6"
           />
         ) : (
           <div className="py-2 bg-transparent text-sm outline-none ">
@@ -70,8 +71,9 @@ const ChatSendSection = ({
                   className="w-20 h-20 object-cover rounded-lg border border-gray-200"
                 />
                 <button
+                  aria-label={`첨부 이미지 ${index + 1} 삭제`}
                   onClick={() => setImageInfos((prev) => prev.filter((_, i) => i !== index))}
-                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600"
+                  className="absolute -top-2 -right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600"
                 >
                   ×
                 </button>
@@ -80,16 +82,22 @@ const ChatSendSection = ({
           </div>
         )}
         <Button
-          className="shrink-0 rounded-full text-sm"
+          className="shrink-0 min-h-11 min-w-11 rounded-full text-sm"
           variant="icon"
           size="sm"
-          onClick={handleSend}
-          aria-label={message.trim().length > 0 || imageInfos.length > 0 ? 'send' : 'image'}
+          onClick={
+            message.trim().length > 0 || imageInfos.length > 0 ? handleSend : pickAndUploadImages
+          }
+          aria-label={
+            message.trim().length > 0 || imageInfos.length > 0
+              ? '메시지 보내기 (send)'
+              : '사진 선택 (image)'
+          }
         >
           {message.trim().length > 0 || imageInfos.length > 0 ? (
             <img src="/send.svg" alt="send" className="size-5" />
           ) : (
-            <img onClick={pickAndUploadImages} src="/image.svg" alt="image" className="size-5" />
+            <img src="/image.svg" alt="image" className="size-5" />
           )}
         </Button>
       </div>

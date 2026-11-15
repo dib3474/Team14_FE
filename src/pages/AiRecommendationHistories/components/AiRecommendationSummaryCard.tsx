@@ -9,14 +9,7 @@ interface AiRecommendationSummaryCardProps {
   formData: RecommendationFormResponse;
 }
 
-/**
- * AI 추천 조건을 요약해서 보여주는 카드
- * 지역, 스타일, 키워드 등을 표시
- * @param formData 추천 조건 데이터
- * @returns AI 추천 조건 요약 카드
- */
 const AiRecommendationSummaryCard = ({ formData }: AiRecommendationSummaryCardProps) => {
-  // 헬퍼 함수들
   const getAreaIcon = (areaCode: number) => {
     const area = MAP_PINS.find((pin) => pin.areaId === String(areaCode));
     return area?.icon;
@@ -38,92 +31,53 @@ const AiRecommendationSummaryCard = ({ formData }: AiRecommendationSummaryCardPr
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg border-2 border-primary-300">
-      {/* 헤더 */}
-      <div className="bg-gradient-to-r from-primary-400 to-primary-300 px-4 py-3">
-        <h3 className="text-white font-bold text-lg flex items-center gap-2">
-          <PickIcon name={PICK_ICONS.PIN} className="w-6 h-6" />
-          <span className="text-white font-bold text-lg">당신의 선택</span>
-        </h3>
+    <section className="ui-panel ai-choice-summary" aria-labelledby="ai-choice-title">
+      <div>
+        <p className="ui-eyebrow">MY FESTIVAL TASTE</p>
+        <h2 id="ai-choice-title" className="ui-section-title flex items-center gap-2 mt-2">
+          <PickIcon name={PICK_ICONS.PIN} className="w-6 h-6 shrink-0" />
+          당신의 선택
+        </h2>
       </div>
-
-      <div className="p-4 space-y-4">
-        <div className="grid grid-cols-2 gap-3">
+      <div className="ai-choice-grid">
+        <AiRecommendationIconInfoCard
+          label="지역"
+          icon={getAreaIcon(formData.areaCode)}
+          iconAlt={getAreaName(formData.areaCode)}
+          value={getAreaName(formData.areaCode)}
+        />
+        {formData.styles?.slice(0, 3).map((styleId) => (
           <AiRecommendationIconInfoCard
-            label="지역"
-            icon={getAreaIcon(formData.areaCode)}
-            iconAlt={getAreaName(formData.areaCode)}
-            value={getAreaName(formData.areaCode)}
+            key={styleId}
+            label="스타일"
+            icon={getStyleIcon(styleId)}
+            iconAlt={getStyleName(styleId)}
+            value={getStyleName(styleId)}
           />
-
-          {formData.styles?.slice(0, 3).map((styleId) => (
-            <AiRecommendationIconInfoCard
-              key={styleId}
-              label="스타일"
-              icon={getStyleIcon(styleId)}
-              iconAlt={getStyleName(styleId)}
-              value={getStyleName(styleId)}
-            />
-          ))}
-        </div>
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <p className="font-bold text-sm text-primary-500">당신의 여행 MBTI</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {/* TODO: API 응답에 내려오는 스타일이 변경되면 수정 필요
-            새로운 장소 - 익숙한 장소
-            혼자 - 함께
-            즐거움을 - 유익함을
-            즉흥적으로 계획적으로
-            */}
-            {formData.isNewPlace ? (
-              <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                새로운 장소
-              </span>
-            ) : (
-              <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                익숙한 장소
-              </span>
-            )}
-            {formData.isSolo ? (
-              <span className="px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-sm font-medium">
-                혼자
-              </span>
-            ) : (
-              <span className="px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-sm font-medium">
-                함께
-              </span>
-            )}
-            {formData.prefersEnjoyment ? (
-              <span className="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">
-                즐거움 선호
-              </span>
-            ) : (
-              <span className="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">
-                유익함을
-              </span>
-            )}
-            {formData.isSpontaneous ? (
-              <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">
-                즉흥적
-              </span>
-            ) : (
-              <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">
-                계획적으로
-              </span>
-            )}
-          </div>
-        </div>
-
-        {formData.additionalInfo && (
-          <div className="bg-primary-50 rounded-lg p-3 border border-primary-100">
-            <span className="text-gray-600 font-semibold text-sm">추가 정보</span>
-            <p className="text-gray-800 mt-1 text-sm">{formData.additionalInfo}</p>
-          </div>
-        )}
+        ))}
       </div>
-    </div>
+      <div>
+        <h3 className="ui-body font-bold mb-3">당신의 여행 MBTI</h3>
+        <div className="flex flex-wrap gap-2">
+          <span className="ui-tag ai-choice-tag">
+            {formData.isNewPlace ? '새로운 장소' : '익숙한 장소'}
+          </span>
+          <span className="ui-tag ai-choice-tag">{formData.isSolo ? '혼자' : '함께'}</span>
+          <span className="ui-tag ai-choice-tag">
+            {formData.prefersEnjoyment ? '즐거움 선호' : '유익함을'}
+          </span>
+          <span className="ui-tag ai-choice-tag">
+            {formData.isSpontaneous ? '즉흥적' : '계획적으로'}
+          </span>
+        </div>
+      </div>
+      {formData.additionalInfo && (
+        <div className="ui-inset">
+          <h3 className="ui-caption font-bold">추가 정보</h3>
+          <p className="ui-body mt-1 whitespace-pre-wrap break-words">{formData.additionalInfo}</p>
+        </div>
+      )}
+    </section>
   );
 };
 

@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 interface FAQItemProps {
   question: string;
   answer: string;
@@ -12,18 +14,22 @@ interface FAQItemProps {
  * 주로 축제 등록,관리 관한 사항들 적어두었습니다.
  */
 const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
+  const answerId = useId();
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
+    <div className="border border-ui-line rounded-[20px] overflow-hidden bg-ui-surface">
       <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={answerId}
         onClick={onToggle}
-        className="w-full px-4 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+        className="w-full px-5 py-5 flex items-center justify-between gap-3 hover:bg-secondary-50 transition-colors focus-visible:outline-2 focus-visible:outline-secondary-600"
       >
         <div className="flex items-start gap-3 flex-1 text-left">
-          <span className="text-primary font-bold text-lg shrink-0">Q.</span>
-          <span className="font-medium text-gray-900">{question}</span>
+          <span className="text-primary-700 font-bold text-lg shrink-0">Q.</span>
+          <span className="text-sm font-semibold text-ui-ink break-words">{question}</span>
         </div>
         <svg
-          className={`w-5 h-5 text-gray-400 transition-transform shrink-0 ${
+          className={`w-5 h-5 text-ui-muted transition-transform shrink-0 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -35,10 +41,10 @@ const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
       </button>
 
       {isOpen && (
-        <div className="px-4 py-4 bg-gray-50 border-t border-gray-200">
+        <div id={answerId} className="px-5 py-5 bg-secondary-50 border-t border-ui-line">
           <div className="flex items-start gap-3">
-            <span className="text-green-600 font-bold text-lg shrink-0">A.</span>
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line">{answer}</p>
+            <span className="text-secondary-700 font-bold text-lg shrink-0">A.</span>
+            <p className="ui-body text-ui-ink whitespace-pre-line break-words">{answer}</p>
           </div>
         </div>
       )}

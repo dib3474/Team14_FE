@@ -1,29 +1,41 @@
-import type { ComponentPropsWithoutRef } from 'react';
-
+import { useId, type ComponentPropsWithoutRef } from 'react';
 interface OutlineInputFieldProps extends ComponentPropsWithoutRef<'input'> {
   errorMsg?: string;
   rounded?: 'md' | 'lg' | 'xl' | 'none';
 }
-/**
- *
- * @param errorMsg
- * 에러 메시지를 입력할 수 있는 필드
- * @param rounded
- * 라운드 처리 여부와 크기를 지정 : md | lg | xl | none
- * @param props
- * 기타 input 속성들
- * @returns
- */
-const OutlineInputField = ({ errorMsg, rounded = 'none', ...props }: OutlineInputFieldProps) => {
+const roundedClasses = {
+  none: 'ui-rounded-none',
+  md: 'ui-rounded-md',
+  lg: 'ui-rounded-lg',
+  xl: 'ui-rounded-xl',
+};
+const OutlineInputField = ({
+  errorMsg,
+  rounded = 'none',
+  className = '',
+  id,
+  ...props
+}: OutlineInputFieldProps) => {
+  const generated = useId(),
+    errorId = `${id || generated}-error`;
+  const describedBy =
+    [props['aria-describedby'], errorMsg ? errorId : undefined].filter(Boolean).join(' ') ||
+    undefined;
   return (
-    <div className="w-full h-full gap-1">
+    <div className="ui-field">
       <input
         {...props}
-        className={`w-full h-[3rem] border border-gray-300 rounded-${rounded} py-2 px-3 focus:outline-primary-300`}
+        id={id}
+        className={`ui-control ${roundedClasses[rounded]} ${className}`}
+        aria-invalid={errorMsg ? true : props['aria-invalid']}
+        aria-describedby={describedBy}
       />
-      {errorMsg && <p className="text-sm text-red-500">{errorMsg}</p>}
+      {errorMsg && (
+        <p id={errorId} className="ui-field-error" aria-live="polite">
+          {errorMsg}
+        </p>
+      )}
     </div>
   );
 };
-
 export default OutlineInputField;

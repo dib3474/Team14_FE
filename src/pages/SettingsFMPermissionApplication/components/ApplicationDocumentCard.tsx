@@ -46,10 +46,10 @@ const ApplicationDocumentCard = ({
     <>
       {/* 증빙 서류 업로드 */}
       <div className="mb-4">
-        <h3 className="font-semibold mb-2">
+        <h2 className="text-base font-bold mb-3 text-ui-ink">
           증빙 서류 업로드 <span className="text-red-500">*</span>
-        </h3>
-        <p className="text-sm text-gray-600 mb-3">
+        </h2>
+        <p className="ui-body text-ui-muted mb-3">
           축제 관리자로 활동할 수 있는 자격을 증명할 수 있는 서류를 업로드해주세요.
           <br />
           (예: 재직증명서, 소속 증명서, 자격증, 경력 증명서 등)
@@ -57,14 +57,14 @@ const ApplicationDocumentCard = ({
 
         <Button
           variant="secondary"
-          className="w-full"
+          className="w-full h-auto min-h-12 whitespace-normal text-left leading-relaxed"
           onClick={handleFileUpload}
           disabled={isUploading}
         >
           <PickIcon name={PICK_ICONS.CLIP} size={20} className="mr-2" />
           증빙 서류 업로드 (PDF, 이미지, 문서 파일)
         </Button>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs leading-relaxed text-ui-muted mt-1">
           지원 형식: PDF, DOC, DOCX, HWP, 이미지 (최대 10MB/파일)
         </p>
       </div>
@@ -72,22 +72,24 @@ const ApplicationDocumentCard = ({
       {/* 업로드된 파일 목록 */}
       {documents.length > 0 && (
         <div className="mb-4">
-          <h4 className="text-sm font-medium text-gray-700 mb-2">
+          <h4 className="text-sm font-medium text-ui-ink mb-2">
             업로드된 서류 ({documents.length}개)
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {documents.map((doc, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200"
+                className="ui-inset flex items-center justify-between gap-2 border border-ui-line"
               >
                 <div className="flex items-center gap-2 flex-1 min-w-0">
                   <span className="text-xl">{getFileIcon(doc.fileName)}</span>
-                  <span className="text-sm text-gray-700 truncate">{doc.fileName}</span>
+                  <span className="text-sm text-ui-ink [overflow-wrap:anywhere]">
+                    {doc.fileName}
+                  </span>
                 </div>
                 <button
                   onClick={() => setDocuments(documents.filter((_, i) => i !== index))}
-                  className="ml-2 px-2 py-1 text-red-500 hover:bg-red-50 rounded text-sm"
+                  className="shrink-0 min-h-11 min-w-11 px-2 py-1 text-red-700 hover:bg-red-50 rounded-lg text-sm"
                   aria-label="파일 삭제"
                 >
                   삭제

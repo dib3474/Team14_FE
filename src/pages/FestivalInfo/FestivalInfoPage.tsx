@@ -6,7 +6,7 @@ import getFestivalInfo from '@/apis/festivals/getFestivalInfo';
 import { useQuery } from '@tanstack/react-query';
 import FestivalPoster from '@/pages/FestivalInfo/components/FestivalPoster';
 import FestivalBannerSection from '@/pages/FestivalInfo/components/FestivalBannerSection';
-import Divider from '@/components/common/Divider';
+import './festival-info.css';
 import FestivalContentInfoSection from '@/pages/FestivalInfo/components/FestivalContentInfoSection';
 import FestivalContentOverviewSection from '@/pages/FestivalInfo/components/FestivalContentOverviewSection';
 import FestivalContentReviewSection from '@/pages/FestivalInfo/components/FestivalContentReviewSection';
@@ -72,36 +72,31 @@ const FestivalInfoPage = () => {
         url={`/festival/${festivalId}`}
         image={festivalData.content.posterInfo || undefined}
       />
-      <Header variant="all" />
-      <div className="flex flex-col items-center w-full h-full">
+      <Header variant="all" title="축제 정보" />
+      <div className="ui-page festival-detail-page">
         <FestivalPoster
           posterUrl={festivalData.content.posterInfo}
           imageUrls={festivalData.content.imageInfos}
           title={festivalData.content.title}
         />
-        <div className="w-full h-full p-4 gap-4 flex flex-col">
-          <FestivalBannerSection
-            url={festivalData.content.homePage}
-            isMyWish={festivalData.content.isMyWish}
-            wishCount={festivalData.content.wishCount}
-          />
-          <Divider height="1px" />
+        <div className="festival-detail-sections">
           <FestivalContentInfoSection
             content={festivalData.content}
             averageScore={festivalData.content.averageScore ?? 0}
             reviewCount={reviewsData.totalElements}
           />
-          <Divider height="1px" />
+          <FestivalBannerSection
+            url={festivalData.content.homePage}
+            isMyWish={festivalData.content.isMyWish}
+            wishCount={festivalData.content.wishCount}
+          />
           <FestivalContentOverviewSection
             festivalId={festivalId}
             overview={festivalData.content.overView}
             isManager={isManager}
           />
-          <Divider height="1px" />
           <FestivalContentNoticeSection festivalId={festivalId} isManager={isManager} />
-          <Divider height="1px" />
           <FestivalContentManagerSection festivalId={festivalId} isManager={isManager} />
-          <Divider height="1px" />
           <FestivalContentReviewSection
             reviewsData={reviewsData.content}
             festivalTitle={festivalData.content.title}

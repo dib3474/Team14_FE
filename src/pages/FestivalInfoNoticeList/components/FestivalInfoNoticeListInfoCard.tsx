@@ -16,10 +16,28 @@ const FestivalInfoNoticeListInfoCard = ({
   onCreateNotice,
   onClick,
 }: FestivalInfoNoticeListInfoCardProps) => {
+  const body = (
+    <>
+      {festivalData?.posterInfo && (
+        <img
+          src={festivalData.posterInfo}
+          alt=""
+          className="w-20 h-20 shrink-0 object-cover rounded-xl"
+        />
+      )}
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-ui-ink break-words">{festivalData?.title}</p>
+        <p className="ui-caption mt-1">{festivalData?.addr1}</p>
+        <p className="ui-caption mt-1">
+          {festivalData?.startDate} ~ {festivalData?.endDate}
+        </p>
+      </div>
+    </>
+  );
   return (
-    <div className="mb-6 p-4 bg-gray-50 rounded-lg cursor-pointer" onClick={onClick}>
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="font-semibold text-lg break-all">{title || '공지사항을 작성할 축제'}</h3>
+    <div className="ui-inset mb-6">
+      <div className="flex flex-wrap justify-between items-center gap-2 mb-3">
+        <h2 className="ui-section-title">{title || '공지사항을 작성할 축제'}</h2>
         {showCreateButton && onCreateNotice && (
           <Button
             variant="text"
@@ -27,30 +45,21 @@ const FestivalInfoNoticeListInfoCard = ({
               e.stopPropagation();
               onCreateNotice();
             }}
-            className="text-sm text-primary-300"
+            className="text-sm text-ui-action"
           >
             공지사항 작성
           </Button>
         )}
       </div>
-      <div className="flex gap-3">
-        {festivalData?.posterInfo && (
-          <img
-            src={festivalData.posterInfo}
-            alt={festivalData.title}
-            className="w-20 h-20 object-cover rounded"
-          />
-        )}
-        <div className="flex-1">
-          <p className="font-medium text-gray-900 break-all">{festivalData?.title}</p>
-          <p className="text-sm text-gray-600 mt-1 break-all">{festivalData?.addr1}</p>
-          <p className="text-sm text-gray-500 mt-1">
-            {festivalData?.startDate} ~ {festivalData?.endDate}
-          </p>
-        </div>
-      </div>
+      {onClick ? (
+        <button type="button" className="flex w-full gap-3 text-left" onClick={onClick}>
+          {body}
+          <span className="sr-only">축제 정보 보기</span>
+        </button>
+      ) : (
+        <div className="flex gap-3">{body}</div>
+      )}
     </div>
   );
 };
-
 export default FestivalInfoNoticeListInfoCard;

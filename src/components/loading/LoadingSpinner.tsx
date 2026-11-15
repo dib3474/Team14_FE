@@ -18,11 +18,11 @@ const LoadingSpinner = ({ size = 'md', className = '', message }: LoadingSpinner
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center ${className}`}>
+    <div className={`flex flex-col items-center justify-center gap-3 ${className}`} role="status">
       <div
-        className={`animate-spin rounded-full border-b-2 border-primary-300 ${sizeClasses[size]}`}
+        className={`animate-spin rounded-full border-b-2 border-primary-600 ${sizeClasses[size]}`}
       />
-      {message && <p className="mt-4 text-lg text-gray-600">{message}</p>}
+      {message && <p className="mt-4 ui-body">{message}</p>}
     </div>
   );
 };

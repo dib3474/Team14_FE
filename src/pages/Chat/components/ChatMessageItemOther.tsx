@@ -16,8 +16,10 @@ const ChatMessageItemOther = ({ message }: ChatMessageItemOtherProps) => {
           className="h-full w-full rounded-full object-cover"
         />
       </div>
-      <div className="flex min-w-0 flex-col gap-1">
-        <div className="text-sm font-semibold text-gray-900">{message.senderName}</div>
+      <div className="flex min-w-0 max-w-[82%] flex-col gap-1">
+        <div className="text-xs leading-relaxed font-semibold text-ui-muted [overflow-wrap:anywhere]">
+          {message.senderName}
+        </div>
         {message.imageUrl ? (
           <ChatMessageItemImage imageUrl={message.imageUrl} />
         ) : (

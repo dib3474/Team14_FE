@@ -59,14 +59,12 @@ const SettingsFestivalMyManageApplicationContent = () => {
   });
 
   if (loading && permissions.length === 0) {
-    return (
-      <LoadingSpinner size="lg" className="min-h-[400px]" message="신청 내역을 불러오는 중..." />
-    );
+    return <LoadingSpinner size="lg" className="min-h-48" message="신청 내역을 불러오는 중..." />;
   }
 
   if (permissions.length === 0) {
     return (
-      <div className="p-4">
+      <div className="ui-page">
         <EmptyComponent
           title="신청한 축제가 없습니다"
           description="축제 상세 페이지에서 관리 신청을 해보세요!"
@@ -76,14 +74,16 @@ const SettingsFestivalMyManageApplicationContent = () => {
   }
 
   return (
-    <div className="p-4">
-      <div className="space-y-3 pb-20">
+    <div className="ui-page">
+      <div className="space-y-4">
         {permissions.map((permission) => (
           <FestivalPermissionCard key={permission.id} permission={permission} />
         ))}
       </div>
 
-      {loading && <LoadingSpinner size="md" className="h-64" message="불러오는 중..." />}
+      {loading && (
+        <LoadingSpinner size="md" className="ui-feedback min-h-40" message="불러오는 중..." />
+      )}
       {hasMore && <div ref={observerRef} className="h-10" />}
     </div>
   );

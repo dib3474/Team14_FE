@@ -1,3 +1,4 @@
+import { useId } from 'react';
 interface TextInputWithCounterProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -37,9 +38,10 @@ const TextInputWithCounter = ({
   disabled = false,
   rows = 1,
   showMinLengthMessage = false,
-  errorClassName = 'text-red-500',
+  errorClassName = 'text-red-700',
   name,
 }: TextInputWithCounterProps) => {
+  const counterId = useId();
   const isMinLengthError = minLength && value.length < minLength;
   const isMaxLengthError = value.length > maxLength;
 
@@ -47,30 +49,36 @@ const TextInputWithCounter = ({
     <div className="mb-4">
       {type === 'input' ? (
         <input
+          aria-label={placeholder}
+          aria-describedby={counterId}
+          id={name}
           name={name}
           type="text"
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`w-full p-3 bg-gray-50 rounded-lg border-0 ${className}`}
+          className={`ui-control ui-control-filled ${className}`}
           maxLength={maxLength}
           disabled={disabled}
         />
       ) : (
         <textarea
+          aria-label={placeholder}
+          aria-describedby={counterId}
+          id={name}
           name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`w-full p-3 bg-gray-50 rounded-lg border-0 ${className}`}
+          className={`ui-control ui-control-filled ${className}`}
           maxLength={maxLength}
           rows={rows}
           disabled={disabled}
         />
       )}
 
-      <div className="flex justify-between text-sm">
-        <span className={isMinLengthError ? errorClassName : 'text-gray-500'}>
+      <div id={counterId} className="flex flex-wrap justify-between gap-2 ui-caption">
+        <span className={isMinLengthError ? errorClassName : 'text-ui-muted'}>
           {showMinLengthMessage && minLength && value.length < minLength
             ? `${value.length}/${minLength}자 (최소 ${minLength}자 필요)`
             : `${value.length}/${maxLength}자`}
