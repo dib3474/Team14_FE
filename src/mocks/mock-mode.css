@@ -1,55 +1,86 @@
-html[data-mock-mode='true'] {
-  --ui-chrome-height: calc(
-    var(--ui-header-height) + var(--ui-nav-height) + var(--ui-safe-top) + var(--ui-safe-bottom) +
-      44px
-  );
-}
-html[data-mock-mode='true'] .ui-header {
-  top: 44px;
-}
-html[data-mock-mode='true'] .ui-canvas {
-  padding-top: calc(var(--ui-header-height) + var(--ui-safe-top) + 44px);
-}
 .mock-mode-tools {
+  --mock-right: max(16px, calc((100vw - var(--ui-max-width)) / 2 + 16px));
   position: fixed;
-  inset: 0 0 auto;
+  right: var(--mock-right);
+  bottom: calc(var(--ui-nav-height) + var(--ui-safe-bottom) + 16px);
   z-index: 110;
-  width: 100%;
-  max-width: var(--ui-max-width);
-  margin-inline: auto;
-  background: var(--color-secondary-50);
-  color: var(--color-secondary-800);
-  border-bottom: 1px solid var(--color-secondary-100);
-  font-size: 12px;
+  color: var(--color-ui-ink);
 }
-.mock-mode-tools summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 8px 16px;
+.mock-mode-launcher {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--color-secondary-800);
+  border-radius: 50%;
+  background: var(--color-secondary-800);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px #18223026;
   cursor: pointer;
-  list-style: none;
 }
-.mock-mode-tools summary::-webkit-details-marker {
-  display: none;
+.mock-mode-launcher:hover {
+  background: var(--color-secondary-900);
 }
-.mock-mode-tools summary span:last-child {
-  margin-left: auto;
+.mock-mode-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 111;
+  background: #17233640;
 }
-.mock-mode-tools nav {
+.mock-mode-panel {
   position: absolute;
-  inset: 44px 0 auto;
-  max-height: 70dvh;
-  overflow: auto;
-  padding: 12px;
-  background: white;
+  right: var(--mock-right);
+  bottom: calc(var(--ui-nav-height) + var(--ui-safe-bottom) + 84px);
+  display: flex;
+  flex-direction: column;
+  width: min(320px, calc(100vw - 32px));
+  max-height: min(65dvh, calc(100dvh - var(--ui-nav-height) - var(--ui-safe-bottom) - 100px));
+  overflow: hidden;
   border: 1px solid var(--color-ui-line);
-  border-radius: 0 0 16px 16px;
+  border-radius: 20px;
+  background: var(--color-ui-surface);
   box-shadow: 0 12px 32px #18223020;
 }
-.mock-mode-tools nav p {
+.mock-mode-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 12px 8px 20px;
+  border-bottom: 1px solid var(--color-ui-line);
+}
+.mock-mode-heading h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.mock-mode-heading p {
+  margin-top: 4px;
+  color: var(--color-ui-muted);
+  font-size: 12px;
+}
+.mock-mode-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+.mock-mode-close:hover {
+  background: var(--color-secondary-50);
+}
+.mock-mode-tools nav {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 8px;
+}
+.mock-mode-tools nav p {
+  padding: 8px 12px;
   font-size: 12px;
   line-height: 1.6;
   color: var(--color-ui-muted);
@@ -64,4 +95,8 @@ html[data-mock-mode='true'] .ui-canvas {
 }
 .mock-mode-tools nav a:hover {
   background: var(--color-secondary-50);
+}
+/* Keep the developer launcher above the chat composer, including multiline input. */
+body:has(textarea[aria-label='채팅 메시지']) .mock-mode-tools {
+  bottom: min(calc(var(--ui-nav-height) + var(--ui-safe-bottom) + 176px), calc(100dvh - 80px));
 }
