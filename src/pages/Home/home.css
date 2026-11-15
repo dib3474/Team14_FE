@@ -220,38 +220,40 @@
   animation: home-region-invitation var(--region-cycle) ease-in-out infinite;
   animation-delay: var(--region-delay);
 }
-/* Each region has a 1.2-second slot; only its artwork scales, keeping pin hit areas fixed. */
+/* Each 1.2s slot has a 0.1s entrance, a 1s hold, and a 0.1s exit.
+   Percentages use the 20.4s cycle (17 regions); only artwork scales. */
 @keyframes home-region-invitation {
   0%,
-  4%,
+  5.88%,
   100% {
     transform: scale(1);
   }
-  1.8% {
+  0.49%,
+  5.39% {
     transform: scale(1.2);
   }
 }
 @keyframes home-region-name {
   0%,
-  4%,
+  5.88%,
   100% {
     opacity: 0;
     visibility: hidden;
   }
-  0.35%,
-  3.4% {
+  0.49%,
+  5.39% {
     opacity: 1;
     visibility: visible;
   }
 }
 @keyframes home-region-layer {
   0%,
-  4%,
+  5.88%,
   100% {
     z-index: 2;
   }
   0.1%,
-  3.9% {
+  5.8% {
     z-index: 4;
   }
 }
